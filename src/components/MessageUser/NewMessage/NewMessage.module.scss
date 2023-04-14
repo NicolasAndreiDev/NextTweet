@@ -1,0 +1,49 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.containerNew{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: $cor-secundaria;
+    .linha{
+        height: .1rem;
+        background-color: $cor-texto-claro;
+    }
+    .container{
+        padding: 2rem;
+        .newMessage{
+            position: relative;
+            border: .1rem solid $cor-texto-claro;
+            font-size: $tamanho-da-fonte;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            border-radius: 10rem;
+            padding: 1rem 1rem 1rem 2rem;
+            .icon{
+                width: 2rem;
+                height: 2rem;
+                color: $cor-azul;
+                cursor: pointer;
+            }
+            .input{
+                border: none;
+                outline: none;
+                width: 80%;
+            }
+            .button{
+                position: absolute;
+                right: .4rem;
+                display: flex;
+                align-items: center;
+                padding: .8rem;
+                border-radius: 10rem;
+                background-color: transparent;
+                border: none;
+                &:hover{
+                    background-color: $cor-azul-claro;
+                }
+            }
+        }
+    }
+}

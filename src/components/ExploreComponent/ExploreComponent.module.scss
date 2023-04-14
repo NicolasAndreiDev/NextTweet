@@ -1,0 +1,50 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.explore{
+    padding: .8rem 2rem;
+    .pesquisa{
+        width: 100%;
+        border-radius: 10rem;
+        display: flex;
+        align-items: center;
+        border: .1rem solid $cor-texto-claro;
+        height: 4rem;
+        color: gray;
+        background-color: $cor-secundaria;
+        &:focus-within {
+            border: .1rem solid $cor-azul;
+            color: $cor-azul;
+        }
+        label{
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        input{
+            outline: none;
+            height: 100%;
+            width: 100%;
+            border: none;
+            padding: 0 .4rem;
+            border-radius: 2rem;
+        }
+    }
+}
+.buttonsExplore{
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr .8fr .9fr 1.3fr;
+    .select{
+        height: .4rem;
+        width: 6rem;
+        border-radius: 10rem;
+        position: absolute;
+        background-color: rgb(68, 180, 235);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+    

@@ -1,0 +1,65 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.containerNext{
+    width: 59.2rem;
+    display: flex;
+    flex-direction: column;
+    border-right: .1rem solid $cor-texto-claro;
+    background-color: $cor-secundaria;
+    font-size: $tamanho-da-fonte;
+    height: 100vh;
+    position: relative;
+    .infoUser{
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: $cor-secundaria;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .user{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .imagemMenor{
+                width: 3.6rem;
+                height: 3.6rem;
+                border-radius: 10rem;
+                cursor: pointer;
+            }
+            .nome{
+                font-weight: bold;
+            }
+            }
+        .button{
+            display: flex;
+            align-items: center;
+            padding: .8rem;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            border-radius: 10rem;
+            cursor: pointer;
+            &:hover{
+                background-color: $cor-principal;
+            }
+            .icon{
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    }
+    .linha{
+        height: .1rem;
+        background-color: $cor-texto-claro;
+    }
+    .messages{
+        padding: 2rem;
+        height: 100%;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 0rem;
+        }
+    }
+}

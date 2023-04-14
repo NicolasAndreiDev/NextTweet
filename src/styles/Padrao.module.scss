@@ -1,0 +1,10 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    display: flex;
+    justify-content: center;
+    background-color: $cor-principal;
+    .direita{
+        display: flex;
+    }
+}

@@ -1,0 +1,29 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .they, .me{
+        .texto{
+            background-color: $cor-azul;
+            color: white;
+            display: inline-block;
+            padding: 1.2rem 1.6rem;
+        }
+    }
+    .they{
+        display: flex;
+        justify-content: flex-start;
+        .texto{
+            border-radius: 2rem 2rem 2rem .4rem;
+        }
+    }
+    .me{
+        display: flex;
+        justify-content: flex-end;
+        .texto{
+            border-radius: 2rem 2rem .4rem 2rem;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.conta{
+    display: flex;
+    padding: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $cor-secundaria;
+    width: 32rem;
+    border-radius: 10rem;
+    font-size: $tamanho-da-fonte;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+    &:hover{
+        background-color: $cor-principal;
+    }
+    .conta__user{
+        display: flex;
+        gap: .8rem;
+        .imagem{
+            height: 4rem;
+            width: 4rem;
+            object-fit: cover;
+            border-radius: 10rem;
+        }
+        .user{
+            display: flex;
+            flex-direction: column;
+            span:nth-child(1){
+                font-weight: bold;
+            }
+            span:nth-child(2){
+                color: $cor-texto-claro;
+            }
+        }
+    }
+    .icon{
+        width: 2.9rem;
+        height: 2.9rem;
+    }
+}

@@ -1,0 +1,50 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.post{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    .image{
+        height: 4.8rem;
+        width: 4.8rem;
+        border-radius: 10rem;
+    }
+    .input{
+        border: none;
+        outline: none;
+        font-size: 2rem;
+    }
+}
+.newPost{
+    padding: 0 2rem 0 8.8rem;
+    .infoPost{
+        display: flex;
+        padding: 1rem 0;
+        gap: 1rem;
+        justify-content: space-between;
+        .icones{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            .icon{
+                height: 1.6rem;
+                width: 1.6rem;
+                color: $cor-azul;
+                cursor: pointer;
+            }
+        }
+        .publicar{
+            padding: .8rem 2rem;
+            color: $cor-secundaria;
+            background-color: $cor-azul;
+            border-radius: 10rem;
+            border: none;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba(68, 180, 235, .95);
+            }
+        }
+    }
+}
+

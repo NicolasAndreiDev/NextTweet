@@ -1,0 +1,14 @@
+{
+    "users":[ 
+        {
+            "id": 1, 
+            "nome": "Nicolas", 
+            "username": "Nicolas_AS",
+            "post": [
+            {
+                "id": 1, 
+                "texto": "Bla bla bla"
+            }]
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.searchMessage{
+    display: flex;
+    align-items: center;
+    margin: 1rem 2rem;
+    border-radius: 10rem;
+    border: .1rem solid $cor-texto-claro;
+    &:focus-within{
+        border: .1rem solid $cor-azul;
+    }
+    .labelSearch{
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem .4rem 1rem 1rem;
+        cursor: text;
+        .icon{
+            height: 1.4rem;
+            display: flex;
+            align-items: center;
+            width: 1.4rem;
+            color: $cor-texto-claro;
+        }
+    }
+    .inputTexto{
+        font-size: 1.4rem;
+        padding: .4rem;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 10rem;
+    }
+}

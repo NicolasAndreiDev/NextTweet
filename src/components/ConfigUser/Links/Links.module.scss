@@ -1,0 +1,44 @@
+@import '@/styles/abstract/variaveis.scss';
+
+
+.logo{
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 10rem;
+    padding: .8rem;
+    background-color: $cor-secundaria;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    &:hover{
+        background-color: $cor-principal;
+    }
+}
+.nav{
+    background-color: $cor-secundaria;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 2rem;
+    width: 32rem;
+    a, .more{
+        display: flex;
+        gap: 2rem;
+        text-decoration: none;
+        font-size: 2rem;
+        padding: 2rem;
+        align-items: center;
+        gap: 2rem;
+        color: $cor-da-letra;
+        &:hover{
+            background-color: $cor-principal;
+        }
+        .icon{
+            height: 2.8rem;
+            width: 2.8rem;
+        }
+    }
+    a:nth-child(1){
+        border-radius: 2rem 2rem 0 0;
+    }
+    .more{
+        border-radius: 0 0 2rem 2rem;
+        cursor: pointer;
+    }
+}

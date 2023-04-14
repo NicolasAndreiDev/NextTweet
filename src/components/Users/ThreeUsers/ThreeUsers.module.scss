@@ -1,0 +1,42 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.users{
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    &:hover{
+        background-color: $cor-principal;
+    }
+    .usersInfo{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .image{
+            height: 4.8rem;
+            width: 4.8rem;
+            border-radius: 10rem;
+        }
+    }
+    .social{
+        display: flex;
+        flex-direction: column;
+        font-size: $tamanho-da-fonte;
+    }
+    .follow{
+        border: none;
+        background-color: $cor-azul;
+        padding: .8rem 2rem;
+        border-radius: 10rem;
+        font-size: $texto-pequeno;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: $cor-secundaria;
+        cursor: pointer;
+        &:hover{
+            background-color: rgba(68, 180, 235, .95);
+        }
+    }
+}

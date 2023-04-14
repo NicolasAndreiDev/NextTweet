@@ -1,0 +1,26 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.cardList{
+    display: flex;
+    flex-direction: column;
+    width: 32rem;
+    background-color: $cor-secundaria;
+    border-radius: 2rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    .para{
+        font-size: $texto-grande;
+        font-weight: bold;
+        padding: 1rem 2rem;
+    }
+    .show{
+        padding: 2rem 2rem;
+        font-size: $tamanho-da-fonte;
+        border-radius: 0 0 2rem 2rem;
+        text-decoration: none;
+        cursor: pointer;
+        color: $cor-azul;
+        &:hover{
+            background-color: $cor-principal;
+        }
+    }
+}

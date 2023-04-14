@@ -1,0 +1,40 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.infoUser{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    .nome{
+        font-weight: bold;
+        font-size: 2.4rem;
+    }
+    .username{
+        color: $cor-texto-claro;
+    }
+}
+.ingresso{
+    display: flex;
+    gap: .4rem;
+    padding: 0 2rem;
+    align-items: center;
+    color: $cor-texto-claro;
+    .icon{
+        font-size: 2rem;
+    }
+}
+.social{
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    .number{
+        display: flex;
+        gap: .4rem;
+        span:nth-child(1) {
+            font-weight: 600;
+        }
+        span:nth-child(2){
+            color: $cor-texto-claro;
+        }
+    }
+}

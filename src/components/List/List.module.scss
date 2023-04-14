@@ -1,0 +1,14 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    padding-left: 3.2rem;
+    min-width: 35.2rem;
+    .fixed{
+        position: fixed;
+        top: .8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+

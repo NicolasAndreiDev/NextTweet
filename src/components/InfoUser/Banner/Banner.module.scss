@@ -1,0 +1,9 @@
+.bannerDiv{
+    position: relative;
+    height: 30rem;
+    .banner{
+        object-fit: cover;
+        height: 24rem;
+        width: 100%;
+    }
+}

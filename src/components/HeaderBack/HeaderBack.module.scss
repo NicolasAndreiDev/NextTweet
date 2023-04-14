@@ -1,0 +1,36 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.voltar{
+    background-color: $cor-secundaria;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: .4rem 2rem;
+    position: sticky;
+    top: 0;
+    width: 60rem;
+    z-index: 100;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 6px 8px -4px;
+    .icon{
+        height: 3rem;
+        width: 3rem;
+        padding: 0.4rem;
+        color: $cor-da-letra;
+        border-radius: 100%;
+        cursor: pointer;
+        &:hover{
+            background-color: $cor-principal;
+        }
+    }
+    .userPost{
+        display: flex;
+        flex-direction: column;
+        .nome{
+            font-size: $texto-grande;
+            font-weight: bold;
+        }
+        .posts{
+            color: $cor-texto-claro;
+        }
+    }
+}

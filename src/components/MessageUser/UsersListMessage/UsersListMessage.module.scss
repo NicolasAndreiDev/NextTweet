@@ -1,0 +1,23 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.containerUser{
+    width: 36rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $cor-secundaria;
+    border-right: .1rem solid $cor-texto-claro;
+    border-left: .1rem solid $cor-texto-claro;
+    .message{
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .users{
+        overflow-y: scroll;
+        height: 100%;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+    }
+}

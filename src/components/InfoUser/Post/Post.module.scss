@@ -1,0 +1,95 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    position: relative;
+    .linha{
+        position: absolute;
+        width: 100%;
+        background-color: $cor-texto-claro;
+        height: .1rem;
+    }
+    .post{
+        padding: 1rem 2rem;
+        display: flex;
+        cursor: pointer;
+        &:hover{
+            background-color: $cor-principal;
+        }
+        .image{
+            height: 4.8rem;
+            width: 4.8rem;
+            border-radius: 10rem;
+            object-fit: cover;
+        }
+        .infoPubli{
+            margin-left: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            .user{
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                span:nth-child(1){
+                    font-weight: 700;
+                }
+                span:nth-child(n+2){
+                color: $cor-texto-claro;
+                }
+            }
+            .publi{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                font-weight: 600;
+                .fotoPubli{
+                    width: 100%;
+                    border-radius: 2rem;
+                }     
+            }
+            .social{
+                padding-top: .6rem;
+                display: flex;
+                gap: 2rem;
+                .social_icon{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    font-size: $texto-pequeno;
+                    color: $cor-texto-claro;
+                    cursor: pointer;
+                    &:hover:nth-child(1) {
+                        span{
+                            color: $cor-azul;
+                        }
+                        .icon{
+                            color: $cor-azul;
+                            background-color: $cor-azul-claro;
+                        }
+                    }
+                    &:hover:nth-child(2) {
+                        span{
+                            color: $cor-rosa;
+                        }
+                        .icon{
+                            color: $cor-rosa;
+                            background-color: $cor-rosa-claro;
+                        }
+                    }
+                    &:hover:nth-child(3) {
+                        .icon{
+                            color: $cor-azul;
+                            background-color: $cor-azul-claro;
+                        }
+                    }
+                    .icon{
+                        height: 2.8rem;
+                        width: 2.8rem;
+                        padding: .4rem;
+                        border-radius: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

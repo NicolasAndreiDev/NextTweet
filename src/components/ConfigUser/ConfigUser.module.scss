@@ -1,0 +1,37 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    display: flex;
+    padding-right:3.2rem;
+    min-width: 35.2rem;
+    justify-content: flex-end;
+    .fixedHeader{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 32rem;
+        position: fixed;
+        top: .8rem;
+        .post{
+            background-color: $cor-azul;
+            color: $cor-secundaria;
+            border: none;
+            width: 20rem;
+            font-size: 2rem;
+            border-radius: 10rem;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+            cursor: pointer;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 1rem;
+            &:hover{
+                background-color: rgba(68, 180, 235, .95);
+            }
+        }
+        .fixedUser{
+        position: fixed;
+        bottom: .8rem;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    font-size: $tamanho-da-fonte;
+    background-color: $cor-secundaria;
+    width: 60rem;
+    min-height: 140vh;
+    color: $cor-da-letra;
+    position: relative;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
