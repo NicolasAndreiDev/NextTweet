@@ -5,7 +5,7 @@ export default function Route({children, location, ...props}: {children: React.R
     const page = useRouter()
 
     return(
-        <Link href={`${location}`} style={page.asPath == `${location}` ? {color: 'rgb(68, 180, 235)'} : {color: 'black'}} {...props}>
+        <Link href={`${location}`} style={page.asPath == `${location}` ? {color: 'rgb(68, 180, 235)', fontWeight: 'bold'} : {color: 'rgb(15, 20, 25)'}} {...props}>
             {children}
         </Link>
     )

@@ -26,9 +26,7 @@ export default function Profile() {
                         <Post />
                     </div>
                 </InfoPadrao>
-                <List>
-                    <Search />
-                </List>
+                <List />
             </div>
         </div>
     )

@@ -16,7 +16,7 @@ export default function Explore() {
                 <ExploreComponent />
             </InfoPadrao>
             </div>
-            <List />
+            <List search={false}/>
         </div>
     )
 }

@@ -4,6 +4,8 @@
             "id": 1, 
             "nome": "Nicolas", 
             "username": "Nicolas_AS",
+            "foto": "/images/foto_perfil.jpg",
+            "banner": "/images/banner.jpg",
             "post": [
             {
                 "id": 1, 

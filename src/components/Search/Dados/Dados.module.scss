@@ -1,0 +1,14 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    position: absolute;
+    top: 5rem;
+    display: grid;
+    place-items: center;
+    width: 34rem;
+    font-size: $texto-pequeno;
+    border-radius: 2rem;
+    height: 8rem;
+    background-color: $cor-secundaria;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

@@ -19,9 +19,7 @@ export default function Home() {
             <Post />
           </div>
         </InfoPadrao>
-        <List>
-          <Search />
-        </List>
+        <List />
       </div>
     </div>
   )

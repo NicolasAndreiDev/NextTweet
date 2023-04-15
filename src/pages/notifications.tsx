@@ -14,9 +14,7 @@ export default function Notifications() {
                 <NotificationsComponent />
             </InfoPadrao>
             </div>
-            <List>
-                <Search />
-            </List>
+            <List />
         </div>
     )
 }

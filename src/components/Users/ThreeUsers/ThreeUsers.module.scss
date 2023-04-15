@@ -23,10 +23,16 @@
         display: flex;
         flex-direction: column;
         font-size: $tamanho-da-fonte;
+        .name{
+            font-weight: bold;
+        }
+        .username{
+            color: $cor-texto-claro;
+        }
     }
     .follow{
         border: none;
-        background-color: $cor-azul;
+        background-color: $cor-da-letra;
         padding: .8rem 2rem;
         border-radius: 10rem;
         font-size: $texto-pequeno;
@@ -36,7 +42,7 @@
         color: $cor-secundaria;
         cursor: pointer;
         &:hover{
-            background-color: rgba(68, 180, 235, .95);
+            background-color: rgb(15, 20, 25, .92);
         }
     }
 }

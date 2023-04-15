@@ -1,0 +1,36 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.lista{
+    position: relative;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    &:hover{
+        background-color: $cor-principal;
+    }
+    .type, .posts{
+        font-size: $texto-pequeno;
+        color: $cor-texto-claro;
+    }
+    .title{
+        font-weight: bold;
+    }
+    .icon{
+        color: $cor-da-letra;
+        position: absolute;
+        right: 1.6rem;
+        height: 3.2rem;
+        padding: .4rem;
+        top: .4rem;
+        width: 3.2rem;
+        border-radius: 10rem;
+        &:hover{
+            color: $cor-azul;
+            background-color: $cor-azul-claro;
+        }
+    }
+}
+.espaco{
+    height: 10rem;
+}

@@ -1,0 +1,44 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.moreComponent{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    left: 0;
+    align-items: center;
+    bottom: 0;
+    background-color: $cor-secundaria;
+    border-radius: 2rem;
+    width: 34rem;
+    height: 20rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    .linha{
+        width: 90%;
+        height: .1rem;
+        background-color: $cor-texto-claro;
+        margin: .4rem;
+    }
+    .button{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        font-weight: bold;
+        width: 100%;
+        text-align: start;
+        padding: 1.6rem;
+        background-color: transparent;
+        border: none;
+        .type{
+            font-size: 2rem;
+        }
+        cursor: pointer;
+        &:hover{
+            background-color: $cor-principal;
+        }
+        .icon{
+            height: 2.4rem;
+            width: 2.4rem;
+        }
+    }
+}

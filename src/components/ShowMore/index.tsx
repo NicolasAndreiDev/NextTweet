@@ -7,6 +7,13 @@ export default function ShowMore() {
         <>
             <HeaderBack local={'Connect'} style={{padding: '1.4rem 2rem'}}/>
             <div>
+                <p className={styles.para}>Suggested for you</p>
+                <AllUsers />
+                <AllUsers />
+                <AllUsers />
+                <AllUsers />
+                <AllUsers />
+                <AllUsers />
                 <AllUsers />
             </div>
         </>

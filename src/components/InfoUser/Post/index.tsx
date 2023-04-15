@@ -1,9 +1,22 @@
 import { AiOutlineComment } from 'react-icons/ai'
 import styles from './Post.module.scss'
-import { BiHeart } from 'react-icons/bi'
+import { useState } from 'react'
+import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 
 export default function Post() {
+    const [like, setLike] = useState(false)
+    const [totalLike, setTotalLike] = useState<number>(4072)
+
+    function handleLike() {
+        setLike(prev => !prev)
+        if(!like === false) {
+            setTotalLike(prev => prev - 1)
+        } else {
+            setTotalLike(prev => prev + 1)
+        }
+    }
+
     return(
         <div className={styles.container}>
             <div className={styles.linha}/>
@@ -25,9 +38,9 @@ export default function Post() {
                             <AiOutlineComment className={styles.icon}/>
                             <span>325</span>
                         </div>
-                        <div className={styles.social_icon}>
-                            <BiHeart className={styles.icon}/>
-                            <span>4072</span>
+                        <div className={styles.social_icon} onClick={handleLike}>
+                            <TbHeart className={styles.icon} style={like ? {fill: 'rgb(249, 24, 128)', color: 'rgb(249, 24, 128)'} : {}}/>
+                            <span style={like ? {color: 'rgb(249, 24, 128)'} : {}}>{totalLike}</span>
                         </div>
                         <div className={styles.social_icon}>
                             <TbShare2 className={styles.icon}/>

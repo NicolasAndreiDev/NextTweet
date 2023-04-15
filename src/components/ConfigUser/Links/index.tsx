@@ -1,4 +1,5 @@
 import styles from './Links.module.scss'
+import { useState } from 'react'
 import { BiHomeAlt2 } from 'react-icons/bi'
 import { RiHashtag } from 'react-icons/ri'
 import { RiNotification2Line } from 'react-icons/ri'
@@ -6,8 +7,15 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { HiOutlineEllipsisHorizontalCircle } from 'react-icons/hi2'
 import { AiOutlineUser } from 'react-icons/ai'
 import Route from './PaginaRouter'
+import MoreComponent from './MoreComponent'
 
 export default function Links() {
+    const [ popUp, setPopUp ] = useState<boolean>()
+
+    function handleClick() {
+        setPopUp(prev => !prev)
+    }
+
     return(
         <>
         <div>
@@ -36,9 +44,10 @@ export default function Links() {
                 <AiOutlineUser className={styles.icon}/>
                 <span>Profile</span>
             </Route>
-            <div className={styles.more}>
+            <div className={styles.more} onClick={handleClick}>
                 <HiOutlineEllipsisHorizontalCircle className={styles.icon}/>
                 <span>More</span>
+                { popUp && <MoreComponent /> }
             </div>
         </nav>
         </>

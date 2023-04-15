@@ -1,3 +1,4 @@
+import ButtonFollow from '@/components/ButtonFollow'
 import styles from './ThreeUsers.module.scss'
 
 export default function ThreeUsers() {
@@ -6,11 +7,11 @@ export default function ThreeUsers() {
             <div className={styles.usersInfo}>
                 <img src={'/images/foto_perfil.jpg'} alt={'users'} className={styles.image}/>
                 <div className={styles.social}>
-                    <span>Nicolas</span>
-                    <span>@Nicolas_AS</span>
+                    <span className={styles.name}>Nicolas</span>
+                    <span className={styles.username}>@Nicolas_AS</span>
                 </div>
             </div>
-            <button className={styles.follow}>Follow</button>
+            <ButtonFollow className={styles.follow}/>
         </div>
     )
 }

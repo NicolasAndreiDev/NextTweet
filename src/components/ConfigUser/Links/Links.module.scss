@@ -25,7 +25,6 @@
         padding: 2rem;
         align-items: center;
         gap: 2rem;
-        color: $cor-da-letra;
         &:hover{
             background-color: $cor-principal;
         }
@@ -40,5 +39,6 @@
     .more{
         border-radius: 0 0 2rem 2rem;
         cursor: pointer;
+        position: relative;
     }
 }

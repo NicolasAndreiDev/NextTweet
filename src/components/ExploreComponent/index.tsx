@@ -3,6 +3,9 @@ import HeaderPadrao from "../HeaderPadrao";
 import Search from "../Search";
 import ButtonHeader from '../ButtonHeader';
 import { useRef,useState } from 'react'
+import ListaPadrao from './ListaPadrao';
+import { lista, listaEntertainment, listaNews, listaSports, listaTrending } from './Listas';
+import Post from '../InfoUser/Post';
 
 export default function ExploreComponent() {
     const [selectedOption, setSelectedOption] = useState('For you');
@@ -14,19 +17,27 @@ export default function ExploreComponent() {
 
     function renderContent() {
         if(selectedOption === 'For you') {
-            return <div>For you</div>
+            return (
+                <div>
+                    <ListaPadrao lista={lista} existe={false}/>
+                    <Post />
+                    <Post />
+                    <Post />
+                    <Post />
+                </div>
+            )
         }
         if(selectedOption === 'Trending') {
-            return <div>Trending</div>
+            return <div><ListaPadrao lista={listaTrending}/></div>
         }
         if(selectedOption === 'News') {
-            return <div>News</div>
+            return <div><ListaPadrao lista={listaNews}/></div>
         }
         if(selectedOption === 'Sports') {
-            return <div>Sports</div>
+            return <div><ListaPadrao lista={listaSports}/></div>
         }
         if(selectedOption === 'Entertainment') {
-            return <div>Entertainment</div>
+            return <div><ListaPadrao lista={listaEntertainment} /></div>
         }
     }
 
@@ -34,7 +45,7 @@ export default function ExploreComponent() {
         <>
             <HeaderPadrao>
                 <div className={styles.explore}>
-                    <Search className={styles.pesquisa}/>
+                    <Search DadosOn={false} style={{width: '100%', boxShadow: 'none', border: '.1rem solid gray'}}/>
                 </div>
                 <div className={styles.buttonsExplore}>
                     <ButtonHeader names={'For you'} checked={selectedOption === 'For you'} onChange={handleOptionChange} style={selectedOption === 'For you' ? {fontWeight: 'bold'} : {}}>

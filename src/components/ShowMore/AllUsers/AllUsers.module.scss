@@ -1,5 +1,43 @@
-.image{
-    height: 4.8rem;
-    width: 4.8rem;
-    border-radius: 10rem;
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    &:hover{
+        background-color: $cor-principal;
+    }
+    .user{
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .image{
+        height: 4.8rem;
+        width: 4.8rem;
+        border-radius: 10rem;
+    }
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        .nome{
+            font-weight: bold;
+        }
+        .username{
+            color: $cor-texto-claro;
+        }
+    }
+    .button{
+        padding: 1rem 3.2rem;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 10rem;
+        background-color: $cor-da-letra;
+        &:hover{
+            background-color: rgb(15, 20, 25, .92);
+        }
+    }
 }
