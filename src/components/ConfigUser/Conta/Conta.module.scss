@@ -40,3 +40,23 @@
         color: $cor-da-letra
     }
 }
+
+@media screen and (max-width:1308px){
+    .conta{
+        padding: 1rem;
+        width: 6rem;
+        box-shadow: none;
+        background-color: transparent;
+        &:hover{
+            background-color: $cor-hover;
+        }
+        .conta__user{
+            .user{
+                display: none;
+            }
+        }
+        .icon{
+            display: none;
+        }
+    }
+}

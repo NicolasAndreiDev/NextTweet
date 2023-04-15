@@ -25,6 +25,10 @@
         font-size: $tamanho-da-fonte;
         .name{
             font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 8vw;
         }
         .username{
             color: $cor-texto-claro;
@@ -33,7 +37,7 @@
     .follow{
         border: none;
         background-color: $cor-da-letra;
-        padding: .8rem 2rem;
+        padding: .8rem 1.6rem;
         border-radius: 10rem;
         font-size: $texto-pequeno;
         font-family: 'Montserrat', sans-serif;

@@ -5,6 +5,7 @@
     padding-right:3.2rem;
     min-width: 35.2rem;
     justify-content: flex-end;
+    z-index: 100;
     .fixedHeader{
         display: flex;
         flex-direction: column;
@@ -28,10 +29,57 @@
             &:hover{
                 background-color: rgba(68, 180, 235, .95);
             }
+            .icon{
+                display: none;
+            }
         }
         .fixedUser{
         position: fixed;
         bottom: .8rem;
         }
+    }
+}
+
+@media screen and (max-width: 1308px) {
+    .container{
+        padding-left: 3.2rem;
+        min-width: 12rem;
+        .fixedHeader{
+            align-items: center;
+            width: auto;
+            .post{
+                padding: 0;
+                width: 5.2rem;
+                .New{
+                    display: none;
+                }
+                .icon{
+                    display: flex;
+                    width: 5.2rem;
+                    height: 5.2rem;
+                    padding: .8rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1016px) {
+    .container{
+        padding: 0 .8rem;
+        min-width: 7rem;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .container{
+        padding: 0 .4rem;
+        min-width: 6rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container{
+        display: none;
     }
 }

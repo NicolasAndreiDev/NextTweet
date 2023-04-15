@@ -23,7 +23,9 @@ export default function PostHome() {
                         <BsEmojiSmile className={styles.icon}/>
                     </div>
                     <div>
-                        <NewPost className={styles.publicar}/>
+                        <NewPost className={styles.publicar}>
+                            New post
+                        </NewPost>
                     </div>
                 </div>
             </div>

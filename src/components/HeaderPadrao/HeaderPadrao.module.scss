@@ -14,3 +14,15 @@
         background-color: $cor-texto-claro;
     }
 }
+
+@media screen and (max-width: 668px) {
+    .header{
+        width: 88vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header{
+        width: 100vw;
+    }
+}

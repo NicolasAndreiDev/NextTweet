@@ -12,3 +12,15 @@
     }
 }
 
+@media screen and (max-width: 1076px) {
+    .container{
+        min-width: 29.2rem;
+        padding-right: 3.2rem;
+    }
+}
+
+@media screen and (max-width: 1016px) {
+    .container{
+        display: none;
+    }
+}

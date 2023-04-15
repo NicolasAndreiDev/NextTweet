@@ -3,6 +3,7 @@
 .container{
     font-size: $tamanho-da-fonte;
     background-color: $cor-secundaria;
+    z-index: 1;
     width: 60rem;
     min-height: 100vh;
     color: $cor-da-letra;
@@ -10,5 +11,17 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     .espaco{
         height: 10rem;
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .container{
+        width: 88vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container{
+        width: 100vw;
     }
 }
