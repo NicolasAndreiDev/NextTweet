@@ -20,7 +20,7 @@ export default function Search({ DadosOn = true, style } : { DadosOn?: boolean, 
       }, [DadosRef]);
 
     function mostrarDados() {
-        setPesquisa(prev => !prev)
+        setPesquisa(true)
     }
 
     return(

@@ -1,0 +1,17 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    flex-direction: column;
+    .para{
+        color: $cor-texto-claro;
+        .link{
+            color: $cor-da-letra;
+            font-weight: bold;
+        }
+    }
+}

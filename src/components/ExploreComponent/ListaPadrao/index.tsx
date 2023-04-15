@@ -1,7 +1,7 @@
 import styles from './ListaPadrao.module.scss';
 import { HiEllipsisHorizontal } from 'react-icons/hi2'
 
-export default function ListaPadrao({lista, existe = true}: {lista: Array<{type:string ,title: string, posts: string}>, existe?: boolean}) {
+export default function ListaPadrao({lista}: {lista: Array<{type:string ,title: string, posts: string}>}) {
 
     return(
         <>
@@ -15,7 +15,6 @@ export default function ListaPadrao({lista, existe = true}: {lista: Array<{type:
                 </div>
             )
         })}
-        { existe && <div className={styles.espaco}></div>}
         </>
     )
 }

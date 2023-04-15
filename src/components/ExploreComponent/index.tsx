@@ -19,7 +19,7 @@ export default function ExploreComponent() {
         if(selectedOption === 'For you') {
             return (
                 <div>
-                    <ListaPadrao lista={lista} existe={false}/>
+                    <ListaPadrao lista={lista}/>
                     <Post />
                     <Post />
                     <Post />

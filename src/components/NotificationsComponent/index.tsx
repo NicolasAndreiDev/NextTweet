@@ -2,6 +2,9 @@ import { useState, useRef } from 'react';
 import styles from './NotificationsComponent.module.scss';
 import HeaderPadrao from '../HeaderPadrao';
 import ButtonHeader from '../ButtonHeader';
+import AllComponent from './AllComponent';
+import VerifiedComponent from './VerifiedComponent';
+import MentionsComponent from './MentionsComponent';
 
 export default function NotificationsComponent() {
   const [selectedOption, setSelectedOption] = useState('For you');
@@ -13,17 +16,13 @@ export default function NotificationsComponent() {
 
   const renderContent = () => {
     if (selectedOption === 'For you') {
-      return (
-        <div>
-            <img src={'/images/logo.png'} alt={'logo'}/>
-        </div>
-      )
+      return <div><AllComponent /></div>
     }
     if (selectedOption === 'Verified') {
-      return <div>Verified</div>;
+      return <div><VerifiedComponent /></div>;
     }
     if (selectedOption === 'Mentions') {
-      return <div>Mentions</div>;
+      return <div><MentionsComponent /></div>;
     }
   };
 

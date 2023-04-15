@@ -11,7 +11,6 @@
     background-color: $cor-secundaria;
     border-radius: 2rem;
     width: 34rem;
-    height: 20rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     .linha{
         width: 90%;
@@ -21,14 +20,18 @@
     }
     .button{
         display: flex;
+        outline: none;
         align-items: center;
-        gap: 2rem;
+        gap: 1.2rem;
         font-weight: bold;
         width: 100%;
         text-align: start;
         padding: 1.6rem;
         background-color: transparent;
         border: none;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
         .type{
             font-size: 2rem;
         }
@@ -37,8 +40,23 @@
             background-color: $cor-principal;
         }
         .icon{
-            height: 2.4rem;
-            width: 2.4rem;
+            height: 1.8rem;
+            width: 1.8rem;
         }
+        .arrow{
+            height: 2rem;
+            width: 2rem;
+            color: $cor-azul;
+            transition: .42s;
+        }
+    }
+    .button:nth-child(1){
+        border-radius: 2rem 2rem 0 0;
+    }
+    .button:nth-child(4){
+        justify-content: space-between;
+        border-radius: 0 0 2rem 2rem;
+        position: relative;
+        font-size: $tamanho-da-fonte;
     }
 }

@@ -1,5 +1,5 @@
 import styles from './Links.module.scss'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BiHomeAlt2 } from 'react-icons/bi'
 import { RiHashtag } from 'react-icons/ri'
 import { RiNotification2Line } from 'react-icons/ri'
@@ -10,10 +10,23 @@ import Route from './PaginaRouter'
 import MoreComponent from './MoreComponent'
 
 export default function Links() {
+    const PopUpRef = useRef<HTMLDivElement>(null)
     const [ popUp, setPopUp ] = useState<boolean>()
 
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+          if (PopUpRef.current && !PopUpRef.current.contains(event.target as Element)) {
+            setPopUp(false);
+          }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+          return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+          };
+    }, [PopUpRef]);
+
     function handleClick() {
-        setPopUp(prev => !prev)
+        setPopUp(true)
     }
 
     return(
@@ -47,6 +60,8 @@ export default function Links() {
             <div className={styles.more} onClick={handleClick}>
                 <HiOutlineEllipsisHorizontalCircle className={styles.icon}/>
                 <span>More</span>
+            </div>
+            <div ref={PopUpRef}>
                 { popUp && <MoreComponent /> }
             </div>
         </nav>

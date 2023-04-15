@@ -1,0 +1,24 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    cursor: pointer;
+    &:hover{
+        background-color: $cor-principal;
+    }
+    .imagem{
+        height: 4rem;
+        width: 4rem;
+    }
+    .linha{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: .1rem;
+        width: 100%;
+        background-color: $cor-texto-claro;
+    }
+}

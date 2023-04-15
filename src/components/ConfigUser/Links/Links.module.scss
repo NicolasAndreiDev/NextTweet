@@ -17,6 +17,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 2rem;
     width: 32rem;
+    position: relative;
     a, .more{
         display: flex;
         gap: 2rem;
@@ -39,6 +40,5 @@
     .more{
         border-radius: 0 0 2rem 2rem;
         cursor: pointer;
-        position: relative;
     }
 }
