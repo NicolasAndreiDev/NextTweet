@@ -1,6 +1,5 @@
 @import '@/styles/abstract/variaveis.scss';
 
-
 .logo{
     width: 5.2rem;
     height: 5.2rem;
@@ -40,5 +39,26 @@
     .more{
         border-radius: 0 0 2rem 2rem;
         cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 1308px) {
+    .nav{
+        background-color: transparent;
+        box-shadow: none;
+        width: 4.4rem;
+        a, .more{
+            border-radius: 10rem;
+            padding: .8rem;
+            &:hover{
+                background-color: $cor-hover;
+            }
+            span{
+                display: none
+            }
+        }
+        a:nth-child(1){
+            border-radius: 10rem;
+        }
     }
 }

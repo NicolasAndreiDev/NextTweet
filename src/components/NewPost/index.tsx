@@ -1,5 +1,5 @@
-export default function NewPost({...props}) {
+export default function NewPost({children, ...props}: {children: React.ReactNode, className: string}) {
     return(
-        <button {...props}>New Post</button>
+        <button {...props}>{children}</button>
     )
 }
