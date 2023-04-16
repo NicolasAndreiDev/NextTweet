@@ -6,7 +6,7 @@ import { RiNotification2Line } from 'react-icons/ri'
 import { HiOutlineMail } from 'react-icons/hi'
 import { HiOutlineEllipsisHorizontalCircle } from 'react-icons/hi2'
 import { AiOutlineUser } from 'react-icons/ai'
-import Route from './PaginaRouter'
+import Route from '../../PaginaRouter'
 import MoreComponent from './MoreComponent'
 
 export default function Links() {
