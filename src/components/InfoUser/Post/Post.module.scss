@@ -36,6 +36,12 @@
                 span:nth-child(n+2){
                 color: $cor-texto-claro;
                 }
+                .name, .username{
+                    max-width: 20vw;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
             .publi{
                 display: flex;

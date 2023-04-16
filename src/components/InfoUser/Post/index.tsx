@@ -24,10 +24,10 @@ export default function Post() {
                 <img src={'/images/foto_perfil.jpg'} alt={'users'} className={styles.image}/>
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
-                        <span>Nicolas</span>
-                        <span>@Nicolas_AS</span>
+                        <span className={styles.name}>Nicolas</span>
+                        <span className={styles.username}>@Nicolas_AS</span>
                         <span>·</span>
-                        <span>Fev 4, 2023</span>
+                        <span>Fev 4</span>
                     </div>
                     <div className={styles.publi}>
                         <p>Even after the 4th viewing The Super Mario Bros. Movie is still wonderful. What an endearing film 😊 #TheSuperMarioBrosMovie</p>
