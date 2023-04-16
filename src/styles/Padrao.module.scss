@@ -8,3 +8,9 @@
         display: flex;
     }
 }
+
+@media screen and (max-width: 668px){
+    .container{
+        justify-content: space-between;
+    }
+}

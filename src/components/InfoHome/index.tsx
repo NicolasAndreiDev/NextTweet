@@ -14,7 +14,7 @@ export default function InfoHome() {
 
   const renderContent = () => {
     if (selectedOption === 'For you') {
-      return <div><PostHome /></div>;
+      return <div><PostHome name={styles.post}/></div>;
     }
     if (selectedOption === 'Following') {
       return <div></div>;

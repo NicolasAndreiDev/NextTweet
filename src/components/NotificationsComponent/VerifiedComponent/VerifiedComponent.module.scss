@@ -15,3 +15,11 @@
         }
     }
 }
+
+@media screen and (max-width:500px){
+    .container{
+        .image{
+            width: 80vw;
+        }
+    }
+}

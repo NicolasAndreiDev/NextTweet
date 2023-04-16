@@ -5,9 +5,14 @@
 }
 .buttonsExplore{
     width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
     text-align: center;
     display: grid;
     grid-template-columns: .9fr 1.1fr .8fr .9fr 1.3fr;
+    &::-webkit-scrollbar{
+        height: 0;
+    }
     .select{
         height: .4rem;
         width: 6rem;

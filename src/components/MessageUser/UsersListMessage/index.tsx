@@ -6,6 +6,7 @@ import HeaderPadrao from "@/components/HeaderPadrao";
 export default function UsersListMessage() {
     return(
         <div className={styles.containerUser}>
+            <div className={styles.linha}></div>
             <HeaderPadrao>
                 <div className={styles.message}>
                     <span>Messages</span>
@@ -18,6 +19,7 @@ export default function UsersListMessage() {
                 <UserMessage foto={'/images/Toad.jpg'} username={'Toad_Tweet'} name={'Toad'}/>
                 <UserMessage foto={'/images/bowser2.png'} username={'Bowser_Star'} name={'Bowser'}/>
             </div>
+            <div className={styles.linha2}></div>
         </div>
     )
 }

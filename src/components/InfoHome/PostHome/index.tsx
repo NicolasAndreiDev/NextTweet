@@ -5,9 +5,9 @@ import { BsEmojiSmile } from 'react-icons/bs'
 import NewPost from '@/components/NewPost'
 import Link from 'next/link'
 
-export default function PostHome() {
+export default function PostHome({name}: {name: string}) {
     return(
-        <>
+        <div className={name}>
             <div className={styles.post}>
                 <Link href={'/profile'}>
                     <img src={'/images/foto_perfil.jpg'} alt={'foto_perfil'} className={styles.image}/>
@@ -29,6 +29,6 @@ export default function PostHome() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

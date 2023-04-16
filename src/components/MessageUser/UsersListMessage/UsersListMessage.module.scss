@@ -2,12 +2,22 @@
 
 .containerUser{
     width: 36rem;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     background-color: $cor-secundaria;
-    border-right: .1rem solid $cor-texto-claro;
-    border-left: .1rem solid $cor-texto-claro;
+    position: relative;
+    .linha, .linha2{
+        position: absolute;
+        height: 100vh;
+        top: 0;
+        z-index: 51;
+        width: .1rem;
+        background-color: $cor-texto-claro;
+    }
+    .linha2{
+        right: 0;
+    }
     .message{
         padding: 1rem 2rem;
         font-size: 2rem;
@@ -19,5 +29,38 @@
         &::-webkit-scrollbar {
             width: 0;
         }
+    }
+}
+
+@media screen and (max-width:1078px) {
+    .containerUser{
+        width: 34rem;
+    }
+
+}
+
+@media screen and (max-width:1030px) {
+    .containerUser{
+        width: 32rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .containerUser{
+        width: 60rem;
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .containerUser{
+        width: 88vw;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .containerUser{
+        width: 100vw;
+        border: none;
     }
 }

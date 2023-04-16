@@ -22,9 +22,17 @@
             object-fit: cover;
         }
         .nome{
+            max-width: 10vw;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             font-weight: bold;
         }
         .username{
+            max-width: 10vw;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             color: $cor-texto-claro;
         }
     }
@@ -45,3 +53,17 @@
         }
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .container{
+        .containerUserMessage{
+            .nome{
+                max-width: 25vw;
+            }
+            .username{
+                max-width: 25vw;
+            }
+        }
+    }
+}
+

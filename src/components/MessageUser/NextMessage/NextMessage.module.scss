@@ -63,3 +63,21 @@
         }
     }
 }
+
+@media screen and (max-width:1078px) {
+    .containerNext{
+        width: 56rem;
+    }
+}
+
+@media screen and (max-width:1030px) {
+    .containerNext{
+        width: 54rem;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .containerNext{
+        display: none;
+    }
+}
