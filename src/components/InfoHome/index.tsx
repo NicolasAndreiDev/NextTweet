@@ -3,6 +3,7 @@ import ButtonHeader from '@/components/ButtonHeader'
 import { useRef, useState} from 'react'
 import PostHome from './PostHome';
 import HeaderPadrao from '../HeaderPadrao';
+import MobileComponents from '../MobileComponents';
 
 export default function InfoHome() {
     const [selectedOption, setSelectedOption] = useState('For you');
@@ -25,6 +26,7 @@ export default function InfoHome() {
         <>  
             <HeaderPadrao>
                 <div className={styles.title}>
+                    <MobileComponents />
                     <span>Home</span>
                 </div>
                 <div className={styles.buttons}>

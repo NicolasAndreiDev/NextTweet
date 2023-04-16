@@ -1,0 +1,30 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.links{
+    position: fixed;
+    bottom: 0;
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    width: 100%;
+    padding: 1.2rem 0;
+    background-color: $cor-secundaria;
+    .linha{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        left: 0;
+        height: .1rem;
+        background-color: $cor-texto-claro;
+    }
+    .icon{
+        height: 2.4rem;
+        width: 2.4rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .links{
+        display: grid;
+    }
+}

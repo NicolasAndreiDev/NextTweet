@@ -30,6 +30,12 @@
 }
 
 @media screen and (max-width: 500px) {
+    .title{
+        padding: .6rem 2rem;
+        span{
+            display: none;
+        }
+    }
     .post{
         display: none;
     }

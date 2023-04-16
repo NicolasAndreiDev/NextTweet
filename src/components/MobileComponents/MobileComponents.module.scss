@@ -1,0 +1,12 @@
+.image{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 10rem;
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .image{
+        display: flex;
+    }
+}

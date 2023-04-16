@@ -7,6 +7,9 @@
     flex-direction: column;
     background-color: $cor-secundaria;
     position: relative;
+    .espaco{
+        height: 10rem;
+    }
     .linha, .linha2{
         position: absolute;
         height: 100vh;
@@ -62,5 +65,8 @@
     .containerUser{
         width: 100vw;
         border: none;
+        .linha, .linha2 {
+            display: none;
+        }
     }
 }

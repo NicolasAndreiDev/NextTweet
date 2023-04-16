@@ -1,0 +1,35 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    height: 100vh;
+    z-index: 102;
+    background-color: $cor-secundaria;
+    position: absolute;
+    left: 0;
+    top: 0;
+    .top{
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        .title{
+            display: inline-block;
+        }
+        .icon{
+            height: 2.4rem;
+            width: 2.4rem;
+        }
+    }
+    .userInfo{
+        padding: 2rem;
+        .foto{
+            height: 4rem;
+            width: 4rem;
+            border-radius: 10rem;
+        }
+    }
+}
