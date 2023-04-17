@@ -1,0 +1,12 @@
+.form{
+    position: absolute;
+    left: 0;
+    width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+    .form{
+        right: 0;
+        margin: auto;
+    }
+}

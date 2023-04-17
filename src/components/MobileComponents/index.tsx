@@ -2,7 +2,6 @@ import styles from './MobileComponents.module.scss'
 import AccountInfo from './AccountInfo'
 import { useEffect, useRef, useState } from 'react'
 import Foco from './Foco'
-import LinksMobile from './LinksMobile'
 
 export default function MobileComponents() {
     const menuRef = useRef<HTMLDivElement>(null)
@@ -25,12 +24,12 @@ export default function MobileComponents() {
     }
 
     return(
-        <>
+        <div className={styles.menu}>
             <img src={'/images/foto_perfil.jpg'} alt={'fotoPerfil'} className={styles.image} onClick={handleClick}/>
             <div ref={menuRef}>
                 {menu && <AccountInfo evento={() => setMenu(false)}/>}
             </div>
             {menu && <Foco />}
-        </>
+        </div>
     )
 }

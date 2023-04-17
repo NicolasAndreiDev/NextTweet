@@ -1,7 +1,9 @@
 @import '@/styles/abstract/variaveis.scss';
 
 .explore{
-    padding: .8rem 2rem;
+    display: flex;
+    gap: 2rem;
+    padding: .6rem 2rem;
 }
 .buttonsExplore{
     width: 100%;
@@ -25,4 +27,3 @@
         margin: auto;
     }
 }
-    

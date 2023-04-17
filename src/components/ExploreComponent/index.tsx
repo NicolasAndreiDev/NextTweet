@@ -6,6 +6,7 @@ import { useRef,useState } from 'react'
 import ListaPadrao from './ListaPadrao';
 import { lista, listaEntertainment, listaNews, listaSports, listaTrending } from './Listas';
 import Post from '../InfoUser/Post';
+import MobileComponents from '../MobileComponents';
 
 export default function ExploreComponent() {
     const [selectedOption, setSelectedOption] = useState('For you');
@@ -45,6 +46,7 @@ export default function ExploreComponent() {
         <>
             <HeaderPadrao>
                 <div className={styles.explore}>
+                    <MobileComponents />
                     <Search DadosOn={false} style={{width: '100%', boxShadow: 'none', border: '.1rem solid gray'}}/>
                 </div>
                 <div className={styles.buttonsExplore}>

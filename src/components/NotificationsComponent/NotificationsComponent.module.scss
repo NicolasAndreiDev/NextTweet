@@ -1,9 +1,12 @@
 @import '@/styles/abstract/variaveis.scss';
 
 .title{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
     font-size: 2rem;
     font-weight: bold;
-    padding: 1.35rem 2rem;
+    padding: .6rem 2rem;
 }
 .buttons{
     display: grid;

@@ -7,7 +7,7 @@
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
     width: 100%;
-    padding: 1.2rem 0;
+    padding: 1.4rem 0;
     background-color: $cor-secundaria;
     .linha{
         position: absolute;
@@ -17,9 +17,13 @@
         height: .1rem;
         background-color: $cor-texto-claro;
     }
-    .icon{
+    a{  
         height: 2.4rem;
         width: 2.4rem;
+        .icon{
+            height: 2.4rem;
+            width: 2.4rem;
+        }
     }
 }
 

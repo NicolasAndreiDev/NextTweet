@@ -5,6 +5,7 @@ import ButtonHeader from '../ButtonHeader';
 import AllComponent from './AllComponent';
 import VerifiedComponent from './VerifiedComponent';
 import MentionsComponent from './MentionsComponent';
+import MobileComponents from '../MobileComponents';
 
 export default function NotificationsComponent() {
   const [selectedOption, setSelectedOption] = useState('For you');
@@ -29,7 +30,10 @@ export default function NotificationsComponent() {
   return (
     <>
         <HeaderPadrao>
-            <div className={styles.title}>Notifications</div>
+            <div className={styles.title}>
+              <MobileComponents />
+              Notifications
+            </div>
             <div className={styles.buttons}>
                 <ButtonHeader names={'For you'} onChange={handleOptionChange} checked={selectedOption === 'For you'} style={selectedOption === 'For you' ? {fontWeight: 'bold'} : {}}>
                     {selectedOption == 'For you' ? <div className={styles.select}></div> : ''}

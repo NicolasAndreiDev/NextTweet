@@ -22,9 +22,12 @@
         right: 0;
     }
     .message{
-        padding: 1rem 2rem;
+        padding: .6rem 2rem;
         font-size: 2rem;
         font-weight: bold;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
     }
     .users{
         overflow-y: scroll;
@@ -64,7 +67,6 @@
 @media screen and (max-width: 500px) {
     .containerUser{
         width: 100vw;
-        border: none;
         .linha, .linha2 {
             display: none;
         }

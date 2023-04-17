@@ -1,0 +1,60 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.autenticacao{
+    position: relative;
+    max-height: 100vh;
+    .divisor, .divisorMob{
+        top: 0;
+        display: grid;
+        place-items: center;
+        z-index: 100;
+        width: 50%;
+        transition: .42s;
+        background-color: $cor-azul;
+        height: 100vh;
+        position: absolute;
+        .image{
+            width: 20vw;
+            height: 20vw;
+        }
+    }
+    .divisorMob{
+        display: none;
+        width: 100%;
+        animation: mob 1s 1.4s both;
+        .image{
+            animation: imageMob 1s;
+        }
+    }
+}
+
+@keyframes imageMob{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes mob{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+
+@media screen and (max-width:800px) {
+    .autenticacao{
+        .divisor{
+            display: none;
+        }
+        .divisorMob{
+            display: grid;
+        }
+    }   
+}
