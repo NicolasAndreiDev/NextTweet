@@ -18,6 +18,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
         setValues((prevValues) => ({ ...prevValues, [name]: value }));
+        setErro('')
     }
 
     async function signInWithEmailPassword(email: string, password: string) {

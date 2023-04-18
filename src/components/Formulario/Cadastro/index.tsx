@@ -9,14 +9,24 @@ interface FormValues {
     emailCadastro: string,
     username: string,
     passwordCadastro: string,
+    confirmPassword: string,
 }
 
 export default function Cadastro({onClick}: {onClick: () => void}) {
     const route = useRouter()
     const [erro, setErro] = useState('')
-    const [values, setValues] = useState<FormValues>({emailCadastro: '', username: '', passwordCadastro: ''})
+    const [values, setValues] = useState<FormValues>({emailCadastro: '', username: '', passwordCadastro: '', confirmPassword: ''})
 
     async function createUser(email: string, password: string) {
+
+        if(values.emailCadastro.length == 0 || values.username.length == 0 || values.passwordCadastro.length == 0 || values.confirmPassword.length == 0) {
+            return setErro('Preencha todos os campos!')
+        }
+
+        if(values.passwordCadastro !== values.confirmPassword){
+            return setErro('As senhas são diferentes!')
+        } 
+
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             route.push('/')
@@ -28,6 +38,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
         setValues((prevValues) => ({ ...prevValues, [name]: value }));
+        setErro('')
     }
 
     function handleSubmit(event: FormEvent) {
@@ -44,7 +55,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'usernameCadastro'}>Username</label>
-                    <input id={'usernameCadastro'} type={'text'} autoComplete='off' name={'usernameCadastro'} value={values.username} onChange={handleChange}/>
+                    <input id={'usernameCadastro'} type={'text'} autoComplete='off' name={'username'} value={values.username} onChange={handleChange}/>
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'passwordCadastro'}>Password</label>
@@ -52,7 +63,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'confirmPasswordCadastro'}>Confirm Password</label>
-                    <input id={'confirmPasswordCadastro'} type={'password'} />
+                    <input id={'confirmPasswordCadastro'} type={'password'} name={'confirmPassword'} value={values.confirmPassword} onChange={handleChange}/>
                 </div>
                 <button className={styles.button}>Cadastro</button>
                 {erro && <Erro>{erro}</Erro>}
