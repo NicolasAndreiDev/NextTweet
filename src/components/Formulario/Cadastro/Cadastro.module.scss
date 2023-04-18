@@ -46,6 +46,9 @@
             font-family: 'Open Sans', sans-serif;
             font-family: 'Source Sans Pro', sans-serif;
             border-radius: 10rem;
+            .load{
+                animation: loader 1s infinite linear;
+            }
         }
         .link{
             font-size: $texto-pequeno;
@@ -58,6 +61,15 @@
                 }
             }
         }
+    }
+}
+
+@keyframes loader {
+    from{
+        rotate: (0deg);
+    }
+    to{
+        rotate: (360deg);
     }
 }
 

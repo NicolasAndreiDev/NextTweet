@@ -1,7 +1,7 @@
 import styles from './MobileComponents.module.scss'
 import AccountInfo from './AccountInfo'
 import { useEffect, useRef, useState } from 'react'
-import Foco from './Foco'
+import Foco from '../Foco'
 
 export default function MobileComponents() {
     const menuRef = useRef<HTMLDivElement>(null)
@@ -29,7 +29,7 @@ export default function MobileComponents() {
             <div ref={menuRef}>
                 {menu && <AccountInfo evento={() => setMenu(false)}/>}
             </div>
-            {menu && <Foco />}
+            {menu && <Foco color={'rgb(0, 0, 0, .4)'}/>}
         </div>
     )
 }

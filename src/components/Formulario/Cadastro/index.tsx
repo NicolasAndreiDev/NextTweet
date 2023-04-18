@@ -4,6 +4,7 @@ import { auth } from "../../../../firebase";
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import Erro from "../Erro";
 import { useRouter } from "next/router";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface FormValues {
     emailCadastro: string,
@@ -16,11 +17,16 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
     const route = useRouter()
     const [erro, setErro] = useState('')
     const [values, setValues] = useState<FormValues>({emailCadastro: '', username: '', passwordCadastro: '', confirmPassword: ''})
+    const [load, setLoad] = useState(false)
 
     async function createUser(email: string, password: string) {
 
         if(values.emailCadastro.length == 0 || values.username.length == 0 || values.passwordCadastro.length == 0 || values.confirmPassword.length == 0) {
             return setErro('Preencha todos os campos!')
+        }
+        
+        if(values.passwordCadastro.length <= 5){
+            return setErro('A senha deve ter pelo menos 6 caracteres!')
         }
 
         if(values.passwordCadastro !== values.confirmPassword){
@@ -28,10 +34,12 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
         } 
 
         try {
+            setLoad(true)
             await createUserWithEmailAndPassword(auth, email, password);
             route.push('/')
         } catch (error) {
             setErro('Algo deu errado!')
+            setLoad(false)
         }
     }
 
@@ -65,7 +73,9 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
                     <label htmlFor={'confirmPasswordCadastro'}>Confirm Password</label>
                     <input id={'confirmPasswordCadastro'} type={'password'} name={'confirmPassword'} value={values.confirmPassword} onChange={handleChange}/>
                 </div>
-                <button className={styles.button}>Cadastro</button>
+                <button className={styles.button}>
+                    {load ? <AiOutlineLoading3Quarters className={styles.load}/> : 'Cadastro'}
+                </button>
                 {erro && <Erro>{erro}</Erro>}
                 <div className={styles.link}>
                     <span onClick={onClick}>Já possui uma conta?</span>

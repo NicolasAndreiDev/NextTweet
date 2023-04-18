@@ -26,24 +26,6 @@
             animation: imageMob 1s;
         }
     }
-    .lk{  
-        border-radius: 10rem;
-        height: 6.4rem;
-        width: 6.4rem;
-        position: fixed;
-        top: 2rem;
-        left: 2rem;
-        display: none;
-        place-items: center;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        &:hover{
-            background-color: $cor-principal;
-        }
-        .image{
-            height: 4rem;
-            width: 4rem;
-        }
-    }
 }
 
 @keyframes imageMob{

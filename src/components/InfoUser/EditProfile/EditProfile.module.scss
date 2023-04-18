@@ -3,11 +3,11 @@
 .button{
     position: absolute;
     right: 2rem;
-    font-size: $tamanho-da-fonte;
+    font-size: $texto-pequeno;
     top: 32rem;
     background-color: transparent;
     border: .1rem solid;
-    padding: .8rem 2rem;
+    padding: .8rem 1.6rem;
     cursor: pointer;
     font-weight: bold;
     border-radius: 10rem;
