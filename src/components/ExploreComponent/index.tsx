@@ -21,10 +21,6 @@ export default function ExploreComponent() {
             return (
                 <div>
                     <ListaPadrao lista={lista}/>
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
                 </div>
             )
         }
