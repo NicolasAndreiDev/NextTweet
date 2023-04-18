@@ -3,36 +3,35 @@ import styles from './Login.module.scss'
 import { auth } from "../../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Erro from "../Erro";
+import { useRouter } from "next/router";
+
+interface FormValues {
+    emailLogin: string;
+    passwordLogin: string;
+}
 
 export default function Cadastro({onClick}: {onClick: () => void}) {
-    const [emailValue, setEmail] = useState('')
-    const [passwordValue, setPassword] = useState('')
+    const route = useRouter()
     const [erro, setErro] = useState('')
+    const [values, setValues] = useState<FormValues>({ emailLogin: '', passwordLogin: '' });
+  
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target;
+        setValues((prevValues) => ({ ...prevValues, [name]: value }));
+    }
 
     async function signInWithEmailPassword(email: string, password: string) {
         try {
-          const userCredential = await signInWithEmailAndPassword(auth, email, password);
-          const user = userCredential.user;
-          console.log(`User with email ${user?.email} signed in successfully!`);
+          await signInWithEmailAndPassword(auth, email, password);
+          route.push('/')
         } catch (error) {
-          console.error("Error signing in:", error);
           setErro('Algo deu errado!')
         }
     }
 
     function handleSubmit(event: FormEvent){
         event.preventDefault()
-        signInWithEmailPassword(emailValue, passwordValue)
-    }
-    
-    function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setEmail(event.target.value);
-        setErro('')
-    }
-
-    function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setPassword(event.target.value);
-        setErro('')
+        signInWithEmailPassword(values.emailLogin, values.passwordLogin)
     }
 
     return(
@@ -40,11 +39,11 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.value}>
                     <label htmlFor={'emailLogin'}>E-mail</label>
-                    <input id={'emailLogin'} type={'email'} autoComplete='off' onChange={handleEmailChange}/>
+                    <input id={'emailLogin'} type={'email'} value={values.emailLogin} name={'emailLogin'} autoComplete='off' onChange={handleChange}/>
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'passwordLogin'}>Password</label>
-                    <input id={'passwordLogin'} type={'password'} onChange={handlePasswordChange}/>
+                    <input id={'passwordLogin'} type={'password'} name={'passwordLogin'} value={values.passwordLogin} onChange={handleChange}/>
                 </div>
                 <button className={styles.button}>Login</button>
                 {erro && <Erro>{erro}</Erro>}

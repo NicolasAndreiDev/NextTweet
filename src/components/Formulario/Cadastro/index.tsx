@@ -3,36 +3,36 @@ import styles from './Cadastro.module.scss';
 import { auth } from "../../../../firebase";
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import Erro from "../Erro";
+import { useRouter } from "next/router";
+
+interface FormValues {
+    emailCadastro: string,
+    username: string,
+    passwordCadastro: string,
+}
 
 export default function Cadastro({onClick}: {onClick: () => void}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const route = useRouter()
     const [erro, setErro] = useState('')
+    const [values, setValues] = useState<FormValues>({emailCadastro: '', username: '', passwordCadastro: ''})
 
     async function createUser(email: string, password: string) {
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-            console.log(`User with email ${user?.email} signed up successfully!`);
+            await createUserWithEmailAndPassword(auth, email, password);
+            route.push('/')
         } catch (error) {
-            console.error("Error signing up:", error);
             setErro('Algo deu errado!')
         }
     }
 
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target;
+        setValues((prevValues) => ({ ...prevValues, [name]: value }));
+    }
+
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        createUser(email, password);
-    }
-
-    function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setEmail(event.target.value);
-        setErro('')
-    }
-
-    function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setPassword(event.target.value);
-        setErro('')
+        createUser(values.emailCadastro, values.passwordCadastro);
     }
 
     return(
@@ -40,11 +40,15 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.value}>
                     <label htmlFor={'emailCadastro'}>E-mail</label>
-                    <input id={'emailCadastro'} type={'email'} autoComplete='off' value={email} onChange={handleEmailChange} />
+                    <input id={'emailCadastro'} type={'email'} autoComplete='off' name={'emailCadastro'} value={values.emailCadastro} onChange={handleChange} />
+                </div>
+                <div className={styles.value}>
+                    <label htmlFor={'usernameCadastro'}>Username</label>
+                    <input id={'usernameCadastro'} type={'text'} autoComplete='off' name={'usernameCadastro'} value={values.username} onChange={handleChange}/>
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'passwordCadastro'}>Password</label>
-                    <input id={'passwordCadastro'} type={'password'} value={password} onChange={handlePasswordChange} />
+                    <input id={'passwordCadastro'} type={'password'} name={'passwordCadastro'} value={values.passwordCadastro} onChange={handleChange} />
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'confirmPasswordCadastro'}>Confirm Password</label>

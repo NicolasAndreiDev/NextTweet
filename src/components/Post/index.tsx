@@ -4,9 +4,16 @@ import { useState } from 'react'
 import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 
-export default function Post() {
+interface Props{
+    name: string,
+    username: string,
+    foto: string,
+    imagem?: string,
+}
+
+export default function Post({name, username, foto, imagem} : Props) {
     const [like, setLike] = useState(false)
-    const [totalLike, setTotalLike] = useState<number>(4072)
+    const [totalLike, setTotalLike] = useState(4072)
 
     function handleLike() {
         setLike(prev => !prev)
@@ -21,17 +28,17 @@ export default function Post() {
         <div className={styles.container}>
             <div className={styles.linha}/>
             <div className={styles.post}>
-                <img src={'/images/foto_perfil.jpg'} alt={'users'} className={styles.image}/>
+                <img src={foto} alt={'users'} className={styles.image}/>
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
-                        <span className={styles.name}>Nicolas</span>
-                        <span className={styles.username}>@Nicolas_AS</span>
+                        <span className={styles.name}>{name}</span>
+                        <span className={styles.username}>{username}</span>
                         <span>·</span>
                         <span>Fev 4</span>
                     </div>
                     <div className={styles.publi}>
                         <p>Even after the 4th viewing The Super Mario Bros. Movie is still wonderful. What an endearing film 😊 #TheSuperMarioBrosMovie</p>
-                        <img src={'/images/banner.jpg'} alt={'postImage'} className={styles.fotoPubli}/>
+                        <img src={imagem} alt={'postImage'} className={styles.fotoPubli}/>
                     </div>
                     <div className={styles.social}>
                         <div className={styles.social_icon}>
