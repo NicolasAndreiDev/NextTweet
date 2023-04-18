@@ -3,7 +3,6 @@ import InfoHome from '@/components/InfoHome'
 import InfoPadrao from '@/components/InfoPadrao'
 import Post from '@/components/InfoUser/Post'
 import List from '@/components/List'
-import Search from '@/components/Search'
 import styles from '@/styles/Padrao.module.scss'
 
 export default function Home() {

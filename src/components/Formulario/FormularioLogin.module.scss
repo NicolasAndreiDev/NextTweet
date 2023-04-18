@@ -2,7 +2,7 @@
 
 .autenticacao{
     position: relative;
-    max-height: 100vh;
+    background-color: $cor-principal;
     .divisor, .divisorMob{
         top: 0;
         display: grid;
@@ -24,6 +24,24 @@
         animation: mob 1s 1.4s both;
         .image{
             animation: imageMob 1s;
+        }
+    }
+    .lk{  
+        border-radius: 10rem;
+        height: 6.4rem;
+        width: 6.4rem;
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        display: none;
+        place-items: center;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        &:hover{
+            background-color: $cor-principal;
+        }
+        .image{
+            height: 4rem;
+            width: 4rem;
         }
     }
 }
@@ -54,6 +72,9 @@
             display: none;
         }
         .divisorMob{
+            display: grid;
+        }
+        .lk{
             display: grid;
         }
     }   

@@ -6,7 +6,6 @@ import FotoPerfil from '@/components/InfoUser/FotoPerfil';
 import Banner from '@/components/InfoUser/Banner';
 import Informacoes from '@/components/InfoUser/Informacoes';
 import InfoPadrao from '@/components/InfoPadrao';
-import Search from '@/components/Search';
 import HeaderBack from '@/components/HeaderBack';
 
 export default function Profile() {

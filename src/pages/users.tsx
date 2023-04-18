@@ -1,7 +1,6 @@
 import ConfigUser from "@/components/ConfigUser";
 import InfoPadrao from "@/components/InfoPadrao";
 import List from "@/components/List";
-import Search from "@/components/Search";
 import ShowMore from "@/components/ShowMore";
 import styles from '@/styles/Padrao.module.scss';
 

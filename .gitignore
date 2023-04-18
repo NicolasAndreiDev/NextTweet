@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+#
+firebase.ts
+
 # production
 /build
 
