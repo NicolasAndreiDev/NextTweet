@@ -48,6 +48,9 @@
     .banner{
         display: grid;
         place-items: center;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         background-color: $cor-secundaria;
         height: 20rem;
         .bannerImage{
@@ -76,6 +79,9 @@
         width: 12rem;
         height: 12rem;
         display: grid;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         position: absolute;
         top: 19rem;
         border: .4rem solid $cor-secundaria;

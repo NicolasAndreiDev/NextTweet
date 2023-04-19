@@ -1,6 +1,7 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { UserProvider } from '@/providers/userProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -9,7 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>NextTweet</title>
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico"></link>
       </Head>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider> 
     </>
   )
 }

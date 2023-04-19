@@ -1,10 +1,11 @@
 import { FormEvent, useState } from "react";
 import styles from './Cadastro.module.scss';
-import { auth } from "../../../../firebase";
+import { auth, db } from "../../../../firebase";
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import Erro from "../Erro";
 import { useRouter } from "next/router";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { doc, setDoc } from "firebase/firestore";
 
 interface FormValues {
     emailCadastro: string,
@@ -34,10 +35,12 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
         } 
 
         try {
-            setLoad(true)
-            await createUserWithEmailAndPassword(auth, email, password);
+            setLoad(true);
+            const { user } = await createUserWithEmailAndPassword(auth, email, password);
+            await setDoc(doc(db, "users", user.uid), {email: values.emailCadastro, username: values.username});
             route.push('/')
         } catch (error) {
+            console.log(error)
             setErro('Algo deu errado!')
             setLoad(false)
         }

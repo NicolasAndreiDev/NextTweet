@@ -19,7 +19,7 @@ export default function Profile() {
                     <InfoPadrao>
                         <HeaderBack local={'Nicolas'} posts={'3 posts'}/>
                         <Banner>
-                            <FotoPerfil foto={'/images/foto_perfil.jpg'}/>
+                            <FotoPerfil/>
                         </Banner>
                         <EditProfile />
                         <Informacoes />

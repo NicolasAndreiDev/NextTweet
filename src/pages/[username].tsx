@@ -18,7 +18,7 @@ export default function Username() {
                     <InfoPadrao>
                         <HeaderBack local={'Nicolas'} posts={'3 posts'}/>
                         <Banner>
-                            <FotoPerfil foto={'/images/luigi.jpg'}/>
+                            <FotoPerfil/>
                         </Banner>
                         <Informacoes />
                         <div>
