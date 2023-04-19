@@ -17,9 +17,15 @@
         }
         .image{
             height: 4.8rem;
-            min-width: 4.8rem;
+            width: 4.8rem;
             border-radius: 10rem;
             object-fit: cover;
+        }
+        .imageDefault{
+            height: 4.8rem;
+            width: 4.8rem;
+            border-radius: 10rem;
+            background-color: $cor-texto-claro;
         }
         .infoPubli{
             margin-left: 1rem;
