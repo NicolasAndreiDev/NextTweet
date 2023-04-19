@@ -28,7 +28,7 @@ export default function Post({name, username, foto, imagem} : Props) {
         <div className={styles.container}>
             <div className={styles.linha}/>
             <div className={styles.post}>
-                <img src={foto ? foto : ''} alt={'users'} className={styles.image}/>
+                { foto ? <img src={foto} alt={'users'} className={styles.image}/> : <div className={styles.imageDefault}></div>}
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
                         <span className={styles.name}>{name}</span>
