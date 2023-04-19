@@ -9,10 +9,10 @@ import InfoPadrao from '@/components/InfoPadrao';
 import HeaderBack from '@/components/HeaderBack';
 import PrivateRoute from '@/utils/PrivateRoute';
 import { useRouter } from 'next/router';
-import { GetStaticPropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-export async function getServerSideProps(context: GetStaticPropsContext<ParsedUrlQuery>) {
+export async function getServerSideProps(context: GetServerSidePropsContext<ParsedUrlQuery>) {
     const users = await getUsers();
     const userslist = users.slice(0, 3)
     const { params } = context;
