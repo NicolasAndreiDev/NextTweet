@@ -1,14 +1,22 @@
 import ConfigUser from '@/components/ConfigUser'
 import ExploreComponent from '@/components/ExploreComponent'
-import HeaderPadrao from '@/components/HeaderPadrao'
 import InfoPadrao from '@/components/InfoPadrao'
-import Post from '@/components/Post'
 import List from '@/components/List'
-import Search from '@/components/Search'
 import styles from '@/styles/Padrao.module.scss'
 import PrivateRoute from '@/utils/PrivateRoute'
+import { getUsers } from '@/utils/getUsers'
 
-export default function Explore() {
+export async function getServerSideProps() {
+    const users = await getUsers()
+    const list = users.slice(0, 3)
+  
+    return {
+      props: { users: list }
+    }
+}
+
+
+export default function Explore({users}: {users: Array<{username: string, perfilImageUrl: string}>}) {
     return(
         <PrivateRoute>
             <div className={styles.container}>
@@ -18,7 +26,7 @@ export default function Explore() {
                     <ExploreComponent />
                 </InfoPadrao>
                 </div>
-                <List search={false}/>
+                <List search={false} listUsers={users}/>
             </div>
         </PrivateRoute>
     )

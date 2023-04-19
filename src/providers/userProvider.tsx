@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { auth, db, storage } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { ref, getDownloadURL} from "firebase/storage";
+import { ref, getDownloadURL } from "firebase/storage";
 
 type UserContextType = {
     user: string | null;
@@ -27,19 +27,24 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
     useEffect(() => {
       const unsubscribe = auth.onAuthStateChanged(async (user) => {
         if (user) {
-          const userDocRef = doc(db, "users", user.uid);
-          const userDocSnap = await getDoc(userDocRef);
-          const userData = userDocSnap.data() ?? {};
-          const storageRef = ref(storage, `users/${user.uid}/perfilImage`);
-          const storageRefBanner = ref(storage, `users/${user.uid}/bannerImage`)
-          const urlFoto = await getDownloadURL(storageRef)
-          const urlBanner = await getDownloadURL(storageRefBanner)
-          setFoto(urlFoto)
-          setBanner(urlBanner)
-          setUser(userData?.username);
-        } else {
-          setUser(null);
-          setFoto(null); 
+            const userDocRef = doc(db, "users", user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+            const userData = userDocSnap.data() ?? {};
+            const storageRef = ref(storage, `users/${user.uid}/perfilImage`);
+            const storageRefBanner = ref(storage, `users/${user.uid}/bannerImage`)
+            try {
+              const urlFoto = await getDownloadURL(storageRef)
+              setFoto(urlFoto)
+            } catch {
+              setFoto(null)
+            }
+            try {
+              const urlBanner = await getDownloadURL(storageRefBanner)
+              setBanner(urlBanner)
+            } catch {
+              setBanner(null)
+            }
+            setUser(userData?.username);
         }
       });
       return unsubscribe;

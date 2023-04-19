@@ -1,16 +1,12 @@
 import styles from './Informacoes.module.scss'
 import { MdOutlineDateRange } from "react-icons/md";
-import { UserContext } from '@/providers/userProvider';
-import { useContext } from 'react'
 
-export default function Informacoes() {
-    const { user } = useContext(UserContext)
-
+export default function Informacoes({name, username}: {name?: string | null, username?: string | null}) {
     return(
         <>
             <div className={styles.infoUser}>
-                <span className={styles.nome}>{user}</span>
-                <span className={styles.username}>@{user}</span>
+                <span className={styles.nome}>{name}</span>
+                <span className={styles.username}>@{username}</span>
             </div>
             <div className={styles.ingresso}>
                 <MdOutlineDateRange className={styles.icon}/>

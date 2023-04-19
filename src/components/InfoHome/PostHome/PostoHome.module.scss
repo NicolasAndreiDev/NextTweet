@@ -5,17 +5,35 @@
     display: flex;
     align-items: center;
     gap: 2rem;
-    .image{
+    .link{
         height: 4.8rem;
         width: 4.8rem;
-        border-radius: 10rem;
+        .image{
+            height: 4.8rem;
+            width: 4.8rem;
+            object-fit: cover;
+            border-radius: 10rem;
+        }
+        .imageDefault{
+            height: 4.8rem;
+            width: 4.8rem;
+            border-radius: 10rem;
+            background-color: $cor-texto-claro;
+        }
     }
     .input{
         border: none;
         outline: none;
-        font-size: 2rem;
+        font-size: $tamanho-da-fonte;
+        width: 100%;
+        resize: none;
+        overflow: hidden;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
     }
 }
+
 .newPost{
     padding: 0 2rem 0 8.8rem;
     .infoPost{

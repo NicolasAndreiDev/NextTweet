@@ -1,13 +1,10 @@
 import styles from './Banner.module.scss'
-import { UserContext } from '@/providers/userProvider'
-import { useContext } from 'react'
 
-export default function Banner({children}: {children: React.ReactNode}) {
-    const {banner} = useContext(UserContext)
+export default function Banner({children, bannerImage}: {children: React.ReactNode, bannerImage?: string | null}) {
 
     return(
         <div className={styles.bannerDiv}>
-            {banner ? <img src={banner} alt={'Banner'} className={styles.banner}/> : <div className={styles.bannerDefault}></div>}
+            {bannerImage ? <img src={bannerImage} alt={'Banner'} className={styles.banner}/> : <div className={styles.bannerDefault}></div>}
             {children}
         </div>
     )

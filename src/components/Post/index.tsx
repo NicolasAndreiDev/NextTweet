@@ -5,9 +5,9 @@ import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 
 interface Props{
-    name: string,
-    username: string,
-    foto: string,
+    name: string | null,
+    username: string | null,
+    foto: string | null,
     imagem?: string,
 }
 
@@ -28,7 +28,7 @@ export default function Post({name, username, foto, imagem} : Props) {
         <div className={styles.container}>
             <div className={styles.linha}/>
             <div className={styles.post}>
-                <img src={foto} alt={'users'} className={styles.image}/>
+                <img src={foto ? foto : ''} alt={'users'} className={styles.image}/>
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
                         <span className={styles.name}>{name}</span>

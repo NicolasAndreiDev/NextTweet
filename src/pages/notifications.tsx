@@ -5,8 +5,18 @@ import List from '@/components/List';
 import Search from '@/components/Search';
 import NotificationsComponent from '@/components/NotificationsComponent';
 import PrivateRoute from '@/utils/PrivateRoute';
+import { getUsers } from '@/utils/getUsers';
 
-export default function Notifications() {
+export async function getServerSideProps() {
+    const users = await getUsers()
+    const list = users.slice(0, 3)
+  
+    return {
+      props: { users: list }
+    }
+}
+
+export default function Notifications({users} : {users: Array<{username: string, perfilImageUrl: string}>}) {
     return(
         <PrivateRoute>
             <div className={styles.container}>
@@ -16,7 +26,7 @@ export default function Notifications() {
                     <NotificationsComponent />
                 </InfoPadrao>
                 </div>
-                <List />
+                <List listUsers={users}/>
             </div>
         </PrivateRoute>
     )

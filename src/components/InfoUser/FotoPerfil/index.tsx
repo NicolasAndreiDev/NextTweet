@@ -1,13 +1,10 @@
 import styles from './FotoPerfil.module.scss'
-import { useContext } from 'react'
-import { UserContext } from '@/providers/userProvider'
 
-export default function FotoPerfil() {
-    const { foto } = useContext(UserContext)
+export default function FotoPerfil({foto} : {foto?: string | null}) {
 
     return(
         <div>
-            <img src={foto ? foto : ''} className={styles.fotoPerfil} />
+            {foto ? <img src={foto} className={styles.fotoPerfil} /> : <div className={styles.fotoDefault}></div>}
         </div>
     )
 }
