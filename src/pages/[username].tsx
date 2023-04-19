@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import { GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-export async function getStaticProps(context: GetStaticPropsContext<ParsedUrlQuery>) {
+export async function getServerSideProps(context: GetStaticPropsContext<ParsedUrlQuery>) {
     const users = await getUsers();
     const userslist = users.slice(0, 3)
     const { params } = context;
@@ -31,13 +31,6 @@ export async function getStaticProps(context: GetStaticPropsContext<ParsedUrlQue
         user,
         users: userslist
       },
-    };
-}
-  
-export async function getStaticPaths() {
-    return {
-      paths: [],
-      fallback: true,
     };
 }
 
