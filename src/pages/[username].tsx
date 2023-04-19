@@ -14,6 +14,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 export async function getStaticProps(context: GetStaticPropsContext<ParsedUrlQuery>) {
     const users = await getUsers();
+    const userslist = users.slice(0, 3)
     const { params } = context;
     const username = params?.username;
   
@@ -28,6 +29,7 @@ export async function getStaticProps(context: GetStaticPropsContext<ParsedUrlQue
     return {
       props: {
         user,
+        users: userslist
       },
     };
 }
@@ -39,7 +41,7 @@ export async function getStaticPaths() {
     };
 }
 
-export default function Username({user} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string}}) {
+export default function Username({user, users} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string}, users: Array<{username: string, perfilImageUrl: string}>}) {
     const router = useRouter();
     if (router.isFallback) {
         return <div></div>;
@@ -57,7 +59,7 @@ export default function Username({user} : {user: {username: string, perfilImageU
                         </Banner>
                         <Informacoes name={user.username} username={user.username}/>
                     </InfoPadrao>
-                    <List />
+                    <List listUsers={users}/>
                 </div>
             </div>
         </PrivateRoute>
