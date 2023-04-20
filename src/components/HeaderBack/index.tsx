@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { CSSProperties } from 'react'
 
 interface HeaderBackProps {
-    local: string,
+    local?: string,
     posts?: string,
     style?: CSSProperties
 }

@@ -12,7 +12,7 @@ import { UserContext } from '@/providers/userProvider'
 import { signOut, getAuth } from 'firebase/auth'
 
 export default function AccountInfo({evento}: {evento: () => void}) {
-    const {foto, user} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [settings, setSettings] = useState<boolean>()
     const auth = getAuth()
     const num = 0
@@ -34,11 +34,11 @@ export default function AccountInfo({evento}: {evento: () => void}) {
             </div>
             <div className={styles.userInfo}>
                 <Link href={'/profile'} className={styles.home}>
-                    {foto ? <img src={foto} alt={'userFoto'} className={styles.foto}/> : <div className={styles.fotoDefault}></div>}
+                    { user?.perfilImageUrl ? <img src={user.perfilImageUrl} alt={'userFoto'} className={styles.foto}/> : <div className={styles.fotoDefault}></div>}
                 </Link>
                 <div>
-                    <span className={styles.name}>{user}</span>
-                    <span className={styles.username}>@{user}</span>
+                    <span className={styles.name}>{user?.username}</span>
+                    <span className={styles.username}>@{user?.username}</span>
                 </div>
                 <div className={styles.seguidores}>
                     <Link href={'/'} className={styles.flwing}>

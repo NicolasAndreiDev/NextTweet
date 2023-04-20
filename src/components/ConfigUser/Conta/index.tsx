@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import { UserContext } from '@/providers/userProvider'
 
 export default function Conta() {
-    const { user,foto} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [conta, setConta] = useState<boolean>()
     const PopUpRef = useRef<HTMLDivElement>(null)
 
@@ -20,7 +20,7 @@ export default function Conta() {
           return () => {
             document.removeEventListener('mousedown', handleClickOutside);
           };
-      }, [PopUpRef]);
+    }, [PopUpRef]);
 
     function handleClick() {
         setConta(prev => !prev)
@@ -30,10 +30,10 @@ export default function Conta() {
         <>
             <div className={styles.conta} onClick={handleClick}>
                 <div className={styles.conta__user}>
-                    {foto ? <img src={foto} alt={'foto_perfil'} className={styles.imagem}/> : <div className={styles.imagemDefault}></div>}
+                    { user?.perfilImageUrl ? <img src={user.perfilImageUrl} alt={'foto_perfil'} className={styles.imagem}/> : <div className={styles.imagemDefault}></div>}
                     <div className={styles.user}>
-                        <span>{user}</span>
-                        <span>@{user}</span>
+                        <span>{user?.username}</span>
+                        <span>@{user?.username}</span>
                     </div>
                 </div>
                 <HiEllipsisHorizontal className={styles.icon}/>

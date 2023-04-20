@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { SlPicture } from "react-icons/sl";
 import { TbGif } from "react-icons/tb";
 import { BsEmojiSmile } from "react-icons/bs";
@@ -9,21 +9,33 @@ import { useContext } from "react";
 import styles from "./PostoHome.module.scss";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
-
+import GifPicker from 'gif-picker-react';
+import { IoClose } from "react-icons/io5";
 
 export default function PostHome({ name }: { name?: string }) {
-  const { foto } = useContext(UserContext);
-  const [ focus, setFocus] = useState(false);
+  const PopUpRef = useRef<HTMLDivElement>(null)
+  const { user } = useContext(UserContext);
   const [ selectedImage, setSelectedImage ] = useState("");
   const [ showEmojiPicker, setShowEmojiPicker ] = useState(false);
-  const [ selectEmoji, setSelectEmoji ] = useState(null)
-  const [ content, setContent ] = useState('');
+  const [ inputValue, setInputValue ] = useState("");
+  const [ selectEmoji, setSelectEmoji ] = useState<string[]>([])
+  const [ showGif, setShowGif ] = useState(false)
 
-  const handleEmojiClick = () => {
+  function handleEmojiClick(){
     setShowEmojiPicker(!showEmojiPicker);
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleGif(){
+    setShowGif(!showGif)
+  }
+
+  function handleEmojiSelect(emoji: any){
+    const newInputValue = inputValue + emoji.native;
+    setInputValue(newInputValue);
+    setSelectEmoji([...selectEmoji, emoji.native]);
+  };
+
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>){
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -35,43 +47,70 @@ export default function PostHome({ name }: { name?: string }) {
     }
   };
 
-  const handleContentChange = (e: React.ChangeEvent<HTMLDivElement>) => {
-    setContent(e.currentTarget.innerHTML);
+  function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>){
+    setInputValue(event.target.value);
+    event.target.style.height = "auto";
+    event.target.style.height = `${event.target.scrollHeight}px`;
   };
 
-  const placeholder = 'What\'s happening?';
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (PopUpRef.current && !PopUpRef.current.contains(event.target as Element)) {
+        setShowEmojiPicker(false);
+        setShowGif(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+  }, [PopUpRef]);
 
   return (
     <div className={name}>
       <div className={styles.post}>
         <Link href={"/profile"} className={styles.link}>
-          {foto ? (
-            <img src={foto} alt={"foto_perfil"} className={styles.image} />
+          {user?.perfilImageUrl ? (
+            <img src={user.perfilImageUrl} alt={"foto_perfil"} className={styles.image} />
           ) : (
             <div className={styles.imageDefault}></div>
           )}
         </Link>
-        <div contentEditable={'true'} className={styles.box}>
-          {selectedImage && <img contentEditable={'false'} src={selectedImage} alt={'imagemSelect'} className={styles.imageSelect} />}
+        <div className={styles.box}>
+          <textarea className={styles.box} rows={1} maxLength={300} value={inputValue} onChange={handleChange} placeholder={`What's happening?`}/>
+          {selectedImage && 
+          <div className={styles.newImage}>
+            <IoClose className={styles.icon} onClick={() => setSelectedImage('')}/>
+            <img src={selectedImage} alt={'imagemSelect'} className={styles.imageSelect}/>
+          </div>
+          }
         </div>
       </div>
       <div className={styles.newPost}>
         <hr />
         <div className={styles.infoPost}>
           <div className={styles.icones}>
-            <label htmlFor={'fotos'} style={{height: '1.6rem'}}>
-                <SlPicture className={styles.icon} />
-            </label>
-            <input id={'fotos'} type={'file'} style={{display: 'none'}} onChange={handleImageChange}/>
-            <TbGif className={styles.icon} />
-            <BsEmojiSmile className={styles.icon} onClick={handleEmojiClick} />
-              {showEmojiPicker && 
-              (<div style={{position: 'absolute', top: '25rem', height: '10rem', width: '10rem'}}>
-                <Picker previewPosition={'none'} position={'bottom'} data={data} emojiSize={20} emojiButtonSize={30} theme={'light'} onEmojiSelect={console.log}/>
-              </div>)}
+            <div className={styles.boxImage}>
+              <label htmlFor={'fotos'} style={{height: '1.6rem'}}>
+                  <SlPicture className={styles.icon} />
+              </label>
+              <input id={'fotos'} type={'file'} style={{display: 'none'}} onChange={handleImageChange}/>
+            </div>
+            <div className={styles.boxIcon}>
+              <TbGif className={styles.icon} onClick={handleGif}/>
+              <div className={styles.newPosition}>
+                { showGif && <GifPicker tenorApiKey={"AIzaSyC7s5VYl9fGswdBnsWCzvZSJ6grcroXVSg"} onGifClick={(item: any) => setSelectedImage(item.url)}/>}
+              </div>
+            </div>
+            <div className={styles.boxIcon}>
+              <BsEmojiSmile className={styles.icon} onClick={handleEmojiClick} />
+              <div className={styles.newPosition} >
+                {showEmojiPicker && <Picker previewPosition={'none'} position={'bottom'} data={data} emojiSize={20} emojiButtonSize={30} theme={'light'} onEmojiSelect={handleEmojiSelect}/>}
+              </div>
+            </div>
           </div>
           <div>
-            <NewPost className={styles.publicar}>New post</NewPost>
+            <NewPost className={styles.publicar} imagem={selectedImage} text={inputValue}>New post</NewPost>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import LinksMobile from '../MobileComponents/LinksMobile'
 import styles from './InfoPadrao.module.scss'
 
 export default function InfoPadrao({children}: {children: React.ReactNode}) {

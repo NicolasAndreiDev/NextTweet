@@ -5,15 +5,14 @@ import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 
 interface Props{
-    name: string | null,
-    username: string | null,
-    foto: string | null,
+    name: string,
+    username: string,
+    foto?: string,
     imagem?: string,
     text: string,
-    date: string,
 }
 
-export default function Post({name, username, foto, imagem, text, date} : Props) {
+export default function Post({name, username, foto, imagem, text} : Props) {
     const [like, setLike] = useState(false)
     const [totalLike, setTotalLike] = useState(4072)
 
@@ -34,9 +33,9 @@ export default function Post({name, username, foto, imagem, text, date} : Props)
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
                         <span className={styles.name}>{name}</span>
-                        <span className={styles.username}>{username}</span>
+                        <span className={styles.username}>@{username}</span>
                         <span>·</span>
-                        <span>{date}</span>
+                        <span>fev</span>
                     </div>
                     <div className={styles.publi}>
                         <p>{text}</p>

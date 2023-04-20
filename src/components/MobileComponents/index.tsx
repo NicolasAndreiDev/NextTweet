@@ -5,7 +5,7 @@ import Foco from '../Foco'
 import { UserContext } from '@/providers/userProvider'
 
 export default function MobileComponents() {
-  const {foto} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const menuRef = useRef<HTMLDivElement>(null)
     const [menu, setMenu] = useState<boolean>()
     
@@ -27,7 +27,7 @@ export default function MobileComponents() {
 
     return(
         <div className={styles.menu}>
-            { foto ? <img src={foto} alt={'fotoPerfil'} className={styles.image} onClick={handleClick}/> : <div className={styles.imageDefault} onClick={handleClick}></div>}
+            { user?.perfilImageUrl ? <img src={user?.perfilImageUrl} alt={'fotoPerfil'} className={styles.image} onClick={handleClick}/> : <div className={styles.imageDefault} onClick={handleClick}></div>}
             <div ref={menuRef}>
                 {menu && <AccountInfo evento={() => setMenu(false)}/>}
             </div>

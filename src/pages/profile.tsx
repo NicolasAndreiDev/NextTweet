@@ -23,7 +23,7 @@ export async function getServerSideProps() {
 }
 
 export default function Profile({users} : {users: Array<{username: string, perfilImageUrl: string}>}) {
-    const {user, foto, banner} = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     return(
         <PrivateRoute>
@@ -31,15 +31,12 @@ export default function Profile({users} : {users: Array<{username: string, perfi
                 <ConfigUser />
                 <div className={styles.direita}>
                     <InfoPadrao>
-                        <HeaderBack local={user ? user : ''} posts={'3 posts'}/>
-                        <Banner bannerImage={banner}>
-                            <FotoPerfil foto={foto}/>
+                        <HeaderBack local={user?.username} posts={'3 posts'}/>
+                        <Banner bannerImage={user?.bannerImageUrl}>
+                            <FotoPerfil foto={user?.perfilImageUrl}/>
                         </Banner>
                         <EditProfile />
-                        <Informacoes name={user} username={user}/>
-                        <div>
-                            <Post name={user} username={user} foto={foto} imagem={'/images/banner.jpg'}/>
-                        </div>
+                        <Informacoes name={user?.username} username={user?.username}/>
                     </InfoPadrao>
                     <List listUsers={users}/>
                 </div>

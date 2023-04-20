@@ -24,22 +24,37 @@
     .box{
         border: none;
         outline: none;
+        resize: none;
         font-size: $tamanho-da-fonte;
         width: 100%;
         overflow: hidden;
         font-family: 'Montserrat', sans-serif;
         font-family: 'Open Sans', sans-serif;
         font-family: 'Source Sans Pro', sans-serif;
-        .imageSelect{
-            max-width: 100%;
-            max-height: 48rem;
-            min-width: 70%;
-            object-fit: cover;
-            border-radius: 2rem;
+        .newImage{
+            position: relative;
+            .icon{
+                position: absolute;
+                border-radius: 10rem;
+                cursor: pointer;
+                padding: .4rem;
+                height: 3.2rem;
+                width: 3.2rem;
+                left: 1rem;
+                top: 1rem;
+                color: $cor-secundaria;
+                background-color: rgb(0, 0, 0, .4);
+            }
+            .imageSelect{
+                max-width: 100%;
+                max-height: 48rem;
+                min-width: 70%;
+                object-fit: cover;
+                border-radius: 2rem;
+            }
         }
     }
 }
-
 .newPost{
     padding: 0 2rem 0 8.8rem;
     .infoPost{
@@ -51,11 +66,26 @@
             display: flex;
             gap: 1rem;
             align-items: center;
-            .icon{
-                height: 1.6rem;
-                width: 1.6rem;
-                color: $cor-azul;
-                cursor: pointer;
+            .boxImage{
+                .icon{
+                    height: 1.6rem;
+                    width: 1.6rem;
+                    color: $cor-azul;
+                    cursor: pointer;
+                }
+            }
+            .boxIcon{
+                position: relative;
+                .icon{
+                    height: 1.6rem;
+                    width: 1.6rem;
+                    color: $cor-azul;
+                    cursor: pointer;
+                }
+                .newPosition{
+                    position: absolute;
+                    z-index: 10;
+                }
             }
         }
         .publicar{
@@ -74,5 +104,4 @@
         }
     }
 }
-
 

@@ -9,12 +9,12 @@ import { UserContext } from '@/providers/userProvider'
 import { doc, setDoc } from 'firebase/firestore';
 
 export default function EditProfilePopUp({evento} : {evento: () => void}) {
-    const {foto, banner} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [perfilImage, setPerfilImage] = useState<File | null>();
-    const [photoStyle, setPhotoStyle] = useState<{} | null>({backgroundImage: `url(${foto})`});
+    const [photoStyle, setPhotoStyle] = useState<{} | null>({backgroundImage: `url(${user?.perfilImageUrl})`});
     const [bannerImage, setBannerImage] = useState<File | null>();
-    const [bannerStyle, setBannerStyle] = useState<{} | null>({backgroundImage: `url(${banner})`});
-    const [user, setUser] = useState<User | null>();
+    const [bannerStyle, setBannerStyle] = useState<{} | null>({backgroundImage: `url(${user?.bannerImageUrl})`});
+    const [users, setUser] = useState<User | null>();
 
     useEffect(() => {
       const auth = getAuth();
@@ -51,14 +51,14 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
         }
 
         const storage = getStorage();
-        const userRef = ref(storage, `users/${user?.uid}`);
+        const userRef = ref(storage, `users/${users?.uid}`);
 
         if (perfilImage) {
             const perfilImageRef = ref(userRef, 'perfilImage');
             const perfilUploadTask = uploadBytesResumable(perfilImageRef, perfilImage);
             await perfilUploadTask;
             const perfilImageUrl = await getDownloadURL(perfilImageRef);
-            const userDocRef = doc(db, 'users', user!.uid);
+            const userDocRef = doc(db, 'users', users!.uid);
             await setDoc(userDocRef, { perfilImageUrl }, { merge: true });
         }
       
@@ -67,7 +67,7 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
             const bannerUploadTask = uploadBytesResumable(bannerImageRef, bannerImage);
             await bannerUploadTask;
             const bannerImageUrl = await getDownloadURL(bannerImageRef);
-            const userDocRef = doc(db, 'users', user!.uid);
+            const userDocRef = doc(db, 'users', users!.uid);
             await setDoc(userDocRef, { bannerImageUrl }, { merge: true });
         }
         
