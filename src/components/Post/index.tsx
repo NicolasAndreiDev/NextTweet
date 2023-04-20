@@ -39,7 +39,7 @@ export default function Post({name, username, foto, imagem, text} : Props) {
                     </div>
                     <div className={styles.publi}>
                         <p>{text}</p>
-                        <img src={imagem} alt={'postImage'} className={styles.fotoPubli}/>
+                        { imagem ? <img src={imagem} alt={'postImage'} className={styles.fotoPubli}/> : '' }
                     </div>
                     <div className={styles.social}>
                         <div className={styles.social_icon}>
