@@ -9,10 +9,11 @@ export default function ConfigUser() {
     return(
         <header className={styles.container}>
             <div className={styles.fixedHeader}>
-                <Links /><NewPost className={styles.post}>
+                <Links />
+                {/* <NewPost className={styles.post}>
                     <span className={styles.New}>New post</span>
                     <RiQuillPenLine className={styles.icon}/> 
-                </NewPost>
+                </NewPost> */}
                 <div className={styles.fixedUser}>
                     <Conta />
                 </div>
