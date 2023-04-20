@@ -8,7 +8,6 @@ return (
       <main className={styles.container}>
         {children}
         <div className={styles.espaco}></div>
-        <LinksMobile />
       </main>
     </>
   )

@@ -8,7 +8,7 @@ export default function Users({users} : {users?: Array<{username: string, perfil
             <p className={styles.para}>Who to follow</p>
             {users ? users.map((user) => {
                 return(
-                    <ThreeUsers username={user.username} foto={user.perfilImageUrl}/>
+                    <ThreeUsers key={user.username} username={user.username} foto={user.perfilImageUrl}/>
                 )
             }) : ''}
             <Link href={'/users'} className={styles.show}>

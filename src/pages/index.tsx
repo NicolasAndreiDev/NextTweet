@@ -2,6 +2,7 @@ import ConfigUser from '@/components/ConfigUser'
 import InfoHome from '@/components/InfoHome'
 import InfoPadrao from '@/components/InfoPadrao'
 import List from '@/components/List'
+import Post from '@/components/Post'
 import styles from '@/styles/Padrao.module.scss'
 import PrivateRoute from '@/utils/PrivateRoute'
 import { getUsers } from '@/utils/getUsers'
@@ -24,8 +25,6 @@ export default function Home({users} : {users: Array<{username: string, perfilIm
         <div className={styles.direita}>
           <InfoPadrao>
             <InfoHome />
-            <div className={styles.posts}>
-            </div>
           </InfoPadrao>
           <List listUsers={users}/>
         </div>

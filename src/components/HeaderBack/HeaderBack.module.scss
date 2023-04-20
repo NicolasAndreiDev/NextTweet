@@ -7,9 +7,9 @@
     gap: 2rem;
     padding: .4rem 2rem;
     position: sticky;
+    z-index: 1;
     top: 0;
     width: 60rem;
-    z-index: 100;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 6px 8px -4px;
     .icon{
         height: 3rem;

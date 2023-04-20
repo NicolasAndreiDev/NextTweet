@@ -9,9 +9,11 @@ interface Props{
     username: string | null,
     foto: string | null,
     imagem?: string,
+    text: string,
+    date: string,
 }
 
-export default function Post({name, username, foto, imagem} : Props) {
+export default function Post({name, username, foto, imagem, text, date} : Props) {
     const [like, setLike] = useState(false)
     const [totalLike, setTotalLike] = useState(4072)
 
@@ -34,10 +36,10 @@ export default function Post({name, username, foto, imagem} : Props) {
                         <span className={styles.name}>{name}</span>
                         <span className={styles.username}>{username}</span>
                         <span>·</span>
-                        <span>Fev 4</span>
+                        <span>{date}</span>
                     </div>
                     <div className={styles.publi}>
-                        <p>Even after the 4th viewing The Super Mario Bros. Movie is still wonderful. What an endearing film 😊 #TheSuperMarioBrosMovie</p>
+                        <p>{text}</p>
                         <img src={imagem} alt={'postImage'} className={styles.fotoPubli}/>
                     </div>
                     <div className={styles.social}>
