@@ -39,8 +39,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext<Pars
     };
 }
 
-export default function Username({user, users, userPost} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string}, users: Array<{username: string, perfilImageUrl: string}>, userPost: Array<{}>}) {
-    console.log(userPost)
+interface Props{
+    username: string,
+    imagem: string,
+    text: string,
+    perfilImageUrl: string,
+    date: string,
+    likes: number,
+    id: string,
+}
+
+export default function Username({user, users, userPost} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string}, users: Array<{username: string, perfilImageUrl: string}>, userPost: Array<Props>}) {
     const router = useRouter();
     if (router.isFallback) {
         return <div></div>;
@@ -59,7 +68,7 @@ export default function Username({user, users, userPost} : {user: {username: str
                         <Informacoes name={user.username} username={user.username}/>
                         {userPost.map((post: any) => {
                           return(
-                            <Post name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text}/>
+                            <Post name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id}/>
                           )
                         })}
                     </InfoPadrao>

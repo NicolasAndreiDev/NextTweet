@@ -18,9 +18,17 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({users, usersPost} : {users: Array<{username: string, perfilImageUrl: string}>, usersPost: []}) {
-  console.log(usersPost)
+interface Props{
+  username: string,
+  imagem: string,
+  text: string,
+  perfilImageUrl: string,
+  date: string,
+  likes: number,
+  id: string,
+}
 
+export default function Home({users, usersPost} : {users: Array<{username: string, perfilImageUrl: string}>, usersPost: Array<Props>}) {
   return (
     <PrivateRoute>
       <div className={styles.container}>
@@ -30,7 +38,7 @@ export default function Home({users, usersPost} : {users: Array<{username: strin
             <InfoHome />
             {usersPost.map((post: any) => {
               return(
-                <Post username={post.username} name={post.username} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl}/>
+                <Post key={post.id} id={post.id} username={post.username} name={post.username} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
               )
             })}
           </InfoPadrao>

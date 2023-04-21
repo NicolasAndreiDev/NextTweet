@@ -10,6 +10,11 @@ html{
   color: $cor-da-letra;
 }
 
+a{
+  text-decoration: none;
+  color: $cor-da-letra;
+}
+
 *{
   margin: 0;
   padding: 0;
