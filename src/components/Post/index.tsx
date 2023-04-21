@@ -32,11 +32,11 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
       
           if (postIndex !== -1) {
             const updatedPosts = [...posts];
-            updatedPosts[postIndex] = {
-              ...updatedPosts[postIndex],
-              likes: like ? totalLike : totalLike + 1
-            };
-      
+            if(totalLike == 1) {
+                updatedPosts[postIndex] = {...updatedPosts[postIndex], likes: like ? null : totalLike + 1};
+            } else {
+                updatedPosts[postIndex] = {...updatedPosts[postIndex], likes: like ? totalLike - 1 : totalLike + 1};
+            }
             await updateDoc(userDocRef, { posts: updatedPosts });
           }
         }
