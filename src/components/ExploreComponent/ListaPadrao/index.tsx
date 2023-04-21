@@ -5,9 +5,9 @@ export default function ListaPadrao({lista}: {lista: Array<{type:string ,title: 
 
     return(
         <>
-            {lista.map(item => {
+            {lista.map((item, index) => {
             return(
-                <div className={styles.lista}>
+                <div className={styles.lista} key={index}>
                     <span className={styles.type}>{item.type}</span>
                     <span className={styles.title}>{item.title}</span>
                     <span className={styles.posts}>{item.posts}</span>
