@@ -5,6 +5,7 @@ import { getUsers } from '@/utils/getUsers';
 type User = {
     username: string;
     perfilImageUrl: string;
+    userId: string
 }
   
 type UserListContextType = {

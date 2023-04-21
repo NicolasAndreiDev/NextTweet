@@ -5,9 +5,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     cursor: pointer;
     &:hover{
         background-color: $cor-principal;
+    }
+    .link{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
     }
     .usersInfo{
         display: flex;
@@ -43,6 +50,8 @@
     }
     .follow{
         border: none;
+        position: absolute;
+        right: 2rem;
         background-color: $cor-da-letra;
         padding: .8rem 1.6rem;
         border-radius: 10rem;

@@ -2,7 +2,7 @@ import ButtonFollow from '@/components/ButtonFollow'
 import styles from './ThreeUsers.module.scss'
 import { useRouter } from 'next/router'
 
-export default function ThreeUsers({foto, username}: {foto: string, username: string}) {
+export default function ThreeUsers({foto, username, userId}: {foto: string, username: string, userId: string}) {
     const route = useRouter()
 
     function handleClick() {
@@ -10,7 +10,8 @@ export default function ThreeUsers({foto, username}: {foto: string, username: st
     }
 
     return(
-        <div className={styles.users} onClick={handleClick}>
+        <div className={styles.users}>
+            <div className={styles.link} onClick={handleClick}></div>
             <div className={styles.usersInfo}>
                 { foto ? <img src={foto} alt={username} className={styles.image}/> : <div className={styles.imageDefault}></div>}
                 <div className={styles.social}>
@@ -18,7 +19,7 @@ export default function ThreeUsers({foto, username}: {foto: string, username: st
                     <span className={styles.username}>@{username}</span>
                 </div>
             </div>
-            <ButtonFollow className={styles.follow}/>
+            <ButtonFollow className={styles.follow} username={username} userId={userId}/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import styles from './Informacoes.module.scss'
 import { MdOutlineDateRange } from "react-icons/md";
 
-export default function Informacoes({name, username}: {name?: string | null, username?: string | null}) {
+export default function Informacoes({name, username, following = 0, followers = 0}: {name?: string | null, username?: string | null, following?: number[] | number, followers?: number[] | number}) {
     return(
         <>
             <div className={styles.infoUser}>
@@ -15,14 +15,14 @@ export default function Informacoes({name, username}: {name?: string | null, use
             <div className={styles.social}>
                 <div>
                     <div className={styles.number}>
-                        <span>0</span>
-                        <span>Seguindo</span>
+                        <span>{following}</span>
+                        <span>Following</span>
                     </div>
                 </div>
                 <div>
                     <div className={styles.number}>
-                        <span>0</span>
-                        <span>Seguidores</span>
+                        <span>{followers}</span>
+                        <span>Followers</span>
                     </div>
                 </div>
             </div>

@@ -6,8 +6,27 @@
     background-color: $cor-principal;
     .direita{
         display: flex;
+        .buttonFollowPageComponent{
+            position: absolute;
+            right: 2rem;
+            top: 26rem;
+            background-color: $cor-da-letra;
+            color: $cor-secundaria;
+            padding: .8rem 1.6rem;
+            font-size: $texto-pequeno;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+            cursor: pointer;
+            border: none;
+            border-radius: 10rem;
+            &:hover{
+                background-color: rgb(15, 20, 25, .92);
+            }
+        }
     }
 }
+
 
 @media screen and (max-width: 668px){
     .container{
