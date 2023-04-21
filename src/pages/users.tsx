@@ -4,24 +4,19 @@ import List from "@/components/List";
 import ShowMore from "@/components/ShowMore";
 import styles from '@/styles/Padrao.module.scss';
 import PrivateRoute from "@/utils/PrivateRoute";
-import { getUsers } from "@/utils/getUsers";
+import { UserListContext } from "@/providers/UserListProvider";
+import { useContext } from 'react'
 
-export async function getServerSideProps() {
-  const users = await getUsers();
-  
-  return {
-    props: { users },
-  };
-}
+export default function Users() {
+    const { usersList } = useContext(UserListContext)
 
-export default function Users({users} : {users: Array<{username: string, perfilImageUrl: string}>}) {
     return (
         <PrivateRoute>
           <div className={styles.container}>
             <ConfigUser />
             <div className={styles.direita}>
               <InfoPadrao>
-                <ShowMore users={users}/>
+                <ShowMore users={usersList}/>
               </InfoPadrao>
               <List users={false}/>
             </div>

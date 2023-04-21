@@ -2,21 +2,14 @@ import styles from '@/styles/Padrao.module.scss'
 import ConfigUser from "@/components/ConfigUser";
 import InfoPadrao from "@/components/InfoPadrao";
 import List from '@/components/List';
-import Search from '@/components/Search';
 import NotificationsComponent from '@/components/NotificationsComponent';
 import PrivateRoute from '@/utils/PrivateRoute';
-import { getUsers } from '@/utils/getUsers';
+import { UserListContext } from '@/providers/UserListProvider';
+import { useContext } from 'react'
 
-export async function getServerSideProps() {
-    const users = await getUsers()
-    const list = users.slice(0, 3)
-  
-    return {
-      props: { users: list }
-    }
-}
-
-export default function Notifications({users} : {users: Array<{username: string, perfilImageUrl: string}>}) {
+export default function Notifications() {
+    const { usersList } = useContext(UserListContext)
+    const ThreeUsers = usersList.slice(0, 3)
     return(
         <PrivateRoute>
             <div className={styles.container}>
@@ -26,7 +19,7 @@ export default function Notifications({users} : {users: Array<{username: string,
                     <NotificationsComponent />
                 </InfoPadrao>
                 </div>
-                <List listUsers={users}/>
+                <List listUsers={ThreeUsers}/>
             </div>
         </PrivateRoute>
     )

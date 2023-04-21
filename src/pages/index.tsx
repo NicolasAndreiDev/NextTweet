@@ -6,15 +6,16 @@ import Post from '@/components/Post'
 import styles from '@/styles/Padrao.module.scss'
 import PrivateRoute from '@/utils/PrivateRoute'
 import { getPosts } from '@/utils/getPosts'
-import { getUsers } from '@/utils/getUsers'
+import { UserListContext } from '@/providers/UserListProvider'
+import { useContext } from 'react'
 
 export async function getServerSideProps() {
-  const users = await getUsers()
   const usersPost = await getPosts()
-  const list = users.slice(0, 3)
 
   return {
-    props: { users: list, usersPost }
+    props: { 
+      usersPost 
+    }
   }
 }
 
@@ -26,9 +27,12 @@ interface Props{
   date: string,
   likes: number,
   id: string,
+  userId: string,
 }
 
-export default function Home({users, usersPost} : {users: Array<{username: string, perfilImageUrl: string}>, usersPost: Array<Props>}) {
+export default function Home({usersPost} : {usersPost: Array<Props>}) {
+  const { usersList } = useContext(UserListContext) 
+  const ThreeUsers = usersList.slice(0, 3)
   return (
     <PrivateRoute>
       <div className={styles.container}>
@@ -38,11 +42,11 @@ export default function Home({users, usersPost} : {users: Array<{username: strin
             <InfoHome />
             {usersPost.map((post: any) => {
               return(
-                <Post key={post.id} id={post.id} username={post.username} name={post.username} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
+                <Post key={post.userId} userId={post.userId} id={post.id} username={post.username} name={post.username} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
               )
             })}
           </InfoPadrao>
-          <List listUsers={users}/>
+          <List listUsers={ThreeUsers}/>
         </div>
       </div>
     </PrivateRoute>

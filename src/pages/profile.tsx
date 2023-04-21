@@ -8,27 +8,27 @@ import InfoPadrao from '@/components/InfoPadrao';
 import HeaderBack from '@/components/HeaderBack';
 import EditProfile from '@/components/InfoUser/EditProfile';
 import PrivateRoute from '@/utils/PrivateRoute';
-import { UserContext } from '@/providers/userProvider';
+import { UserContext } from '@/providers/UserProvider';
 import { useContext } from 'react'
-import { getUsers } from '@/utils/getUsers';
+import { UserListContext } from '@/providers/UserListProvider';
 import { getPosts } from '@/utils/getPosts';
 import Post from '@/components/Post';
 
 export async function getServerSideProps() {
     const userPost = await getPosts()
-    const users = await getUsers()
-    const list = users.slice(0, 3)
   
     return {
       props: { 
-        users: list,
         userPost: userPost
       }
     }
 }
 
-export default function Profile({users, userPost} : {users: Array<{username: string, perfilImageUrl: string}>, userPost: Array<{}>}) {
+export default function Profile({userPost} : {userPost: Array<{username: string}>}) {
     const { user } = useContext(UserContext)
+    const { usersList } = useContext(UserListContext)
+    const posts = userPost.filter((users) => users.username == user?.username)
+    const ThreeUsers = usersList.slice(0, 3)
 
     return(
         <PrivateRoute>
@@ -42,13 +42,13 @@ export default function Profile({users, userPost} : {users: Array<{username: str
                         </Banner>
                         <EditProfile />
                         <Informacoes name={user?.username} username={user?.username}/>
-                        {userPost.map((post: any) => {
+                        {posts.map((post: any) => {
                             return(
-                                <Post key={post.id} id={post.id} name={post.username} imagem={post.imagem} foto={post.perfilImageUrl} text={post.text} username={post.username} date={post.date} totalLike={post.likes}/>
+                                <Post key={post.userId} userId={post.userId} id={post.id} name={post.username} imagem={post.imagem} foto={post.perfilImageUrl} text={post.text} username={post.username} date={post.date} totalLike={post.likes}/>
                             )
                         })}
                     </InfoPadrao>
-                    <List listUsers={users}/>
+                    <List listUsers={ThreeUsers}/>
                 </div>
             </div>
         </PrivateRoute>

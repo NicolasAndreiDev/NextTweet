@@ -12,12 +12,13 @@ import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { getPosts } from '@/utils/getPosts';
+import { UserListContext } from '@/providers/UserListProvider';
+import { useContext } from 'react';
 import Post from '@/components/Post';
 
 export async function getServerSideProps(context: GetServerSidePropsContext<ParsedUrlQuery>) {
     const users = await getUsers();
     const userPost = await getPosts()
-    const userslist = users.slice(0, 3)
     const { params } = context;
     const username = params?.username;
   
@@ -33,7 +34,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext<Pars
     return {
       props: {
         user,
-        users: userslist,
         userPost: post
       },
     };
@@ -47,9 +47,12 @@ interface Props{
     date: string,
     likes: number,
     id: string,
+    userId: string,
 }
 
-export default function Username({user, users, userPost} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string}, users: Array<{username: string, perfilImageUrl: string}>, userPost: Array<Props>}) {
+export default function Username({user, userPost} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string}, userPost: Array<Props>}) {
+    const { usersList } = useContext(UserListContext)
+    const ThreeUsers = usersList.slice(0, 3)
     const router = useRouter();
     if (router.isFallback) {
         return <div></div>;
@@ -68,11 +71,11 @@ export default function Username({user, users, userPost} : {user: {username: str
                         <Informacoes name={user.username} username={user.username}/>
                         {userPost.map((post: any) => {
                           return(
-                            <Post name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id}/>
+                            <Post key={post.userId} name={post.username} userId={post.userId} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id}/>
                           )
                         })}
                     </InfoPadrao>
-                    <List listUsers={users}/>
+                    <List listUsers={ThreeUsers}/>
                 </div>
             </div>
         </PrivateRoute>

@@ -3,7 +3,7 @@ import styles from './Post.module.scss'
 import { useState } from 'react'
 import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Link from 'next/link'
 
@@ -16,16 +16,31 @@ interface Props{
     totalLike: number,
     text: string,
     id: string,
-    linkAtivo?: boolean
+    linkAtivo?: boolean,
+    userId: string,
 }
 
-export default function Post({name, username, foto, imagem, text, date, totalLike, id, linkAtivo = true} : Props) {
+export default function Post({name, username, foto, imagem, userId, text, date, totalLike, id, linkAtivo = true} : Props) {
     const [ like, setLike ] = useState(false)
-    
-    async function updateLikesCount(likes: number) {
-        const postDocRef = doc(db, 'posts');
-        await setDoc(postDocRef, { likes: likes }, { merge: true });
-    }
+    async function updateLikesCount() {
+        const userDocRef = doc(db, 'users', userId);
+        const userDoc = await getDoc(userDocRef);
+      
+        if (userDoc.exists()) {
+          const posts = userDoc.data().posts;
+          const postIndex = posts.findIndex((post: {id: string}) => post.id === id);
+      
+          if (postIndex !== -1) {
+            const updatedPosts = [...posts];
+            updatedPosts[postIndex] = {
+              ...updatedPosts[postIndex],
+              likes: like ? totalLike : totalLike + 1
+            };
+      
+            await updateDoc(userDocRef, { posts: updatedPosts });
+          }
+        }
+      }
 
     function handleLike() {
         setLike(prev => !prev)
@@ -39,7 +54,7 @@ export default function Post({name, username, foto, imagem, text, date, totalLik
             <div className={styles.linha}/>
             <div className={styles.post}>
                 <Link href={`/${username}`} style={{maxHeight: '4.8rem', zIndex: '1'}}>
-                    { foto ? <img src={foto} alt={'users'} className={styles.image}/> : <div className={styles.imageDefault}></div>}
+                    { foto ? <img src={foto} alt={username} className={styles.image}/> : <div className={styles.imageDefault}></div>}
                 </Link>
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
@@ -53,7 +68,7 @@ export default function Post({name, username, foto, imagem, text, date, totalLik
                             <p>{text}</p>
                             { imagem ? <img src={imagem} alt={'postImage'} className={styles.fotoPubli}/> : '' }
                         </div>
-                    </Link> :  <div className={styles.publi}> <p>{text}</p> { imagem ? <img src={imagem} alt={'postImage'} className={styles.fotoPubli}/> : '' } </div>}
+                    </Link> :  <div className={styles.publi}> <p>{text}</p> { imagem ? <img src={imagem} alt={'postImage'} className={styles.fotoPubli} /> : '' } </div>}
                     <div className={styles.social}>
                             <div className={styles.social_icon}>
                                 { linkAtivo ? <Link href={`${username}/${id}`} className={styles.newLink}>
@@ -61,9 +76,9 @@ export default function Post({name, username, foto, imagem, text, date, totalLik
                                     <span>1</span>
                                 </Link> : <> <AiOutlineComment className={styles.icon}/> <span>1</span> </>}
                             </div>
-                        <div className={styles.social_icon} onClick={() => {handleLike(), updateLikesCount}}>
+                        <div className={styles.social_icon} onClick={() => {handleLike(), updateLikesCount()}}>
                             <TbHeart className={styles.icon} style={like ? {fill: 'rgb(249, 24, 128)', color: 'rgb(249, 24, 128)'} : {}}/>
-                            <span style={like ? {color: 'rgb(249, 24, 128)'} : {}}>{like ? + 1 : totalLike}</span>
+                            <span style={like ? {color: 'rgb(249, 24, 128)'} : {}}>{like ? totalLike += 1 : totalLike}</span>
                         </div>
                         <div className={styles.social_icon}>
                             <TbShare2 className={styles.icon}/>

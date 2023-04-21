@@ -8,7 +8,7 @@ import { useState, useContext } from 'react'
 import SettingsMob from '../SettingsMob'
 import { CgComment } from 'react-icons/cg'
 import { RiFileList2Line } from 'react-icons/ri'
-import { UserContext } from '@/providers/userProvider'
+import { UserContext } from '@/providers/UserProvider'
 import { signOut, getAuth } from 'firebase/auth'
 
 export default function AccountInfo({evento}: {evento: () => void}) {

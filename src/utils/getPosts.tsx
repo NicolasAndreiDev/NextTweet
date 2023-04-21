@@ -16,6 +16,8 @@ export async function getPosts() {
       });
     }
   });
+  
+  usersPosts.sort((a: any, b: any) => b.timestamp - a.timestamp);
 
   return usersPosts;
 }

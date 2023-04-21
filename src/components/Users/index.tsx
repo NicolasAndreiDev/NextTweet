@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from './Users.module.scss'
 import ThreeUsers from './ThreeUsers'
+import { auth } from '../../../firebase'
 
 export default function Users({users} : {users?: Array<{username: string, perfilImageUrl: string}>}) {
     return(

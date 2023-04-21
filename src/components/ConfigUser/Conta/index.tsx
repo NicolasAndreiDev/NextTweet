@@ -1,9 +1,9 @@
-import styles from './Conta.module.scss'
-import { HiEllipsisHorizontal } from 'react-icons/hi2'
-import { useState, useEffect, useRef } from 'react'
-import PopUp from './PopUp'
-import { useContext } from 'react'
-import { UserContext } from '@/providers/userProvider'
+import styles from './Conta.module.scss';
+import { HiEllipsisHorizontal } from 'react-icons/hi2';
+import { useState, useEffect, useRef } from 'react';
+import { UserContext } from '@/providers/UserProvider';
+import PopUp from './PopUp';
+import { useContext } from 'react';
 
 export default function Conta() {
     const { user } = useContext(UserContext)

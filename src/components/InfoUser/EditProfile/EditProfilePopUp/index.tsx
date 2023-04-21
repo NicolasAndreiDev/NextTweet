@@ -1,11 +1,11 @@
 import { IoClose } from 'react-icons/io5'
 import styles from './EditProfilePopUp.module.scss'
 import { RiImageAddLine } from 'react-icons/ri'
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState, useContext } from 'react';
-import { db } from '../../../../../firebase';
+import { db, storage } from '../../../../../firebase';
 import { User, getAuth } from 'firebase/auth';
-import { UserContext } from '@/providers/userProvider'
+import { UserContext } from '@/providers/UserProvider'
 import { doc, setDoc } from 'firebase/firestore';
 
 export default function EditProfilePopUp({evento} : {evento: () => void}) {
@@ -50,7 +50,6 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
           return;
         }
 
-        const storage = getStorage();
         const userRef = ref(storage, `users/${users?.uid}`);
 
         if (perfilImage) {

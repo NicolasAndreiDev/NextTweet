@@ -2,7 +2,7 @@ import styles from './MobileComponents.module.scss'
 import AccountInfo from './AccountInfo'
 import { useEffect, useRef, useState, useContext } from 'react'
 import Foco from '../Foco'
-import { UserContext } from '@/providers/userProvider'
+import { UserContext } from '@/providers/UserProvider'
 
 export default function MobileComponents() {
     const { user } = useContext(UserContext)

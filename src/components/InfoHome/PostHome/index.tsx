@@ -4,7 +4,7 @@ import { TbGif } from "react-icons/tb";
 import { BsEmojiSmile } from "react-icons/bs";
 import NewPost from "@/components/NewPost";
 import Link from "next/link";
-import { UserContext } from "@/providers/userProvider";
+import { UserContext } from "@/providers/UserProvider";
 import { useContext } from "react";
 import styles from "./PostoHome.module.scss";
 import data from '@emoji-mart/data'
