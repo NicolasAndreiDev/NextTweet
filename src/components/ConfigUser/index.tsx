@@ -1,7 +1,6 @@
 import styles from './ConfigUser.module.scss'
 import Conta from './Conta'
 import Links from './Links'
-import NewPost from '../NewPost'
 import { RiQuillPenLine } from 'react-icons/ri'
 
 export default function ConfigUser() {
