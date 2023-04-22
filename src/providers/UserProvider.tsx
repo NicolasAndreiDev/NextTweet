@@ -3,7 +3,7 @@ import { auth, db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 type UserContextType = {
-  user: {username: string, perfilImageUrl: string, bannerImageUrl: string, following: number[]} | null;
+  user: {userId:string, username: string, perfilImageUrl: string, bannerImageUrl: string, following: number[], likes: number[]} | null;
 };
 
 export const UserContext = createContext<UserContextType>({
@@ -12,7 +12,7 @@ export const UserContext = createContext<UserContextType>({
 
   
 export function UserProvider({ children }: {children: React.ReactNode}) {
-  const [user, setUser] = useState<{username: string, perfilImageUrl: string, bannerImageUrl: string, following: number[]} | null>(null);
+  const [user, setUser] = useState<{userId: string,username: string, perfilImageUrl: string, bannerImageUrl: string, following: number[], likes: number[]} | null>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -21,10 +21,12 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
           const userDocSnap = await getDoc(userDocRef);
           const userData = userDocSnap.data() ?? {};
           setUser({
+              userId: userData?.userId,
               username: userData?.username,
               perfilImageUrl: userData?.perfilImageUrl,
               bannerImageUrl: userData?.bannerImageUrl,
               following: userData?.following,
+              likes: userData?.likes
           });
       }
     });

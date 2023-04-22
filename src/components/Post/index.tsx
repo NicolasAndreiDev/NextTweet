@@ -1,11 +1,12 @@
 import { AiOutlineComment } from 'react-icons/ai'
 import styles from './Post.module.scss'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Link from 'next/link'
+import { UserContext } from '@/providers/UserProvider'
 
 interface Props{
     name: string,
@@ -21,11 +22,13 @@ interface Props{
 }
 
 export default function Post({name, username, foto, imagem, userId, text, date, totalLike, id, linkAtivo = true} : Props) {
+    const { user } = useContext(UserContext)
     const [ like, setLike ] = useState(false)
+
     async function updateLikesCount() {
         const userDocRef = doc(db, 'users', userId);
         const userDoc = await getDoc(userDocRef);
-      
+        
         if (userDoc.exists()) {
           const posts = userDoc.data().posts;
           const postIndex = posts.findIndex((post: {id: string}) => post.id === id);
