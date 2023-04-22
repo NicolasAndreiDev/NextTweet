@@ -19,7 +19,6 @@ export const UserListContext = createContext<UserListContextType>({
 
 export function UserListProvider({children}: {children: React.ReactNode}) {
     const [usersList, setUsersList] = useState<User[]>([])
-
     
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
