@@ -2,7 +2,7 @@ import ButtonFollow from '@/components/ButtonFollow'
 import styles from './AllUsers.module.scss'
 import { useRouter } from 'next/router'
 
-export default function AllUsers({name, username, foto}: {name: string, username: string, foto: string | null} ) {
+export default function AllUsers({name, username, foto, userId}: {name: string, username: string, foto: string | null, userId: string} ) {
     const route = useRouter()
 
     function handleClick() {
@@ -20,7 +20,7 @@ export default function AllUsers({name, username, foto}: {name: string, username
                     </div>
                 </div>
             </div>
-            <ButtonFollow className={styles.button}/>
+            <ButtonFollow className={styles.button} userId={userId} username={username}/>
         </div>
     )
 }
