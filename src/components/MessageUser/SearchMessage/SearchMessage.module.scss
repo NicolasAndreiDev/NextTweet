@@ -8,6 +8,11 @@
     border: .1rem solid $cor-texto-claro;
     &:focus-within{
         border: .1rem solid $cor-azul;
+        .labelSearch{
+            .icon{
+                color: $cor-azul;
+            }
+        }
     }
     .labelSearch{
         display: flex;

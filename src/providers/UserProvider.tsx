@@ -3,7 +3,7 @@ import { auth, db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 type UserContextType = {
-  user: {userId:string, username: string, perfilImageUrl: string, bannerImageUrl: string, following: number[], likes: number[]} | null;
+  user: {userId:string, username: string, perfilImageUrl: string, bannerImageUrl: string, following: string[], likes: string[], posts: string[]} | null;
 };
 
 export const UserContext = createContext<UserContextType>({
@@ -12,7 +12,7 @@ export const UserContext = createContext<UserContextType>({
 
   
 export function UserProvider({ children }: {children: React.ReactNode}) {
-  const [user, setUser] = useState<{userId: string,username: string, perfilImageUrl: string, bannerImageUrl: string, following: number[], likes: number[]} | null>(null);
+  const [user, setUser] = useState<{userId: string,username: string, perfilImageUrl: string, bannerImageUrl: string, following: string[], likes: string[], posts: string[]} | null>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -26,12 +26,13 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
               perfilImageUrl: userData?.perfilImageUrl,
               bannerImageUrl: userData?.bannerImageUrl,
               following: userData?.following,
+              posts: userData?.posts,
               likes: userData?.likes
           });
       }
     });
     return unsubscribe;
-  }, []);  
+  }, [user]);  
 
 return (
   <UserContext.Provider value={{ user }}>

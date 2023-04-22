@@ -21,6 +21,12 @@
             border-radius: 10rem;
             object-fit: cover;
         }
+        .defaultImage{
+            width: 4.8rem;
+            height: 4.8rem;
+            border-radius: 10rem;
+            background-color: $cor-texto-claro;
+        }
         .nome{
             max-width: 10vw;
             white-space: nowrap;

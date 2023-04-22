@@ -5,6 +5,7 @@ import Dados from './Dados'
 
 export default function Search({ DadosOn = true, style } : { DadosOn?: boolean, style?: CSSProperties}) {
     const [pesquisa, setPesquisa] = useState(false)
+    const [value, setValue] = useState('')
     const DadosRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -17,10 +18,14 @@ export default function Search({ DadosOn = true, style } : { DadosOn?: boolean, 
           return () => {
             document.removeEventListener('mousedown', handleClickOutside);
           };
-      }, [DadosRef]);
+    }, [DadosRef]);
 
     function mostrarDados() {
         setPesquisa(true)
+    }
+
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>){
+      setValue(event.target.value)
     }
 
     return(
@@ -29,10 +34,10 @@ export default function Search({ DadosOn = true, style } : { DadosOn?: boolean, 
                 <label htmlFor='pesquisa'>
                     <FiSearch className={styles.icon}/>
                 </label>
-                <input id='pesquisa' type="text" autoComplete='off' placeholder='Serch'/>
+                <input id='pesquisa' type="text" autoComplete='off' value={value} placeholder='Serch' onChange={handleChange}/>
             </div>
             <div ref={DadosRef}>
-                { DadosOn && pesquisa && <Dados />}
+                { DadosOn && pesquisa && <Dados dados={value}/>}
             </div>
         </>
     )
