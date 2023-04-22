@@ -32,7 +32,7 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
       }
     });
     return unsubscribe;
-  }, [user]);  
+  }, []);  
 
 return (
   <UserContext.Provider value={{ user }}>
