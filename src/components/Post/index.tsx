@@ -28,8 +28,6 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
     const [ like, setLike ] = useState(false)
     const [ copyUrl, setCopyUrl ] = useState(false)
 
-    const route = useRouter()
-
     async function updateLikesCount() {
         const userDocRef = doc(db, 'users', userId);
         const userDoc = await getDoc(userDocRef);
