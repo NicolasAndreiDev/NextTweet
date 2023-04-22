@@ -48,7 +48,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'passwordLogin'}>Password</label>
-                    <input id={'passwordLogin'} type={'password'} name={'passwordLogin'} value={values.passwordLogin} onChange={handleChange}/>
+                    <input id={'passwordLogin'} type={'password'} name={'passwordLogin'} autoComplete={"current-password"} value={values.passwordLogin} onChange={handleChange}/>
                 </div>
                 <button className={styles.button}>
                     {load ? <AiOutlineLoading3Quarters className={styles.load}/> : 'Login'}

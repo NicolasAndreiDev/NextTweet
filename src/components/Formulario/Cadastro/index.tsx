@@ -6,6 +6,7 @@ import Erro from "../Erro";
 import { useRouter } from "next/router";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { doc, setDoc } from "firebase/firestore";
+import { getUsers } from "@/utils/getUsers";
 
 interface FormValues {
     emailCadastro: string,
@@ -22,8 +23,15 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
 
     async function createUser(email: string, password: string) {
 
+        const listUsers = await getUsers()
+        const newListUsers = listUsers.filter((users: any) => users.username === values.username)
+
         if(values.emailCadastro.length == 0 || values.username.length == 0 || values.passwordCadastro.length == 0 || values.confirmPassword.length == 0) {
             return setErro('Preencha todos os campos!')
+        }
+
+        if(newListUsers.length > 0) {
+            return setErro('Esse username já está em uso')
         }
         
         if(values.passwordCadastro.length <= 5){
@@ -32,7 +40,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
 
         if(values.passwordCadastro !== values.confirmPassword){
             return setErro('As senhas são diferentes!')
-        } 
+        }
 
         try {
             setLoad(true);
@@ -70,11 +78,11 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'passwordCadastro'}>Password</label>
-                    <input id={'passwordCadastro'} type={'password'} name={'passwordCadastro'} value={values.passwordCadastro} onChange={handleChange} />
+                    <input id={'passwordCadastro'} type={'password'} name={'passwordCadastro'} autoComplete={'new-password'} value={values.passwordCadastro} onChange={handleChange} />
                 </div>
                 <div className={styles.value}>
                     <label htmlFor={'confirmPasswordCadastro'}>Confirm Password</label>
-                    <input id={'confirmPasswordCadastro'} type={'password'} name={'confirmPassword'} value={values.confirmPassword} onChange={handleChange}/>
+                    <input id={'confirmPasswordCadastro'} type={'password'} name={'confirmPassword'} autoComplete={'new-password'} value={values.confirmPassword} onChange={handleChange}/>
                 </div>
                 <button className={styles.button}>
                     {load ? <AiOutlineLoading3Quarters className={styles.load}/> : 'Cadastro'}

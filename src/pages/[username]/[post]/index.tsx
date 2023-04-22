@@ -8,7 +8,7 @@ import { GetServerSidePropsContext } from "next";
 import { getPosts } from "@/utils/getPosts";
 import { ParsedUrlQuery } from "querystring";
 import Post from "@/components/Post";
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { UserListContext } from "@/providers/UserListProvider";
 import { useRouter } from "next/router";
 
@@ -57,7 +57,7 @@ export default function PostPage({ post } : { post: Props }) {
                 <div className={styles.direita}>
                     <InfoPadrao>
                         <HeaderBack local={'Post'} style={{padding: '1.4rem 2rem'}}/>
-                        <Post linkAtivo={false} userId={post.userId} name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id} />
+                        <Post linkAtivo={false} userId={post.userId} name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id}/>
                     </InfoPadrao>
                     <List listUsers={ThreeUsers}/>
                 </div>

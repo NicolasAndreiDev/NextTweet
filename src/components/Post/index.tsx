@@ -1,12 +1,14 @@
 import { AiOutlineComment } from 'react-icons/ai'
 import styles from './Post.module.scss'
-import { useState, useContext } from 'react'
+import { useState, useContext, useCallback } from 'react'
 import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Link from 'next/link'
 import { UserContext } from '@/providers/UserProvider'
+import { useRouter } from 'next/router'
+import UrlCopy from './UrlCopy.tsx'
 
 interface Props{
     name: string,
@@ -21,9 +23,12 @@ interface Props{
     userId: string,
 }
 
-export default function Post({name, username, foto, imagem, userId, text, date, totalLike, id, linkAtivo = true} : Props) {
+export default function Post({name, username, foto, imagem, userId, text, date, totalLike, id, linkAtivo = true, } : Props) {
     const { user } = useContext(UserContext)
     const [ like, setLike ] = useState(false)
+    const [ copyUrl, setCopyUrl ] = useState(false)
+
+    const route = useRouter()
 
     async function updateLikesCount() {
         const userDocRef = doc(db, 'users', userId);
@@ -49,6 +54,17 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
         setLike(prev => !prev)
     }
 
+    function handleCopyUrl(){
+        navigator.clipboard.writeText(`https://next-tweet.vercel.app/${username}/${id}`);
+    };
+
+    function handleSetCopyUrl() {
+        setCopyUrl(true);
+        setTimeout(() => {
+          setCopyUrl(false);
+        }, 1500);
+      }
+      
     return(
         <div className={styles.container}>
             { linkAtivo ? <Link href={`${username}/${id}`} className={styles.link}>
@@ -56,7 +72,7 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
             </Link> : ''}
             <div className={styles.linha}/>
             <div className={styles.post}>
-                <Link href={`/${username}`} style={{maxHeight: '4.8rem', zIndex: '1'}}>
+                <Link href={`/${user?.username == username ? 'profile' : username }`} style={{maxHeight: '4.8rem', zIndex: '1'}}>
                     { foto ? <img src={foto} alt={username} className={styles.image}/> : <div className={styles.imageDefault}></div>}
                 </Link>
                 <div className={styles.infoPubli}>
@@ -79,12 +95,13 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
                                     <span>1</span>
                                 </Link> : <> <AiOutlineComment className={styles.icon}/> <span>1</span> </>}
                             </div>
-                        <div className={styles.social_icon} onClick={() => {handleLike(), updateLikesCount()}}>
+                        <div className={styles.social_icon} onClick={() => {handleLike(), updateLikesCount()}} >
                             <TbHeart className={styles.icon} style={like ? {fill: 'rgb(249, 24, 128)', color: 'rgb(249, 24, 128)'} : {}}/>
                             <span style={like ? {color: 'rgb(249, 24, 128)'} : {}}>{like ? totalLike += 1 : totalLike}</span>
                         </div>
-                        <div className={styles.social_icon}>
+                        <div className={styles.social_icon} onClick={() => {handleCopyUrl(), handleSetCopyUrl()}}>
                             <TbShare2 className={styles.icon}/>
+                            { copyUrl && <UrlCopy />}
                         </div>
                     </div>
                 </div>
