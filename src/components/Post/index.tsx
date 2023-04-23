@@ -1,13 +1,12 @@
 import { AiOutlineComment } from 'react-icons/ai'
 import styles from './Post.module.scss'
-import { useState, useContext, useCallback } from 'react'
+import { useState, useContext } from 'react'
 import { TbHeart } from 'react-icons/tb'
 import { TbShare2 } from 'react-icons/tb'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Link from 'next/link'
 import { UserContext } from '@/providers/UserProvider'
-import { useRouter } from 'next/router'
 import UrlCopy from './UrlCopy.tsx'
 
 interface Props{
