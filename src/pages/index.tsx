@@ -22,6 +22,7 @@ export async function getServerSideProps() {
 interface Props{
   username: string,
   imagem: string,
+  name: string,
   text: string,
   perfilImageUrl: string,
   date: string,
@@ -42,7 +43,7 @@ export default function Home({usersPost} : {usersPost: Array<Props>}) {
             <InfoHome />
             {usersPost.map((post: any) => {
               return(
-                <Post key={post.userId} userId={post.userId} id={post.id} username={post.username} name={post.username} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
+                <Post key={post.userId} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
               )
             })}
           </InfoPadrao>

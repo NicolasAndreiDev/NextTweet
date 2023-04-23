@@ -3,11 +3,12 @@ import Messages from '../Messages'
 import NewMessage from '../NewMessage'
 import styles from './NextMessage.module.scss'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
-import { CSSProperties } from 'react'
+import { CSSProperties, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function NextMessage({style, foto, username, onClick}: {style?: CSSProperties, foto: string, username: string, onClick?: () => void}) {
     const route = useRouter()
+    const [message, setMessage] = useState('')
     
     return(
         <>
@@ -25,9 +26,9 @@ export default function NextMessage({style, foto, username, onClick}: {style?: C
             </div>
             <div className={styles.linha}></div>
             <div className={styles.messages}>
-                <Messages username={username}/>
+                <Messages textoMe={message}/>
             </div>
-            <NewMessage />
+            <NewMessage setMessage={(value: string) => setMessage(value)} user={username}/>
         </div> : 
         <div className={styles.containerNextMessage}>
             <h2>Select a message</h2>

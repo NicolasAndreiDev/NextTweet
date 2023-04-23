@@ -28,7 +28,7 @@ export default function Dados({ dados }: { dados: string }) {
         {!dados ? (<p>Try searching for people</p>) : filteredNewUsers.length === 0 ? ( <p>No users found</p>) 
         : ( filteredNewUsers.map((user) => (
                 <div className={styles.users}>
-                    <img src={user.perfilImageUrl} className={styles.images} />
+                    {user.perfilImageUrl ? <img src={user.perfilImageUrl} className={styles.images} /> : <div className={styles.imageDefault}></div>} 
                     <div className={styles.info}>
                     <span className={styles.name}>{user.username}</span>
                     <span className={styles.username}>@{user.username}</span>

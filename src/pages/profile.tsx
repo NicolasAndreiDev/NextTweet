@@ -41,10 +41,10 @@ export default function Profile({userPost} : {userPost: Array<{username: string}
                             <FotoPerfil foto={user?.perfilImageUrl}/>
                         </Banner>
                         <EditProfile />
-                        <Informacoes name={user?.username} username={user?.username} followers={[0]} following={user?.following ? user?.following.length : 0}/>
+                        <Informacoes name={user?.name} username={user?.username} followers={[0]} following={user?.following ? user?.following.length : 0}/>
                         {posts.map((post: any) => {
                             return(
-                                <Post key={post.userId} userId={post.userId} id={post.id} name={post.username} imagem={post.imagem} foto={post.perfilImageUrl} text={post.text} username={post.username} date={post.date} totalLike={post.likes}/>
+                                <Post key={post.userId} userId={post.userId} id={post.id} name={post.name} imagem={post.imagem} foto={post.perfilImageUrl} text={post.text} username={post.username} date={post.date} totalLike={post.likes}/>
                             )
                         })}
                     </InfoPadrao>

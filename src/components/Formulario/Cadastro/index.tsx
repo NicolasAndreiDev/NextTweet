@@ -45,7 +45,7 @@ export default function Cadastro({onClick}: {onClick: () => void}) {
         try {
             setLoad(true);
             const { user } = await createUserWithEmailAndPassword(auth, email, password);
-            await setDoc(doc(db, "users", user.uid), {email: values.emailCadastro, username: values.username, userId: user.uid});
+            await setDoc(doc(db, "users", user.uid), {email: values.emailCadastro, username: values.username, userId: user.uid, name: values.username});
             route.push('/')
         } catch (error) {
             console.log(error)
