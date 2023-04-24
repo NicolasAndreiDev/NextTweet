@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withEnv = require('next-env');
+const dotenvLoad = require('dotenv-load');
 
-module.exports = nextConfig
+dotenvLoad();
+
+module.exports = withEnv({
+  reactStrictMode: true,
+});
