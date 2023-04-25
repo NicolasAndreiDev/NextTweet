@@ -1,0 +1,137 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    z-index: 1000;
+    background-color: $cor-secundaria;
+    position: fixed;
+    height: 50rem;
+    border-radius: 2rem;
+    width: 60rem;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    .top{
+        display: flex;
+        padding: 1rem;
+        justify-content: space-between;
+        .esquerda{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            .title{
+                font-weight: bold;
+                font-size: 2rem;
+            }
+            .icon{
+                cursor: pointer;
+                height: 3.2rem;
+                width: 3.2rem;
+                padding: .4rem;
+                border-radius: 10rem;
+                &:hover{
+                    background-color: $cor-principal;
+                }
+            }
+        }
+        .save{
+            border-radius: 10rem;
+            border: none;
+            background-color: $cor-da-letra;
+            color: $cor-secundaria;
+            padding: .8rem 2rem;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+    .banner{
+        display: grid;
+        place-items: center;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: $cor-secundaria;
+        height: 20rem;
+        .bannerImage{
+            background-color: $cor-secundaria;
+            height: 4.8rem;
+            width: 4.8rem;
+            display: grid;
+            place-items: center;
+            border-radius: 10rem;
+            cursor: pointer;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            &:hover{
+                background-color: $cor-principal;
+            }
+            .icon{
+                height: 2.8rem;
+                width: 2.8rem;
+            }
+        }
+        .input{
+            display: none;
+        }
+    }
+    .photo{
+        border-radius: 10rem;
+        width: 12rem;
+        height: 12rem;
+        display: grid;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top: 19rem;
+        border: .4rem solid $cor-secundaria;
+        left: 2rem;
+        place-items: center;
+        background-color: $cor-secundaria;
+        .perfil{
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            height: 4rem;
+            width: 4rem;
+            background-color: $cor-secundaria;
+            display: grid;
+            place-items: center;
+            border-radius: 10rem;
+            cursor: pointer;
+            &:hover{
+                background-color: $cor-principal;
+            }
+            .icon{
+                height: 2.4rem;
+                width: 2.4rem;
+            }
+        }
+        .input{
+            display: none;
+        }
+    }
+    .user{
+        margin-top: 6rem;
+        .names{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 2rem;
+            .text{
+                font-weight: bold;
+            }
+            .input{
+                border: .1rem solid $cor-da-letra;
+                border-radius: .4rem;
+                padding: 1rem;
+                outline: none;
+            }
+        }
+    }  
+}
+
+@media screen and (max-width: 605px) {
+    .container{
+        border-radius: 0;
+        height: 100vh;
+        width: 100%;
+    }
+}

@@ -1,9 +1,18 @@
+@import '@/styles/abstract/variaveis.scss';
+
 .menu{
     display: none;
     .image{
         height: 4rem;
         width: 4rem;
         border-radius: 10rem;
+        object-fit: cover;
+    }
+    .imageDefault{
+        height: 4rem;
+        width: 4rem;
+        border-radius: 10rem;
+        background-color: $cor-texto-claro;
     }
 }
 

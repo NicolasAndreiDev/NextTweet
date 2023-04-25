@@ -2,7 +2,7 @@
 
 .autenticacao{
     position: relative;
-    max-height: 100vh;
+    background-color: $cor-principal;
     .divisor, .divisorMob{
         top: 0;
         display: grid;
@@ -54,6 +54,9 @@
             display: none;
         }
         .divisorMob{
+            display: grid;
+        }
+        .lk{
             display: grid;
         }
     }   

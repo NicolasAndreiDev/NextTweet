@@ -1,17 +1,26 @@
 import ButtonFollow from '@/components/ButtonFollow'
 import styles from './AllUsers.module.scss'
+import { useRouter } from 'next/router'
 
-export default function AllUsers() {
+export default function AllUsers({name, username, foto, userId}: {name: string, username: string, foto: string | null, userId: string} ) {
+    const route = useRouter()
+
+    function handleClick() {
+        route.push(username)
+    }
+
     return(
         <div className={styles.container}>
-            <div className={styles.user}>
-                <img src={'/images/luigi.jpg'} alt={'Luigi'} className={styles.image}/>
-                <div className={styles.userInfo}>
-                    <span className={styles.nome}>Luigi</span>
-                    <span className={styles.username}>@Luigi_Tweet</span>
+            <div onClick={handleClick} className={styles.element}>
+                <div className={styles.user}>
+                    { foto ? <img src={foto} alt={name} className={styles.image}/> : <div className={styles.imageDefault}></div>}
+                    <div className={styles.userInfo}>
+                        <span className={styles.nome}>{name}</span>
+                        <span className={styles.username}>@{username}</span>
+                    </div>
                 </div>
             </div>
-            <ButtonFollow className={styles.button}/>
+            <ButtonFollow className={styles.button} userId={userId} username={username}/>
         </div>
     )
 }

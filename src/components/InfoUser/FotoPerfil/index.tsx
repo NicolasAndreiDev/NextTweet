@@ -1,9 +1,10 @@
 import styles from './FotoPerfil.module.scss'
 
-export default function FotoPerfil() {
+export default function FotoPerfil({foto} : {foto?: string | null}) {
+
     return(
         <div>
-            <img src={'/images/foto_perfil.jpg'} className={styles.fotoPerfil} />
+            {foto ? <img src={foto} className={styles.fotoPerfil} /> : <div className={styles.fotoDefault}></div>}
         </div>
     )
 }

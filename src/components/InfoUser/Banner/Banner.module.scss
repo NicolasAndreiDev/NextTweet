@@ -1,3 +1,5 @@
+@import '@/styles/abstract/variaveis.scss';
+
 .bannerDiv{
     position: relative;
     height: 30rem;
@@ -5,5 +7,10 @@
         object-fit: cover;
         height: 24rem;
         width: 100%;
+    }
+    .bannerDefault{
+        height: 24rem;
+        width: 100%;
+        background-color: $cor-texto-claro;
     }
 }

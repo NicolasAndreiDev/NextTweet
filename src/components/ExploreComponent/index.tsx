@@ -5,7 +5,7 @@ import ButtonHeader from '../ButtonHeader';
 import { useRef,useState } from 'react'
 import ListaPadrao from './ListaPadrao';
 import { lista, listaEntertainment, listaNews, listaSports, listaTrending } from './Listas';
-import Post from '../InfoUser/Post';
+import Post from '../Post';
 import MobileComponents from '../MobileComponents';
 
 export default function ExploreComponent() {
@@ -21,10 +21,6 @@ export default function ExploreComponent() {
             return (
                 <div>
                     <ListaPadrao lista={lista}/>
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
                 </div>
             )
         }

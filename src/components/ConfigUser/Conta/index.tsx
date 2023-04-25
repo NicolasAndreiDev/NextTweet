@@ -1,9 +1,12 @@
-import styles from './Conta.module.scss'
-import { HiEllipsisHorizontal } from 'react-icons/hi2'
-import { useState, useEffect, useRef } from 'react'
-import PopUp from './PopUp'
+import styles from './Conta.module.scss';
+import { HiEllipsisHorizontal } from 'react-icons/hi2';
+import { useState, useEffect, useRef } from 'react';
+import PopUp from './PopUp';
+import { useContext } from 'react';
+import { UserContext } from '@/providers/UserProvider';
 
 export default function Conta() {
+    const { user } = useContext(UserContext)
     const [conta, setConta] = useState<boolean>()
     const PopUpRef = useRef<HTMLDivElement>(null)
 
@@ -17,7 +20,7 @@ export default function Conta() {
           return () => {
             document.removeEventListener('mousedown', handleClickOutside);
           };
-      }, [PopUpRef]);
+    }, [PopUpRef]);
 
     function handleClick() {
         setConta(prev => !prev)
@@ -27,10 +30,10 @@ export default function Conta() {
         <>
             <div className={styles.conta} onClick={handleClick}>
                 <div className={styles.conta__user}>
-                    <img src={'/images/foto_perfil.jpg'} alt={'foto_perfil'} className={styles.imagem}/>
+                    { user?.perfilImageUrl ? <img src={user.perfilImageUrl} alt={'foto_perfil'} className={styles.imagem}/> : <div className={styles.imagemDefault}></div>}
                     <div className={styles.user}>
-                        <span>Nicolas</span>
-                        <span>@Nicolas_AS</span>
+                        <span>{user?.username}</span>
+                        <span>@{user?.username}</span>
                     </div>
                 </div>
                 <HiEllipsisHorizontal className={styles.icon}/>

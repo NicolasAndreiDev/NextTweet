@@ -1,22 +1,26 @@
 import ConfigUser from '@/components/ConfigUser'
 import ExploreComponent from '@/components/ExploreComponent'
-import HeaderPadrao from '@/components/HeaderPadrao'
 import InfoPadrao from '@/components/InfoPadrao'
-import Post from '@/components/InfoUser/Post'
 import List from '@/components/List'
-import Search from '@/components/Search'
 import styles from '@/styles/Padrao.module.scss'
+import PrivateRoute from '@/utils/PrivateRoute'
+import { useContext } from 'react'
+import { UserListContext } from '@/providers/UserListProvider'
 
 export default function Explore() {
+    const { usersList } = useContext(UserListContext)
+    const ThreeUsers = usersList.slice(0, 3)
     return(
-        <div className={styles.container}>
-            <ConfigUser />
-            <div className={styles.direita}>
-            <InfoPadrao>
-                <ExploreComponent />
-            </InfoPadrao>
+        <PrivateRoute>
+            <div className={styles.container}>
+                <ConfigUser />
+                <div className={styles.direita}>
+                <InfoPadrao>
+                    <ExploreComponent />
+                </InfoPadrao>
+                </div>
+                <List search={false} listUsers={ThreeUsers}/>
             </div>
-            <List search={false}/>
-        </div>
+        </PrivateRoute>
     )
 }

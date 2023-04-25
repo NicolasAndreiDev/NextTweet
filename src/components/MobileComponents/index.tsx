@@ -1,9 +1,11 @@
 import styles from './MobileComponents.module.scss'
 import AccountInfo from './AccountInfo'
-import { useEffect, useRef, useState } from 'react'
-import Foco from './Foco'
+import { useEffect, useRef, useState, useContext } from 'react'
+import Foco from '../Foco'
+import { UserContext } from '@/providers/UserProvider'
 
 export default function MobileComponents() {
+    const { user } = useContext(UserContext)
     const menuRef = useRef<HTMLDivElement>(null)
     const [menu, setMenu] = useState<boolean>()
     
@@ -25,11 +27,11 @@ export default function MobileComponents() {
 
     return(
         <div className={styles.menu}>
-            <img src={'/images/foto_perfil.jpg'} alt={'fotoPerfil'} className={styles.image} onClick={handleClick}/>
+            { user?.perfilImageUrl ? <img src={user?.perfilImageUrl} alt={'fotoPerfil'} className={styles.image} onClick={handleClick}/> : <div className={styles.imageDefault} onClick={handleClick}></div>}
             <div ref={menuRef}>
                 {menu && <AccountInfo evento={() => setMenu(false)}/>}
             </div>
-            {menu && <Foco />}
+            {menu && <Foco color={'rgb(0, 0, 0, .4)'}/>}
         </div>
     )
 }

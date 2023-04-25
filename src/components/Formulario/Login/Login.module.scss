@@ -1,12 +1,82 @@
-.form{
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
     position: absolute;
     right: 0;
+    display: grid;
+    place-items: center;
     width: 50%;
+    .form{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        border-radius: 2rem;
+        font-size: $tamanho-da-fonte;
+        .value{
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            label{
+                font-weight: bold;
+            }
+            input{
+                outline: none;
+                width: 28rem;
+                padding: 1rem;
+                border: none;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: .4rem;
+            }
+        }
+        .button{
+            width: 28rem;
+            border: none;
+            padding: 1.2rem;
+            cursor: pointer;
+            color: $cor-secundaria;
+            background-color: $cor-azul;
+            font-weight: bold;
+            font-size: $tamanho-da-fonte;
+            text-transform: uppercase;
+            letter-spacing: .4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+            border-radius: 10rem;
+            .load{
+                animation: loader 1s infinite linear;
+            }
+        }
+        .link{
+            font-size: $texto-pequeno;
+            color: $cor-texto-claro;
+            width: 28rem;
+            span{
+                cursor: pointer;
+                &:hover{
+                    color: $cor-azul
+                }
+            }
+        }
+    }
+}
+
+@keyframes loader {
+    from{
+        rotate: (0deg);
+    }
+    to{
+        rotate: (360deg);
+    }
 }
 
 @media screen and (max-width: 800px) {
-    .form{
+    .container{
         left: 0;
         margin: auto;
+        width: 100%;
     }
 }

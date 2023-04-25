@@ -6,6 +6,15 @@ html{
   font-family: 'Montserrat', sans-serif;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Source Sans Pro', sans-serif;
+  overflow-y: scroll;
+  color: $cor-da-letra;
+  &::-webkit-scrollbar{
+    width: 0;
+  }
+}
+
+a{
+  text-decoration: none;
   color: $cor-da-letra;
 }
 

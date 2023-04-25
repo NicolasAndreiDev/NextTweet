@@ -1,6 +1,6 @@
 @import '@/styles/abstract/variaveis.scss';
 
-.containerNext{
+.containerNext, .containerNextMessage{
     width: 59.2rem;
     display: flex;
     flex-direction: column;
@@ -8,6 +8,7 @@
     background-color: $cor-secundaria;
     font-size: $tamanho-da-fonte;
     height: 100vh;
+    z-index: 90;
     position: relative;
     .infoUser{
         position: sticky;
@@ -25,6 +26,7 @@
             .imagemMenor{
                 width: 3.6rem;
                 height: 3.6rem;
+                object-fit: cover;
                 border-radius: 10rem;
                 cursor: pointer;
             }
@@ -48,6 +50,9 @@
                 height: 2rem;
                 width: 2rem;
             }
+            .icon:nth-child(2){
+                display: none;
+            }
         }
     }
     .linha{
@@ -63,21 +68,49 @@
         }
     }
 }
+.containerNextMessage{
+    display: grid;
+    place-items: center;
+}
 
 @media screen and (max-width:1078px) {
-    .containerNext{
+    .containerNext, .containerNextMessage{
         width: 56rem;
     }
 }
 
 @media screen and (max-width:1030px) {
-    .containerNext{
+    .containerNext, .containerNextMessage{
         width: 54rem;
     }
 }
 
 @media screen and (max-width:1000px) {
-    .containerNext{
+    .containerNext, .containerNextMessage{
         display: none;
+        width: 60rem;
+        .infoUser{
+            .button{
+                .icon:nth-child(1){
+                    display: none;
+                }
+                .icon:nth-child(2){
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .containerNext{
+        width: 88vw;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .containerNext{
+        width: 100vw;
     }
 }

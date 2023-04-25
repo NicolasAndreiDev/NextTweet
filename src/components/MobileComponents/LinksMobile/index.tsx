@@ -4,6 +4,7 @@ import Route from "@/components/PaginaRouter"
 import { HiOutlineMail } from 'react-icons/hi'
 import { RiNotification2Line } from 'react-icons/ri'
 import { BiHomeAlt2 } from 'react-icons/bi'
+import ButtonPost from '../ButtonPost'
 
 export default function LinksMobile() {
     return(
@@ -21,6 +22,7 @@ export default function LinksMobile() {
             <Route location={'/messages'}>
                 <HiOutlineMail className={styles.icon}/> 
             </Route>
+            <ButtonPost />
         </div>
     )
 }
