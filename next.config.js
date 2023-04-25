@@ -3,16 +3,16 @@ const dotenvLoad = require('dotenv-load');
 
 dotenvLoad();
 
-module.exports = {
-  future: {
-    webpack5: true, 
-  },
-  webpack(config) {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false, 
-    };
+const nextConfig = {
+    webpack: (config) => {
+      config.resolve.fallback = {
+        path: false,
+        fs: false,
+      };
+      
+      return config;
+    },
+}
 
-    return config;
-  },
-};
+
+module.exports = nextConfig
