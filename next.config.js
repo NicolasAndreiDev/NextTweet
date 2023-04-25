@@ -1,18 +1,6 @@
-/** @type {import('next-env')} */
-const dotenvLoad = require('dotenv-load');
-
-dotenvLoad();
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-    webpack: (config) => {
-      config.resolve.fallback = {
-        path: false,
-        fs: false,
-      };
-      
-      return config;
-    },
+  reactStrictMode: true,
 }
-
 
 module.exports = nextConfig
