@@ -24,7 +24,7 @@ interface Props{
   imagem: string,
   name: string,
   text: string,
-  perfilImageUrl: string,
+  perfilImageUrl: string | null, 
   date: string,
   likes: number,
   id: string,

@@ -44,7 +44,7 @@ interface Props{
     username: string,
     imagem: string,
     text: string,
-    perfilImageUrl: string,
+    perfilImageUrl: string, 
     date: string,
     likes: number,
     id: string,
@@ -53,7 +53,6 @@ interface Props{
 
 export default function Username({user, userPost} : {user: {username: string, perfilImageUrl: string, bannerImageUrl: string, userId: string, following: [], followers: []}, userPost: Array<Props>}) {
     const { usersList } = useContext(UserListContext)
-    const [followers, setFollowers] = useState(user.followers.length);
     const ThreeUsersAnd = usersList.filter((listUser) => listUser.username !== user.username)
     const ThreeUsers = ThreeUsersAnd.slice(0, 3)
     const router = useRouter();
@@ -72,7 +71,7 @@ export default function Username({user, userPost} : {user: {username: string, pe
                             <FotoPerfil foto={user.perfilImageUrl}/>
                             <ButtonFollow className={styles.buttonFollowPageComponent} username={user.username} userId={user.userId}/>
                         </Banner>
-                        <Informacoes name={user.username} username={user.username} followers={user.followers ? followers : 0} following={user.following ? user.following.length : 0}/>
+                        <Informacoes name={user.username} username={user.username} followers={user.followers ? user.followers.length : 0} following={user.following ? user.following.length : 0}/>
                         {userPost.map((post: any) => {
                           return(
                             <Post key={post.userId} name={post.username} userId={post.userId} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id}/>

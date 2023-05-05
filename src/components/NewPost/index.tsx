@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 export default function NewPost({children, imagem, text, className}: {children: React.ReactNode, className: string, imagem: string, text: string}) {
     const { user } = useContext(UserContext)
 
-    async function handlePost(username: string, perfilImageUrl: string) {
+    async function handlePost(username: string, perfilImageUrl: string | null) {
         const currentDate = new Date();
         const timestamp = currentDate.getTime(); 
         const like: number | null = null
@@ -37,7 +37,7 @@ export default function NewPost({children, imagem, text, className}: {children: 
     }
 
     return (
-        <button className={className} onClick={() => handlePost(user?.username || '', user?.perfilImageUrl || '')}>
+        <button className={className} onClick={() => handlePost(user?.username || '', user?.perfilImageUrl || null)}>
             {children}
         </button>
     );

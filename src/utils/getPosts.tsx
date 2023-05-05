@@ -11,7 +11,7 @@ export async function getPosts() {
     const user = doc.data();
     if (user.posts) {
       user.posts.forEach((post: any) => {
-        const postWithUserInfo = { ...post, username: user.username, perfilImageUrl: user.perfilImageUrl };
+        const postWithUserInfo = { ...post, username: user.username};
         usersPosts.push(postWithUserInfo);
       });
     }

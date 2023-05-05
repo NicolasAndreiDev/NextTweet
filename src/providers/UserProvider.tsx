@@ -6,7 +6,7 @@ type UserContextType = {
   user: {
     userId:string, 
     username: string, 
-    perfilImageUrl: string, 
+    perfilImageUrl: string | null, 
     bannerImageUrl: string, 
     following: string[], 
     name: string,
@@ -19,7 +19,7 @@ export const UserContext = createContext<UserContextType>({
 
   
 export function UserProvider({ children }: {children: React.ReactNode}) {
-  const [user, setUser] = useState<{userId: string,username: string, perfilImageUrl: string, bannerImageUrl: string, following: string[], name: string} | null>(null);
+  const [user, setUser] = useState<{userId: string,username: string, perfilImageUrl: string | null, bannerImageUrl: string, following: string[], name: string} | null>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -38,7 +38,7 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
       }
     });
     return unsubscribe;
-  }, [user]);  
+  }, []);  
 
 return (
   <UserContext.Provider value={{ user }}>
