@@ -8,7 +8,7 @@ import { GetServerSidePropsContext } from "next";
 import { getPosts } from "@/utils/getPosts";
 import { ParsedUrlQuery } from "querystring";
 import Post from "@/components/Post";
-import { useCallback, useContext } from 'react';
+import { useContext } from 'react';
 import { UserListContext } from "@/providers/UserListProvider";
 import { useRouter } from "next/router";
 
