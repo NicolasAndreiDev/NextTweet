@@ -34,6 +34,7 @@ interface Props{
 export default function Home({usersPost} : {usersPost: Array<Props>}) {
   const { usersList } = useContext(UserListContext) 
   const ThreeUsers = usersList.slice(0, 3)
+
   return (
     <PrivateRoute>
       <div className={styles.container}>
@@ -42,7 +43,7 @@ export default function Home({usersPost} : {usersPost: Array<Props>}) {
           <InfoPadrao>
             <InfoHome />
             {usersPost.map((post: any) => {
-              return(
+              return( 
                 <Post key={post.userId} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
               )
             })}

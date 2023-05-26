@@ -30,6 +30,13 @@
                 border-radius: 10rem;
                 cursor: pointer;
             }
+            .imagemDefault{
+                width: 3.6rem;
+                height: 3.6rem;
+                border-radius: 10rem;
+                cursor: pointer;
+                background-color: $cor-texto-claro;
+            }
             .nome{
                 font-weight: bold;
             }

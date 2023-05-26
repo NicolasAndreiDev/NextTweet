@@ -16,7 +16,7 @@ export default function NextMessage({style, foto, username, onClick}: {style?: C
         <div className={styles.containerNext} style={style}>
             <div className={styles.infoUser}>
                 <div className={styles.user}>
-                    <img src={foto} alt={'users'} className={styles.imagemMenor} onClick={() => route.push(`${username}`)}/>
+                    {foto ? <img src={foto} alt={'users'} className={styles.imagemMenor} onClick={() => route.push(`${username}`)}/> : <div className={styles.imagemDefault}></div>}
                     <span className={styles.nome}>{username}</span>
                 </div>
                 <button className={styles.button}>

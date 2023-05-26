@@ -6,11 +6,11 @@ import { useEffect, useState, useContext } from 'react';
 import { db, storage } from '../../../../../firebase';
 import { User, getAuth } from 'firebase/auth';
 import { UserContext } from '@/providers/UserProvider'
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { getUsers } from '@/utils/getUsers';
 
 export default function EditProfilePopUp({evento} : {evento: () => void}) {
-    const { user } = useContext(UserContext)
+    const { user, updateUserInfo } = useContext(UserContext)
     const [perfilImage, setPerfilImage] = useState<File | null>();
     const [photoStyle, setPhotoStyle] = useState<{} | null>({backgroundImage: `url(${user?.perfilImageUrl})`});
     const [bannerImage, setBannerImage] = useState<File | null>();
@@ -87,6 +87,8 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
             const userDocRef = doc(db, 'users', users!.uid);
             await setDoc(userDocRef, { username }, { merge: true });
         }
+
+        updateUserInfo();
     };
 
     async function checkIfUsernameExists(username: string) {

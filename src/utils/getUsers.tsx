@@ -9,7 +9,7 @@ export async function getUsers() {
 
     querySnapshot.forEach((doc) => {
     const user = doc.data();
-    users.push(user);
+        users.push(user)
     });
 
     return users;

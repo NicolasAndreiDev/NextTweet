@@ -22,11 +22,13 @@ export default function PostHome({ name }: { name?: string }) {
   const [ showGif, setShowGif ] = useState(false)
 
   function handleEmojiClick(){
-    setShowEmojiPicker(!showEmojiPicker);
+    setShowEmojiPicker(!showEmojiPicker)
+    setShowGif(false)
   };
 
   function handleGif(){
     setShowGif(!showGif)
+    setShowEmojiPicker(false)
   }
 
   function handleEmojiSelect(emoji: any){
@@ -65,6 +67,11 @@ export default function PostHome({ name }: { name?: string }) {
         document.removeEventListener('mousedown', handleClickOutside);
       };
   }, [PopUpRef]);
+
+  function hanldeClick() {
+    setSelectedImage('')
+    setInputValue('')
+  }
 
   return (
     <div className={name}>
@@ -110,7 +117,7 @@ export default function PostHome({ name }: { name?: string }) {
             </div>
           </div>
           <div>
-            <NewPost className={styles.publicar} imagem={selectedImage} text={inputValue}>New post</NewPost>
+            <NewPost className={styles.publicar} imagem={selectedImage} text={inputValue} onClick={hanldeClick}>New post</NewPost>
           </div>
         </div>
       </div>

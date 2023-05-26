@@ -6,7 +6,7 @@ export default function ThreeUsers({foto, username, userId}: {foto: string, user
     const route = useRouter()
 
     function handleClick() {
-            route.push(`/${username}`)
+        route.push(`/${username}`)
     }
 
     return(

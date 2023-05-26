@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { auth, db } from "../../../firebase"
 import { setDoc, doc, getDoc } from "firebase/firestore"
 import { getUsers } from "@/utils/getUsers"
+import { UserContext } from "@/providers/UserProvider"
 
 export default function ButtonFollow({className, userId} : {className: string, username: string, userId: string}) {
+    const { updateUserInfo } = useContext(UserContext);
     const [follow, setFollow] = useState(false)
     const currentUser = auth.currentUser
 
@@ -44,6 +46,7 @@ export default function ButtonFollow({className, userId} : {className: string, u
                 await setDoc(SECUNDARIO, { followers: followers }, { merge: true });
             }
             setFollow(prev => !prev)
+            updateUserInfo();
         }
     }
 

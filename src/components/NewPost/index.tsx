@@ -4,10 +4,16 @@ import { UserContext } from '@/providers/UserProvider';
 import { useContext } from 'react'
 import { format } from 'date-fns';
 
-export default function NewPost({children, imagem, text, className}: {children: React.ReactNode, className: string, imagem: string, text: string}) {
-    const { user } = useContext(UserContext)
+export default function NewPost({children, imagem, text, className, onClick}: {
+    children: React.ReactNode, 
+    className: string, 
+    imagem: string, 
+    text: string
+    onClick: () => void
+}) {
+    const {user, updateUserInfo} = useContext(UserContext)
 
-    async function handlePost(username: string, perfilImageUrl: string | null) {
+    async function handlePost() {
         const currentDate = new Date();
         const timestamp = currentDate.getTime(); 
         const like: number | null = null
@@ -24,20 +30,18 @@ export default function NewPost({children, imagem, text, className}: {children: 
         const post = {
             imagem,
             text,
-            username,
-            perfilImageUrl,
-            id: `${username}-${nextIndex}`,
+            id: `${user!.username}-${nextIndex}`,
             date: formattedDate,
             likes: like,
             timestamp,
             userId: currentUser.uid
         };
         const posts = userData?.posts ? [...userData.posts, post] : [post];
-        await setDoc(userDocRef, { posts }, { merge: true });
+        await setDoc(userDocRef, { posts }, { merge: true }).then(() => updateUserInfo())   
     }
 
     return (
-        <button className={className} onClick={() => handlePost(user?.username || '', user?.perfilImageUrl || null)}>
+        <button className={className} onClick={() => {handlePost(), onClick()}}>
             {children}
         </button>
     );

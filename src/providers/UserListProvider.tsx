@@ -1,40 +1,41 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useContext } from 'react'
 import { auth } from '../../firebase';
 import { getUsers } from '@/utils/getUsers';
+import { UserContext } from './UserProvider';
 
 type User = {
-    username: string;
-    perfilImageUrl: string;
-    userId: string
+  username: string;
+  perfilImageUrl: string;
+  userId: string
 }
   
 type UserListContextType = {
-    usersList: User[];
+  usersList: User[];
 }
   
 export const UserListContext = createContext<UserListContextType>({
-    usersList: [],
+  usersList: [],
 })
   
 
 export function UserListProvider({children}: {children: React.ReactNode}) {
-    const [usersList, setUsersList] = useState<User[]>([])
+  const { user } = useContext(UserContext);
+  const [usersList, setUsersList] = useState<User[]>([])
     
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const loggedInUserId = auth.currentUser?.email;
-        const users = await getUsers();
-        const newList = users.filter((user: {email: string}) => user.email !== loggedInUserId);
-        setUsersList(newList)
+    if(user && user.username) {
+    const listUsers = async () => {
+      const users = await getUsers();
+      const newList = users.filter((users: {username: string}) => users.username !== user.username);
+      setUsersList(newList)
       }
-    });
-    return unsubscribe;
-  }, []);
+     listUsers()
+    }
+  }, [user]);
 
-    return(
-        <UserListContext.Provider value={{ usersList }}>
-            {children}
-        </UserListContext.Provider>
-    )
+  return(
+    <UserListContext.Provider value={{ usersList }}>
+      {children}
+    </UserListContext.Provider>
+  )
 }
