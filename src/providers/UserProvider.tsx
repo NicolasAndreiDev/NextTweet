@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect, useCallback } from "react";
 import { auth, db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { getPosts } from "@/utils/getPosts";
 
 type UserContextType = {
   user: {
@@ -11,7 +10,7 @@ type UserContextType = {
     bannerImageUrl: string, 
     following: string[], 
     name: string,
-    posts: [{}] | null,
+    posts: [],
   } | null;
   updateUserInfo: () => void
 };
@@ -29,16 +28,15 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
     perfilImageUrl: string | null, 
     bannerImageUrl: string, 
     following: string[], 
-    name: string, posts: [{}]} | null>(null);
+    name: string,
+    posts: []} | null>(null);
 
   const updateUserInfo = useCallback(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (userg) => {
-    if (userg) {
-        const userDocRef = doc(db, "users", userg.uid);
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        const userDocRef = doc(db, "users", user.uid);
         const userDocSnap = await getDoc(userDocRef);
         const userData = userDocSnap.data() ?? {};
-        const newPost = await getPosts();
-        const postsUser = newPost.filter((users: {userId: string}) => users.userId == user?.userId)
         setUser({
             userId: userData?.userId,
             username: userData?.username,
@@ -46,7 +44,7 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
             perfilImageUrl: userData?.perfilImageUrl,
             bannerImageUrl: userData?.bannerImageUrl,
             following: userData?.following,
-            posts: postsUser,
+            posts: userData?.posts,
         });
     }
   });

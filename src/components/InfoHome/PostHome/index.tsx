@@ -1,52 +1,22 @@
-import { use, useEffect, useRef, useState } from "react";
-import { SlPicture } from "react-icons/sl";
-import { TbGif } from "react-icons/tb";
-import { BsEmojiSmile } from "react-icons/bs";
+import { useState } from "react";
 import NewPost from "@/components/NewPost";
 import Link from "next/link";
 import { UserContext } from "@/providers/UserProvider";
 import { useContext } from "react";
 import styles from "./PostoHome.module.scss";
-import data from '@emoji-mart/data'
-import Picker from '@emoji-mart/react'
-import GifPicker from 'gif-picker-react';
 import { IoClose } from "react-icons/io5";
+import NewText from "@/components/NewText";
 
 export default function PostHome({ name }: { name?: string }) {
-  const PopUpRef = useRef<HTMLDivElement>(null)
   const { user } = useContext(UserContext);
   const [ selectedImage, setSelectedImage ] = useState("");
-  const [ showEmojiPicker, setShowEmojiPicker ] = useState(false);
   const [ inputValue, setInputValue ] = useState("");
   const [ selectEmoji, setSelectEmoji ] = useState<string[]>([])
-  const [ showGif, setShowGif ] = useState(false)
-
-  function handleEmojiClick(){
-    setShowEmojiPicker(!showEmojiPicker)
-    setShowGif(false)
-  };
-
-  function handleGif(){
-    setShowGif(!showGif)
-    setShowEmojiPicker(false)
-  }
 
   function handleEmojiSelect(emoji: any){
-    const newInputValue = inputValue + emoji.native;
+    const newInputValue = inputValue + emoji;
     setInputValue(newInputValue);
-    setSelectEmoji([...selectEmoji, emoji.native]);
-  };
-
-  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>){
-    if (e.target.files && e.target.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target) {
-          setSelectedImage(event.target.result as string);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
+    setSelectEmoji([...selectEmoji, emoji]);
   };
 
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>){
@@ -55,20 +25,7 @@ export default function PostHome({ name }: { name?: string }) {
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (PopUpRef.current && !PopUpRef.current.contains(event.target as Element)) {
-        setShowEmojiPicker(false);
-        setShowGif(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-  }, [PopUpRef]);
-
-  function hanldeClick() {
+  function handleClick() {
     setSelectedImage('')
     setInputValue('')
   }
@@ -96,28 +53,9 @@ export default function PostHome({ name }: { name?: string }) {
       <div className={styles.newPost}>
         <hr />
         <div className={styles.infoPost}>
-          <div className={styles.icones}>
-            <div className={styles.boxImage}>
-              <label htmlFor={'fotos'} style={{height: '1.6rem'}}>
-                  <SlPicture className={styles.icon} />
-              </label>
-              <input id={'fotos'} type={'file'} style={{display: 'none'}} onChange={handleImageChange}/>
-            </div>
-            <div className={styles.boxIcon}>
-              <TbGif className={styles.icon} onClick={handleGif}/>
-              <div className={styles.newPosition}>
-                { showGif && <GifPicker tenorApiKey={"AIzaSyC7s5VYl9fGswdBnsWCzvZSJ6grcroXVSg"} onGifClick={(item: any) => setSelectedImage(item.url)}/>}
-              </div>
-            </div>
-            <div className={styles.boxIcon}>
-              <BsEmojiSmile className={styles.icon} onClick={handleEmojiClick} />
-              <div className={styles.newPosition} >
-                {showEmojiPicker && <Picker previewPosition={'none'} position={'bottom'} data={data} emojiSize={20} emojiButtonSize={30} theme={'light'} onEmojiSelect={handleEmojiSelect}/>}
-              </div>
-            </div>
-          </div>
+          <NewText setSelectedEmoji={handleEmojiSelect} setSelectedImage={setSelectedImage}/>
           <div>
-            <NewPost className={styles.publicar} imagem={selectedImage} text={inputValue} onClick={hanldeClick}>New post</NewPost>
+            <NewPost className={styles.publicar} imagem={selectedImage} text={inputValue} onClick={handleClick}>New post</NewPost>
           </div>
         </div>
       </div>

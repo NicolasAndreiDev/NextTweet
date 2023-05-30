@@ -36,6 +36,7 @@
         .infoPubli{
             margin-left: 1rem;
             display: flex;
+            width: 100%;
             flex-direction: column;
             gap: .4rem;
             .publi{
@@ -50,20 +51,40 @@
             }
             .user{
                 display: flex;
-                z-index: 1;
-                align-items: flex-start;
-                gap: 1rem;
-                span:nth-child(1){
-                    font-weight: 700;
+                justify-content: space-between;
+                .topInfo{
+                    display: flex;
+                    z-index: 1;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    span:nth-child(1){
+                        font-weight: 700;
+                    }
+                    span:nth-child(n+2){
+                    color: $cor-texto-claro;
+                    }
+                    .name, .username{
+                        max-width: 20vw;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
-                span:nth-child(n+2){
-                color: $cor-texto-claro;
-                }
-                .name, .username{
-                    max-width: 20vw;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                .opcoes{
+                    position: absolute;
+                    right: 2rem;
+                    top: .5rem;
+                    .icon{
+                        width: 3.2rem;
+                        height: 3.2rem;
+                        cursor: pointer;
+                        padding: .4rem;
+                        border-radius: 100%;
+                        &:hover{
+                            background-color: $cor-azul-claro;
+                            color: $cor-azul;
+                        }
+                    }
                 }
             }
             .newPubli{

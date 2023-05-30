@@ -8,6 +8,7 @@ import PrivateRoute from '@/utils/PrivateRoute'
 import { getPosts } from '@/utils/getPosts'
 import { UserListContext } from '@/providers/UserListProvider'
 import { useContext } from 'react'
+import { UserPostContext } from '@/providers/UserPostProvider'
 
 export async function getServerSideProps() {
   const usersPost = await getPosts()
@@ -32,8 +33,9 @@ interface Props{
 }
 
 export default function Home({usersPost} : {usersPost: Array<Props>}) {
-  const { usersList } = useContext(UserListContext) 
-  const ThreeUsers = usersList.slice(0, 3)
+  const { usersList } = useContext(UserListContext);
+  const { post, posts } = useContext(UserPostContext);
+  const ThreeUsers = usersList.slice(0, 3);
 
   return (
     <PrivateRoute>
@@ -42,9 +44,14 @@ export default function Home({usersPost} : {usersPost: Array<Props>}) {
         <div className={styles.direita}>
           <InfoPadrao>
             <InfoHome />
+            {post ? posts.map((post) => {
+              return(
+                <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} />
+              )
+            }) : ''} 
             {usersPost.map((post: any) => {
               return( 
-                <Post key={post.userId} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes}/>
+                <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} />
               )
             })}
           </InfoPadrao>

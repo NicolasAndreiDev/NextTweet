@@ -1,0 +1,26 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.popUp{
+    height: 4rem;
+    width: 20rem;
+    z-index: 10;
+    right: 0;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: $cor-secundaria;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 2rem;
+    position: absolute;
+    &:hover{
+        background-color: $cor-principal;
+    }
+    .delete{
+        display: flex;
+        gap: .4rem;
+        padding: 0 1rem;
+        align-items: center;
+        color: red;
+    }
+}

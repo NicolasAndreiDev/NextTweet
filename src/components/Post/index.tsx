@@ -1,13 +1,16 @@
-import { AiOutlineComment } from 'react-icons/ai'
-import styles from './Post.module.scss'
-import { useState, useContext } from 'react'
-import { TbHeart } from 'react-icons/tb'
-import { TbShare2 } from 'react-icons/tb'
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
-import { db } from '../../../firebase'
-import Link from 'next/link'
-import { UserContext } from '@/providers/UserProvider'
-import UrlCopy from './UrlCopy.tsx'
+import { AiOutlineComment } from 'react-icons/ai';
+import styles from './Post.module.scss';
+import { useState, useContext, useEffect, useRef } from 'react';
+import { TbHeart } from 'react-icons/tb';
+import { TbShare2 } from 'react-icons/tb';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../../../firebase';
+import Link from 'next/link';
+import { UserContext } from '@/providers/UserProvider';
+import UrlCopy from './UrlCopy.tsx';
+import { HiEllipsisHorizontal } from 'react-icons/hi2';
+import DeletePost from './DeletePost';
+import Foco from '../Foco';
 
 interface Props{
     name: string,
@@ -22,10 +25,36 @@ interface Props{
     userId: string,
 }
 
-export default function Post({name, username, foto, imagem, userId, text, date, totalLike, id, linkAtivo = true, } : Props) {
-    const { user } = useContext(UserContext)
-    const [ like, setLike ] = useState(false)
-    const [ copyUrl, setCopyUrl ] = useState(false)
+export default function Post({
+    name, 
+    username, 
+    foto, 
+    imagem, 
+    userId, 
+    text, 
+    date, 
+    totalLike, 
+    id, 
+    linkAtivo = true, 
+} : Props) {
+    const { user } = useContext(UserContext);
+    const [ like, setLike ] = useState(false);
+    const [ copyUrl, setCopyUrl ] = useState(false);
+    const [ popUp, setPopUp] = useState(false);
+    const [ notExists, setNotExists ] = useState(true);
+    const PopUpRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+          if (PopUpRef.current && !PopUpRef.current.contains(event.target as Element)) {
+            setPopUp(false);
+          }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+          return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+          };
+    }, [PopUpRef]);
 
     async function updateLikesCount() {
         const userDocRef = doc(db, 'users', userId);
@@ -60,10 +89,14 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
         setTimeout(() => {
           setCopyUrl(false);
         }, 1500);
-      }
+    }
       
+    function handleClick() {
+        setPopUp(prev => !prev)
+    }
+
     return(
-        <div className={styles.container}>
+        <div className={styles.container} style={notExists ? {} : {display: 'none'}}>
             { linkAtivo ? <Link href={`${username}/${id}`} className={styles.link}>
                 <div className={styles.link}></div>
             </Link> : ''}
@@ -74,10 +107,19 @@ export default function Post({name, username, foto, imagem, userId, text, date, 
                 </Link>
                 <div className={styles.infoPubli}>
                     <div className={styles.user}>
-                        <span className={styles.name}>{name}</span>
-                        <span className={styles.username}>@{username}</span>
-                        <span>·</span>
-                        <span>{date}</span>
+                        <div className={styles.topInfo}>
+                            <span className={styles.name}>{name}</span>
+                            <span className={styles.username}>@{username}</span>
+                            <span>·</span>
+                            <span>{date}</span>
+                        </div>
+                        <div className={styles.opcoes} >
+                            {user?.userId === userId ? <HiEllipsisHorizontal className={styles.icon} onClick={handleClick}/> : ''}
+                            <div ref={PopUpRef}>
+                                {popUp && <DeletePost postId={id} setNotExists={setNotExists}/>}
+                            </div>
+                            {popUp && <Foco color='transparent'/> }
+                        </div>
                     </div>
                     { linkAtivo ? <Link href={`${username}/${id}`} className={styles.newPubli}>
                         <div className={styles.publi}>

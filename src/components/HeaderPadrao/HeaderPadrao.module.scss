@@ -13,6 +13,23 @@
         height: .1rem;
         background-color: $cor-texto-claro;
     }
+    .loader{
+        height: .4rem;
+        position: absolute;
+        z-index: 1;
+        background-color: $cor-azul;
+        animation: loader .6s linear;
+    }
+}
+
+
+@keyframes loader {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 668px) {

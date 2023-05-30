@@ -13,6 +13,7 @@ export async function getPosts() {
       user.posts.forEach((post: any) => {
         const postWithUserInfo = {
           ...post, 
+          name: user.name,
           username: user.username, 
           perfilImageUrl: user.perfilImageUrl ? user.perfilImageUrl : ''
         };

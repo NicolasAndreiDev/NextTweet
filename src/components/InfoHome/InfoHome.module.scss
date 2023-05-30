@@ -28,6 +28,13 @@
         margin: auto;
     } 
 }
+.loader{
+    height: 14.3rem;
+    background-color: rgba(247, 249, 249, 0.16);
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
 
 @media screen and (max-width: 500px) {
     .title{

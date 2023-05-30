@@ -26,7 +26,7 @@ export default function NextMessage({style, foto, username, onClick}: {style?: C
             </div>
             <div className={styles.linha}></div>
             <div className={styles.messages}>
-                <Messages textoMe={message}/>
+                <Messages textoMe={message} message={'textoThey'} />
             </div>
             <NewMessage setMessage={(value: string) => setMessage(value)} user={username}/>
         </div> : 

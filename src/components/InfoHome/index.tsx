@@ -1,13 +1,15 @@
 import styles from './InfoHome.module.scss'
 import ButtonHeader from '@/components/ButtonHeader'
-import { useRef, useState} from 'react'
+import { useContext, useRef, useState} from 'react'
 import PostHome from './PostHome';
 import HeaderPadrao from '../HeaderPadrao';
 import MobileComponents from '../MobileComponents';
+import { UserPostContext } from '@/providers/UserPostProvider';
 
 export default function InfoHome() {
-    const [selectedOption, setSelectedOption] = useState('For you');
-    const contentRef = useRef(null);
+  const { loader } = useContext(UserPostContext);
+  const [selectedOption, setSelectedOption] = useState('For you');
+  const contentRef = useRef(null);
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
     setSelectedOption(event.target.value);
@@ -15,7 +17,12 @@ export default function InfoHome() {
 
   const renderContent = () => {
     if (selectedOption === 'For you') {
-      return <div><PostHome name={styles.post}/></div>;
+      return (
+        <div>
+          { loader ? <div className={styles.loader} /> : ''}
+          <PostHome name={styles.post}/>
+        </div>
+      )
     }
     if (selectedOption === 'Following') {
       return <div></div>;

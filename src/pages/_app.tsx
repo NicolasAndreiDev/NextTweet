@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { UserProvider } from '@/providers/UserProvider';
 import { UserListProvider } from '@/providers/UserListProvider';
+import { UserPostProvider } from '@/providers/UserPostProvider';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <UserProvider>
         <UserListProvider>
-          <Component {...pageProps} />
+          <UserPostProvider>
+            <Component {...pageProps} />
+          </UserPostProvider>
         </UserListProvider>
       </UserProvider> 
     </>

@@ -1,0 +1,28 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.icones{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    .boxImage{
+        .icon{
+            height: 1.6rem;
+            width: 1.6rem;
+            color: $cor-azul;
+            cursor: pointer;
+        }
+    }
+    .boxIcon{
+        position: relative;
+        .icon{
+            height: 1.6rem;
+            width: 1.6rem;
+            color: $cor-azul;
+            cursor: pointer;
+        }
+        .newPosition{
+            position: absolute;
+            z-index: 10;
+        }
+    }
+}

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from 'react'
-import { auth } from '../../firebase';
 import { getUsers } from '@/utils/getUsers';
 import { UserContext } from './UserProvider';
 

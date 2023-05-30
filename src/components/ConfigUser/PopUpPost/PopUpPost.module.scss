@@ -31,4 +31,15 @@
         border-radius: 100%;
         object-fit: cover;
     }
+    .box{
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: $tamanho-da-fonte;
+        width: 100%;
+        overflow-y: scroll;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
 }
