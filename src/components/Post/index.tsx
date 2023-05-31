@@ -173,7 +173,7 @@ export default function Post({
                             <div className={styles.social_icon}>
                                 <div className={styles.newLink} onClick={handleClickComment}>
                                     <AiOutlineComment className={styles.icon} />
-                                    <span>{commentsLenght}</span>
+                                    <span>{commentsLenght ? commentsLenght : null}</span>
                                 </div>
                             </div>
                             {user?.likes?.includes(id) ?
