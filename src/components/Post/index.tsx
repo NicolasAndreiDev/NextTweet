@@ -126,7 +126,9 @@ export default function Post({
     let commentsLenght = null;
     if (user?.posts) {
         const post: any = user.posts.find((post: {id: string }) => post.id === id);
-        commentsLenght = post?.comments.length;  
+        if(post) {
+            commentsLenght = post?.comments.length;  
+        }
     }
 
     return (
