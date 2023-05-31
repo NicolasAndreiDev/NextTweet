@@ -37,6 +37,9 @@ export default function Home({usersPost} : {usersPost: Array<Props>}) {
   const { post, posts } = useContext(UserPostContext);
   const ThreeUsers = usersList.slice(0, 3);
 
+  const Allposts = posts.map(post => post.id)
+  const postsUsers = usersPost.filter(post => !Allposts.includes(post.id))
+
   return (
     <PrivateRoute>
       <div className={styles.container}>
@@ -48,8 +51,8 @@ export default function Home({usersPost} : {usersPost: Array<Props>}) {
               return(
                 <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} />
               )
-            }) : ''} 
-            {usersPost.map((post: any) => {
+            }) : []} 
+            {postsUsers.map((post: any) => {
               return( 
                 <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} />
               )

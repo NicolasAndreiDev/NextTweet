@@ -27,6 +27,12 @@ export default function ConfigUser() {
         setPopUp(prev => !prev)
     }
 
+    function handleClickPost() {
+        setTimeout(() => {
+            setPopUp(false)
+        }, 600)
+    }
+
     return(
         <>
         <header className={styles.container}>
@@ -42,7 +48,7 @@ export default function ConfigUser() {
             </div>
         </header>
         <div ref={PopUpRef}>
-            {popUp && <PopUpPost handleClose={handleClick}/>}
+            {popUp && <PopUpPost handleClose={handleClick} onClick={handleClickPost}/>}
         </div>
         {popUp && <Foco color='rgba(0,0,0, 0.4)'/>}
         </>

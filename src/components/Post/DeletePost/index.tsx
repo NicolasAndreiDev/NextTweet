@@ -1,8 +1,8 @@
 import styles from './DeletePost.module.scss';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { db } from '../../../../firebase';
-import { useContext, useState } from 'react';
-import { arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useContext } from 'react';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { UserContext } from '../../../providers/UserProvider';
 
 

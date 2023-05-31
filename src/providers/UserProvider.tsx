@@ -9,6 +9,8 @@ type UserContextType = {
     perfilImageUrl: string | null, 
     bannerImageUrl: string, 
     following: string[], 
+    followers: string[],
+    likes: string[],
     name: string,
     posts: [],
   } | null;
@@ -28,6 +30,8 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
     perfilImageUrl: string | null, 
     bannerImageUrl: string, 
     following: string[], 
+    followers: string[],
+    likes: string[],
     name: string,
     posts: []} | null>(null);
 
@@ -44,7 +48,9 @@ export function UserProvider({ children }: {children: React.ReactNode}) {
             perfilImageUrl: userData?.perfilImageUrl,
             bannerImageUrl: userData?.bannerImageUrl,
             following: userData?.following,
+            followers: userData?.followers,
             posts: userData?.posts,
+            likes: userData?.likes,
         });
     }
   });

@@ -6,9 +6,11 @@ import { useContext } from "react";
 import styles from "./PostoHome.module.scss";
 import { IoClose } from "react-icons/io5";
 import NewText from "@/components/NewText";
+import { UserPostContext } from "@/providers/UserPostProvider";
 
 export default function PostHome({ name }: { name?: string }) {
   const { user } = useContext(UserContext);
+  const { loader } = useContext(UserPostContext);
   const [ selectedImage, setSelectedImage ] = useState("");
   const [ inputValue, setInputValue ] = useState("");
   const [ selectEmoji, setSelectEmoji ] = useState<string[]>([])
@@ -41,7 +43,7 @@ export default function PostHome({ name }: { name?: string }) {
           )}
         </Link>
         <div className={styles.box}>
-          <textarea className={styles.box} rows={1} maxLength={300} value={inputValue} onChange={handleChange} placeholder={`What's happening?`}/>
+          <textarea className={styles.box} rows={1} maxLength={300} style={loader ? {height: 0} : {}} value={inputValue} onChange={handleChange} placeholder={`What's happening?`}/>
           {selectedImage && 
           <div className={styles.newImage}>
             <IoClose className={styles.icon} onClick={() => setSelectedImage('')}/>

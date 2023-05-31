@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import PopUp from './PopUp';
 import { useContext } from 'react';
 import { UserContext } from '@/providers/UserProvider';
+import Foco from '@/components/Foco';
 
 export default function Conta() {
     const { user } = useContext(UserContext)
@@ -41,6 +42,7 @@ export default function Conta() {
             <div ref={PopUpRef}>
                 {conta && <PopUp />}
             </div>
+            {conta && <Foco color='transparent'/>}
         </>
     )
 }

@@ -15,12 +15,10 @@ export default function AccountInfo({evento}: {evento: () => void}) {
     const { user } = useContext(UserContext)
     const [settings, setSettings] = useState<boolean>()
     const auth = getAuth()
-    const num = 0
 
     function handleLogout(){
         signOut(auth);
     }
-  
  
     function handleClick() {
         setSettings(prev => !prev)
@@ -42,11 +40,11 @@ export default function AccountInfo({evento}: {evento: () => void}) {
                 </div>
                 <div className={styles.seguidores}>
                     <Link href={'/'} className={styles.flwing}>
-                        <span>{num}</span> 
+                        <span>{user?.following ? user?.following.length : 0}</span> 
                         <span>Following</span>
                     </Link>
                     <Link href={'/'} className={styles.flwers}>
-                        <span>{num}</span> 
+                        <span>{user?.followers ? user?.followers.length : 0}</span> 
                         <span>Followers</span>
                     </Link>
                 </div>

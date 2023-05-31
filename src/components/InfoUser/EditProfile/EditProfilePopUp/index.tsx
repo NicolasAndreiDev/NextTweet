@@ -16,9 +16,7 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
     const [bannerImage, setBannerImage] = useState<File | null>();
     const [bannerStyle, setBannerStyle] = useState<{} | null>({backgroundImage: `url(${user?.bannerImageUrl})`});
     const [users, setUser] = useState<User | null>();
-    const [username, setUsername] = useState('')
     const [name, setName] = useState('')
-    const [erro, setErro] = useState(false)
 
     useEffect(() => {
       const auth = getAuth();
@@ -50,12 +48,8 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
     };
 
     const handleSave = async () => {
-        if (!perfilImage && !bannerImage && !name && !username) {
+        if (!perfilImage && !bannerImage && !name) {
           return;
-        }
-
-        if(erro){
-            return
         }
 
         const userRef = ref(storage, `users/${users?.uid}`);
@@ -83,29 +77,11 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
             await setDoc(userDocRef, { name }, { merge: true });
         }
 
-        if(username){
-            const userDocRef = doc(db, 'users', users!.uid);
-            await setDoc(userDocRef, { username }, { merge: true });
-        }
-
         updateUserInfo();
     };
 
-    async function checkIfUsernameExists(username: string) {
-        const listUsers = await getUsers();
-        const newListUsers = listUsers.filter((user: any) => user.username === username);
-        return newListUsers.length > 0;
-    }
-
     function handleChangeName(event: React.ChangeEvent<HTMLInputElement>){
         setName(event.target.value)
-    }
-
-    async function handleChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
-        const username = event.target.value;
-        const usernameExists = await checkIfUsernameExists(username);
-        setErro(usernameExists);
-        setUsername(username);
     }
 
     return(
@@ -121,23 +97,18 @@ export default function EditProfilePopUp({evento} : {evento: () => void}) {
                 <label htmlFor={'bannerImage'} className={styles.bannerImage}>
                     <RiImageAddLine className={styles.icon}/>
                 </label>
-                <input id={'bannerImage'} type={'file'} className={styles.input} onChange={handleBannerImageChange}/>
+                <input id={'bannerImage'} type={'file'} className={styles.input} onChange={handleBannerImageChange} accept="image/*"/>
             </div>
             <div className={styles.photo} style={photoStyle ? photoStyle : ''}>
                 <label htmlFor={'perfilImage'} className={styles.perfil}>
                     <RiImageAddLine className={styles.icon}/>
                 </label>
-                <input id={'perfilImage'} type={'file'} className={styles.input} onChange={handlePerfilImageChange}/>
+                <input id={'perfilImage'} type={'file'} className={styles.input} onChange={handlePerfilImageChange} accept="image/*"/>
             </div>
             <div className={styles.user}>
                 <div className={styles.names}>
                     <label htmlFor={'name'} className={styles.text}>Name</label>
                     <input id={'name'} type={'text'} className={styles.input} value={name} autoComplete={'off'} onChange={handleChangeName}/>
-                </div>
-                <div className={styles.names}>
-                    <label htmlFor={'username'} className={styles.text}>Username</label>
-                    <input id={'username'} type={'text'} className={styles.input} value={username} autoComplete={'off'} onChange={handleChangeUsername}/>
-                    { erro && <span style={{color: 'red'}}>Username já está em uso</span>}
                 </div>
             </div>
         </div>
