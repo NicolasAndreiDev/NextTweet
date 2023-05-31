@@ -35,10 +35,21 @@
         .postFoto {
             height: 4.8rem;
             width: 4.8rem;
+            min-height: 4.8rem;
             min-width: 4.8rem;
             max-width: 4.8rem;
             border-radius: 100%;
             object-fit: cover;
+        }
+
+        .imagemDefault{
+            height: 4.8rem;
+            min-height: 4.8rem;
+            width: 4.8rem;
+            min-width: 4.8rem;
+            max-width: 4.8rem;
+            border-radius: 100%;
+            background-color: $cor-texto-claro;
         }
 
         .userInfo {
@@ -104,6 +115,16 @@
                 max-width: 4.8rem;
                 border-radius: 100%;
                 object-fit: cover;
+                position: absolute;
+                top: 0;
+            }
+            .imagemDefault{
+                height: 4.8rem;
+                width: 4.8rem;
+                min-width: 4.8rem;
+                max-width: 4.8rem;
+                border-radius: 100%;
+                background-color: $cor-texto-claro;
                 position: absolute;
                 top: 0;
             }

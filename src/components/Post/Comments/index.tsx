@@ -47,7 +47,7 @@ export default function Comments({ perfilImageUrl, text, imagem, username, name,
             <IoClose className={styles.icon} onClick={handleClose} />
             <div className={styles.userPost}>
                 <div className={styles.userLinha}>
-                    <img src={perfilImageUrl} className={styles.postFoto} />
+                    { perfilImageUrl ? <img src={perfilImageUrl} className={styles.postFoto} /> : <div className={styles.imagemDefault}></div>}
                     <div className={styles.linha1}></div>
                 </div>
                 <div className={styles.userInfo}>
@@ -64,7 +64,9 @@ export default function Comments({ perfilImageUrl, text, imagem, username, name,
                 </div>
             </div>
             <div className={styles.box}>
-                <div className={styles.boxUserImage}>{user?.perfilImageUrl ? <img src={user?.perfilImageUrl} className={styles.fotoUser} /> : <div className={styles.imagemDefault}></div>}</div>
+                <div className={styles.boxUserImage}>
+                    {user?.perfilImageUrl ? <img src={user?.perfilImageUrl} className={styles.fotoUser} /> : <div className={styles.imagemDefault}></div>}
+                </div>
                 <textarea placeholder={'Post your reply!'} className={styles.boxText} value={inputValue} onChange={handleChange} rows={1} maxLength={300}/>
                 {selectedImages ? <img src={selectedImages}/> : ''}
             </div>

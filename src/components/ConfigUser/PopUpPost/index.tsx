@@ -39,7 +39,7 @@ export default function PopUpPost({ handleClose, onClick }: { handleClose: () =>
             }
             <IoClose className={styles.icon} onClick={handleClose} />
             <div className={styles.user}>
-                <img src={`${user?.perfilImageUrl}`} className={styles.fotoPerfil} />
+                { user?.perfilImageUrl ? <img src={`${user?.perfilImageUrl}`} className={styles.fotoPerfil} /> : <div className={styles.imageDefault}></div>}
                 <div className={styles.box}>
                     <textarea className={styles.box} placeholder={"What's happening?"} value={inputValue} onChange={handleChange}  rows={1} maxLength={300} />
                     {selectedImage && 
