@@ -26,11 +26,12 @@ interface Props{
   imagem: string,
   name: string,
   text: string,
-  perfilImageUrl: string | null, 
+  perfilImageUrl?: string, 
   date: string,
   likes: number,
   id: string,
   userId: string,
+  comments: [{}]
 }
 
 export default function Home({usersPost} : {usersPost: Array<Props>}) {
@@ -53,14 +54,14 @@ export default function Home({usersPost} : {usersPost: Array<Props>}) {
         <div className={styles.direita}>
           <InfoPadrao>
             <InfoHome />
-            {post ? posts.map((post) => {
+            {post ? posts.map((post: Props) => {
               return(
-                <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} />
+                <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} comments={post.comments?.length}/>
               )
             }) : []} 
-            {postsUsers.map((post: any) => {
+            {postsUsers.map((post: Props) => {
               return( 
-                <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} />
+                <Post key={post.id} userId={post.userId} id={post.id} username={post.username} name={post.name} imagem={post.imagem} text={post.text} foto={post.perfilImageUrl} date={post.date} totalLike={post.likes} comments={post.comments?.length}/>
               )
             })}
           </InfoPadrao>

@@ -12,7 +12,6 @@ import { HiEllipsisHorizontal } from 'react-icons/hi2';
 import DeletePost from './DeletePost';
 import Foco from '../Foco';
 import Comments from './Comments';
-import { UserPostContext } from '@/providers/UserPostProvider';
 
 interface Props {
     name: string,
@@ -25,6 +24,7 @@ interface Props {
     id: string,
     linkAtivo?: boolean,
     userId: string,
+    comments?: number,
 }
 
 export default function Post({
@@ -37,6 +37,7 @@ export default function Post({
     date,
     totalLike,
     id,
+    comments,
     linkAtivo = true,
 }: Props) {
     const PopUpRef = useRef<HTMLDivElement>(null);
@@ -167,7 +168,7 @@ export default function Post({
                             <div className={styles.social_icon}>
                                 <div className={styles.newLink} onClick={handleClickComment}>
                                     <AiOutlineComment className={styles.icon} />
-                                    <span></span>
+                                    <span>{comments}</span>
                                 </div>
                             </div>
                             {user?.likes?.includes(id) ?

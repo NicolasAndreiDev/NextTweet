@@ -49,6 +49,7 @@ interface Props {
   likes: number,
   id: string,
   userId: string,
+  comments: [{}]
 }
 
 export default function Username({ user, userPost }: { user: { username: string, perfilImageUrl: string, bannerImageUrl: string, userId: string, following: [], followers: [] }, userPost: Array<Props> }) {
@@ -74,7 +75,7 @@ export default function Username({ user, userPost }: { user: { username: string,
             <Informacoes name={user.username} username={user.username} followers={user.followers ? user.followers.length : 0} following={user.following ? user.following.length : 0} />
             {userPost.map((post: any) => {
               return (
-                <Post key={post.userId} name={post.username} userId={post.userId} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id} />
+                <Post key={post.userId} name={post.username} userId={post.userId} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id} comments={post.comments?.length}/>
               )
             })}
           </InfoPadrao>

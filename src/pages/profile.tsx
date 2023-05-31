@@ -49,7 +49,7 @@ export default function Profile({userPost} : {userPost: Array<{username: string}
                         <Informacoes name={user?.name} username={user?.username} followers={user?.followers ? user?.followers.length : 0} following={user?.following ? user?.following.length : 0}/>
                         {posts.map((post: any) => {
                             return(
-                                <Post key={post.userId} userId={post.userId} id={post.id} name={post.name} imagem={post.imagem} foto={post.perfilImageUrl} text={post.text} username={post.username} date={post.date} totalLike={post.likes}/>
+                                <Post key={post.userId} userId={post.userId} id={post.id} name={post.name} imagem={post.imagem} foto={post.perfilImageUrl} text={post.text} username={post.username} date={post.date} totalLike={post.likes} comments={post.comments?.length}/>
                             )
                         })}
                     </InfoPadrao>

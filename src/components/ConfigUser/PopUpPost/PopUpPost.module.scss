@@ -101,10 +101,24 @@
 
             .selectImage {
                 position: relative;
-
+               
                 .iconImage {
                     position: absolute;
                     cursor: pointer;
+                    top: 1rem;
+                    left: 1rem;
+                    height: 3.2rem;
+                    width: 3.2rem;
+                    padding: .4rem;
+                    border-radius: 10rem;
+                    &:hover{
+                        background-color: $cor-principal;
+                    }
+                }
+
+                .boxImage{
+                    border-radius: 2rem;
+                    max-width: 100%;
                 }
             }
 

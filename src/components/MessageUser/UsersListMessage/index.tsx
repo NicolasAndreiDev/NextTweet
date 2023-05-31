@@ -59,7 +59,7 @@ export default function UsersListMessage({selectedUserProps} : {selectedUserProp
       </div>
       <div className={styles.linha2}></div>
       <LinksMobile />
-      { nextMessagePopUp && (<NextMessagePopUp onClick={() => setNextMessagePopUp(false)} foto={selectedUser!.perfilImageUrl} username={selectedUser!.username}/>)}
+      { nextMessagePopUp && (<NextMessagePopUp onClick={() => setNextMessagePopUp(false)} foto={selectedUser!.perfilImageUrl} username={selectedUser!.username} userId={selectedUser!.userId}/>)}
     </div>
   )
 }

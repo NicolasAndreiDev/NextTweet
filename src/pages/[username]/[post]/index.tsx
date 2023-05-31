@@ -40,6 +40,7 @@ interface Props{
     likes: number,
     id: string,
     userId: string,
+    comments: [{}]
 }
 
 export default function PostPage({ post } : { post: Props }) {
@@ -57,7 +58,12 @@ export default function PostPage({ post } : { post: Props }) {
                 <div className={styles.direita}>
                     <InfoPadrao>
                         <HeaderBack local={'Post'} style={{padding: '1.4rem 2rem'}}/>
-                        <Post linkAtivo={false} userId={post.userId} name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id}/>
+                        <Post linkAtivo={false} userId={post.userId} name={post.username} username={post.username} foto={post.perfilImageUrl} imagem={post.imagem} text={post.text} date={post.date} totalLike={post.likes} id={post.id} comments={post.comments?.length}/>
+                        {post.comments.map((comment: any) => {
+                            return(
+                                <Post id={comment.id} userId={post.userId} name={comment.name} username={comment.username} foto={comment.perfilImageUrl} imagem={comment.imagem} text={comment.text} date={comment.date} totalLike={comment.likes} />
+                            )
+                        })}
                     </InfoPadrao>
                     <List listUsers={ThreeUsers}/>
                 </div>

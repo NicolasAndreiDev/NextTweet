@@ -1,17 +1,20 @@
 @import '@/styles/abstract/variaveis.scss';
 
-.containerNew{
+.containerNew {
     position: sticky;
     bottom: 0;
     width: 100%;
     background-color: $cor-secundaria;
-    .linha{
+
+    .linha {
         height: .1rem;
         background-color: $cor-texto-claro;
     }
-    .container{
+
+    .container {
         padding: 2rem;
-        .newMessage{
+
+        .newMessage {
             position: relative;
             border: .1rem solid $cor-texto-claro;
             font-size: $tamanho-da-fonte;
@@ -20,18 +23,21 @@
             align-items: center;
             border-radius: 2rem;
             padding: 1rem 1rem 1rem 2rem;
-            .icon{
+
+            .icon {
                 width: 2rem;
                 height: 2rem;
                 color: $cor-azul;
                 cursor: pointer;
             }
-            .input{
+
+            .input {
                 border: none;
                 outline: none;
                 width: 80%;
             }
-            .button{
+
+            .button {
                 position: absolute;
                 right: .4rem;
                 display: flex;
@@ -40,10 +46,29 @@
                 border-radius: 10rem;
                 background-color: transparent;
                 border: none;
-                &:hover{
+
+                &:hover {
                     background-color: $cor-azul-claro;
                 }
             }
+
+            .box{
+                display: flex;
+                align-items: center;
+                width: 80%;
+                .boxText {
+                    border: none;
+                    outline: none;
+                    resize: none;
+                    font-size: $tamanho-da-fonte;
+                    width: 100%;
+                    overflow: hidden;
+                    font-family: 'Montserrat', sans-serif;
+                    font-family: 'Open Sans', sans-serif;
+                    font-family: 'Source Sans Pro', sans-serif;
+                }
+            }
+            
         }
     }
 }
