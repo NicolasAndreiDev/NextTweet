@@ -1,4 +1,4 @@
-# 🚧 Em desenvolvimento 🚧
+# NextTweet
 
 Tecnologias e ferramentas utilizadas:
 
