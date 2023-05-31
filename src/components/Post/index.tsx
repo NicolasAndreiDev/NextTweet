@@ -123,14 +123,6 @@ export default function Post({
         setComment(prev => !prev)
     }
 
-    let commentsLenght = null;
-    if (user?.posts) {
-        const post: any = user.posts.find((post: {id: string }) => post.id === id);
-        if(post) {
-            commentsLenght = post?.comments.length;  
-        }
-    }
-
     return (
         <>
             <div className={styles.container} style={notExists ? {} : { display: 'none' }}>
@@ -175,7 +167,7 @@ export default function Post({
                             <div className={styles.social_icon}>
                                 <div className={styles.newLink} onClick={handleClickComment}>
                                     <AiOutlineComment className={styles.icon} />
-                                    <span>{commentsLenght ? commentsLenght : null}</span>
+                                    <span></span>
                                 </div>
                             </div>
                             {user?.likes?.includes(id) ?

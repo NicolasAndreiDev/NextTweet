@@ -9,6 +9,7 @@ import { getPosts } from '@/utils/getPosts'
 import { UserListContext } from '@/providers/UserListProvider'
 import { useContext } from 'react'
 import { UserPostContext } from '@/providers/UserPostProvider'
+import { useRouter } from 'next/router'
 
 export async function getServerSideProps() {
   const usersPost = await getPosts()
@@ -33,12 +34,17 @@ interface Props{
 }
 
 export default function Home({usersPost} : {usersPost: Array<Props>}) {
+  const route = useRouter();
   const { usersList } = useContext(UserListContext);
   const { post, posts } = useContext(UserPostContext);
   const ThreeUsers = usersList.slice(0, 3);
 
   const Allposts = posts.map(post => post.id)
   const postsUsers = usersPost.filter(post => !Allposts.includes(post.id))
+
+  if(route.isFallback) {
+    return(<div></div>)
+  }
 
   return (
     <PrivateRoute>
