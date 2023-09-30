@@ -9,6 +9,6 @@ Tecnologias e ferramentas utilizadas:
 - NextJS
 - Firebase
 
-https://github.com/NicolasAndreiDev/NextTweet/assets/124311026/07315a7a-9fdc-4b3b-b5a7-7d76a684a6f1
+https://github.com/NicolasAndreiDev/NextTweet/assets/124311026/60ae9cb9-cfe9-429e-a243-dc02271b7de6
 
 Deploy: https://next-tweet.vercel.app/
