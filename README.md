@@ -4,7 +4,6 @@
 Tecnologias e ferramentas utilizadas:
 
 - SCSS
-- Styled Components
 - Typescript
 - NextJS
 - Firebase
